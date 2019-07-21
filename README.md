@@ -7,7 +7,7 @@ Welcome to the ECOTECH main repository. Here you will find the files you should 
 
 ECOTECH is an application project that want to help different customers with ecological tourism services. This application ws developed with Angular Framework as FrontEnd, and Java as Backend
 
-If you want to know more about the project go to the "Wiki" section.
+If you want to know more about the project go to the "[Wiki](https://github.com/webservices1930/ECOTECH/wiki)" section.
 </br>
 
 Thanks.
