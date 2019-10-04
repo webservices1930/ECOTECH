@@ -1,4 +1,4 @@
-package co.edu.javeriana.webservice.service;
+package co.edu.javeriana.webservice.interfaceservice;
 
 import java.util.List;
 
@@ -8,8 +8,8 @@ import javax.jws.WebService;
 import co.edu.javeriana.webservice.entities.*;
 
 @WebService
-public interface PaseosService {
-	
+public interface InterfaceService {
+
 	@WebMethod
 	public Servicio crearServicio(Servicio paseo);
 

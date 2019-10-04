@@ -5,9 +5,10 @@ import java.util.List;
 import javax.jws.WebService;
 
 import co.edu.javeriana.webservice.entities.*;
+import co.edu.javeriana.webservice.interfaceservice.InterfaceService;
 
-@WebService(endpointInterface = "co.edu.javeriana.webservice.service.PaseosService")
-public class ServicioPaseo implements PaseosService {
+@WebService(endpointInterface = "co.edu.javeriana.webservice.interfaceservice.InterfaceService")
+public class ServicioPaseo implements InterfaceService {
 
 	@Override
 	public Servicio crearServicio(Servicio paseo) {
@@ -38,8 +39,5 @@ public class ServicioPaseo implements PaseosService {
 		// TODO Auto-generated method stub
 		return false;
 	}
-
-
-
 
 }

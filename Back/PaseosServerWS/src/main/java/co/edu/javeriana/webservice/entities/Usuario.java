@@ -8,8 +8,9 @@ public class Usuario {
 	private String descripcion;
 	private String nickname;
 	private String correo;
-	
-	public Usuario() {};
+
+	public Usuario() {
+	};
 
 	public Usuario(long id, String nombre, String fechaNacimiento, String foto, String descripcion, String nickname,
 			String correo) {
