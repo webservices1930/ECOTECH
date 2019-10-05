@@ -11,17 +11,23 @@ import co.edu.javeriana.webservice.entities.Usuario;
 public interface InterfaceUser {
 
 	@WebMethod
-	public Usuario crearUsuario(Usuario paseo);
+	public Usuario crearUsuario(Usuario user);
 
 	@WebMethod
-	public Usuario leerUsuario(Long id);
+	public Usuario leerUsuario(String id);
 
 	@WebMethod
-	public List<Usuario> leerTodosUsuarios(Long id);
+	public List<Usuario> leerTodosUsuarios();
 
 	@WebMethod
-	public Usuario actualizarUsuario(Long id, Usuario usuario);
+	public Usuario actualizarUsuario(String id, Usuario usuario);
 
 	@WebMethod
-	public boolean eliminarUsuario(Long id);
+	public boolean eliminarUsuario(String id);
+
+	@WebMethod
+	public Usuario leerUsuarioPorNickname(String nickname);
+
+	@WebMethod
+	public boolean login(String nickname, String password);
 }
