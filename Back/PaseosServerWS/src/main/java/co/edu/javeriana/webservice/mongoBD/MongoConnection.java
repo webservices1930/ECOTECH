@@ -23,26 +23,25 @@ public class MongoConnection {
 		
 	}
 
-	public static void buscarCollection(String nombreColeccion) {
-		MongoDatabase baseDeDatos = mongoClient.getDatabase("Ecotech");
-		MongoCollection<Document> coleccion = baseDeDatos.getCollection(nombreColeccion);
+	public static void findCollection(String nameColection) {
+		MongoDatabase mongoBD = mongoClient.getDatabase("Ecotech");
+		MongoCollection<Document> coleccion = mongoBD.getCollection(nameColection);
 
 		Document myDoc = coleccion.find().first();
 		System.out.println(myDoc.toJson());
 	}
 
-	public static void insertarObjeto(String nombreColeccion, Document nDoc) {
-		MongoDatabase baseDeDatos = mongoClient.getDatabase("Ecotech");
-		MongoCollection<Document> coleccion = baseDeDatos.getCollection(nombreColeccion);
+	public static void insertObject(String nameColection, Document nDoc) {
+		MongoDatabase mongoBD = mongoClient.getDatabase("Ecotech");
+		MongoCollection<Document> colection = mongoBD.getCollection(nameColection);
 
-		coleccion.insertOne(nDoc);
+		colection.insertOne(nDoc);
 	}
 
-	public static Document buscarEnColeccionPorID(String nombreColeccion, String _id) {
-		MongoDatabase baseDeDatos = mongoClient.getDatabase("Ecotech");
-		MongoCollection<Document> coleccion = baseDeDatos.getCollection(nombreColeccion);
+	public static Document searchByID(String nameColection, String _id) {
+		MongoDatabase mongoBD = mongoClient.getDatabase("Ecotech");
+		MongoCollection<Document> coleccion = mongoBD.getCollection(nameColection);
 
-		// Se crea el query con un objeto ID del tipo que utiliza MongoDB
 		BasicDBObject query = new BasicDBObject();
 		query.put("_id", new ObjectId(_id));
 
@@ -50,18 +49,17 @@ public class MongoConnection {
 		return doc;
 	}
 
-	public static void eliminarEnColeccionPorID(String nombreColeccion, String _id) {
-		MongoDatabase baseDeDatos = mongoClient.getDatabase("Ecotech");
-		MongoCollection<Document> coleccion = baseDeDatos.getCollection(nombreColeccion);
+	public static void deleteByID(String nameColection, String _id) {
+		MongoDatabase mongoBD = mongoClient.getDatabase("Ecotech");
+		MongoCollection<Document> coleccion = mongoBD.getCollection(nameColection);
 
-		// Se crea el query con un objeto ID del tipo que utiliza MongoDB
 		BasicDBObject query = new BasicDBObject();
 		query.put("_id", new ObjectId(_id));
 
 		coleccion.deleteOne(query);
 	}
 
-	public static void cerrarConexionMongoDB() {
+	public static void closeMongoDB() {
 		mongoClient.close();
 	}
 
