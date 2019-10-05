@@ -24,4 +24,7 @@ public interface InterfaceService {
 
 	@WebMethod
 	public boolean eliminarServicio(String id);
+	
+	@WebMethod
+	public boolean agregarUsuarioAServicio(Servicio servicio, String idUsuario);
 }

@@ -31,11 +31,9 @@ import com.mongodb.client.MongoCursor;
 import org.bson.Document;
 import org.bson.types.ObjectId;
 
-
 @WebService(endpointInterface = "co.edu.javeriana.webservice.interfaceservice.InterfaceECHOTECH")
 public class ServicioPaseo implements InterfaceECHOTECH {
 
-	
 	private Gson gson;
 
 	public ServicioPaseo() {
@@ -79,9 +77,7 @@ public class ServicioPaseo implements InterfaceECHOTECH {
 	@Override
 	public boolean eliminarServicio(String id) {
 		try {
-			System.out.println("123456");
 			MongoConnection.deleteByID(Servicio.collection, id);
-			System.out.println("temp");
 			return true;
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -154,8 +150,7 @@ public class ServicioPaseo implements InterfaceECHOTECH {
 		String userJson = gson.toJson(user);
 
 		Usuario userInDB = leerUsuarioPorNickname(user.getNickname());
-		if( userInDB != null )
-		{
+		if (userInDB != null) {
 			return null;
 		}
 		Document document = Document.parse(userJson);
@@ -202,8 +197,7 @@ public class ServicioPaseo implements InterfaceECHOTECH {
 		BasicDBObject query = new BasicDBObject();
 		query.put("nickname", nickname);
 		Document document = coleccion.find(query).first();
-		if( document == null )
-		{
+		if (document == null) {
 			return null;
 		}
 		return gson.fromJson(document.toJson(), Usuario.class);
@@ -218,6 +212,25 @@ public class ServicioPaseo implements InterfaceECHOTECH {
 		query.put("password", password);
 		Document document = coleccion.find(query).first();
 		return document != null;
+	}
+
+	@Override
+	public boolean agregarUsuarioAServicio(Servicio servicio, String idUsuario) {
+		try {
+			Document doc = MongoConnection.searchByID(Usuario.nameCollection, idUsuario);
+			Cliente u = gson.fromJson(doc.toJson(), Cliente.class);
+			System.out.println(u instanceof Cliente);
+			List<Servicio> serviciosCliente = u.getServicios();
+			serviciosCliente.add(servicio);
+			u.setServicios(serviciosCliente);
+			String s = gson.toJson(u);
+			Document docupdate = Document.parse(s);
+			MongoConnection.updateObject(Usuario.nameCollection, idUsuario, docupdate);
+			return true;
+		} catch (Exception e) {
+			// TODO: handle exception
+			return false;
+		}
 	}
 
 }
