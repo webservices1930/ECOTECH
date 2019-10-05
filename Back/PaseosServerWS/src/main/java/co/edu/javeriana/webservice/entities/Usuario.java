@@ -1,21 +1,23 @@
 package co.edu.javeriana.webservice.entities;
 
 public class Usuario {
-	private long id;
+	public static final String nameCollection = "User";
+	private transient String _id;
 	private String nombre;
 	private String fechaNacimiento;
 	private String foto;
 	private String descripcion;
 	private String nickname;
 	private String correo;
+	private String password;
 
 	public Usuario() {
 	};
 
-	public Usuario(long id, String nombre, String fechaNacimiento, String foto, String descripcion, String nickname,
+	public Usuario(String _id, String nombre, String fechaNacimiento, String foto, String descripcion, String nickname,
 			String correo) {
 		super();
-		this.id = id;
+		this._id = _id;
 		this.nombre = nombre;
 		this.fechaNacimiento = fechaNacimiento;
 		this.foto = foto;
@@ -37,16 +39,16 @@ public class Usuario {
 
 	@Override
 	public String toString() {
-		return "Usuario [id=" + id + ", nombre=" + nombre + ", fechaNacimiento=" + fechaNacimiento + ", foto=" + foto
+		return "Usuario [id=" + _id + ", nombre=" + nombre + ", fechaNacimiento=" + fechaNacimiento + ", foto=" + foto
 				+ ", descripcion=" + descripcion + ", nickname=" + nickname + ", correo=" + correo + "]";
 	}
 
-	public long getId() {
-		return id;
+	public String getId() {
+		return _id;
 	}
 
-	public void setId(long id) {
-		this.id = id;
+	public void setId(String _id) {
+		this._id = _id;
 	}
 
 	public String getNombre() {
@@ -97,4 +99,11 @@ public class Usuario {
 		this.correo = correo;
 	}
 
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
 }

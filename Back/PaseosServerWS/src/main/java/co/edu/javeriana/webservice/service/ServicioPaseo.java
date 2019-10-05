@@ -1,17 +1,31 @@
 package co.edu.javeriana.webservice.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.jws.WebService;
+import javax.print.Doc;
 
 import co.edu.javeriana.webservice.entities.*;
-import co.edu.javeriana.webservice.interfaceservice.InterfaceComentario;
-import co.edu.javeriana.webservice.interfaceservice.InterfacePregunta;
-import co.edu.javeriana.webservice.interfaceservice.InterfaceService;
-import co.edu.javeriana.webservice.interfaceservice.InterfaceUser;
+import co.edu.javeriana.webservice.interfaceservice.*;
+import co.edu.javeriana.webservice.mongoBD.MongoConnection;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.mongodb.BasicDBObject;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoCursor;
+import org.bson.Document;
+import org.bson.types.ObjectId;
 
-@WebService(endpointInterface = "co.edu.javeriana.webservice.interfaceservice.InterfaceService")
-public class ServicioPaseo implements InterfaceService, InterfaceUser, InterfaceComentario, InterfacePregunta {
+@WebService(endpointInterface = "co.edu.javeriana.webservice.interfaceservice.InterfaceECHOTECH")
+public class ServicioPaseo implements InterfaceECHOTECH {
+
+	private Gson gson;
+
+	public ServicioPaseo()
+	{
+		gson = new GsonBuilder().create();
+	}
 
 	@Override
 	public Servicio crearServicio(Servicio paseo) {
@@ -104,33 +118,74 @@ public class ServicioPaseo implements InterfaceService, InterfaceUser, Interface
 	}
 
 	@Override
-	public Usuario crearUsuario(Usuario paseo) {
-		// TODO Auto-generated method stub
-		return null;
+	public Usuario crearUsuario(Usuario user) {
+		String userJson = gson.toJson(user);
+
+		Usuario userInDB = leerUsuarioPorNickname(user.getNickname());
+		if( userInDB != null )
+		{
+			return null;
+		}
+		Document document = Document.parse(userJson);
+		MongoConnection.insertObject(Usuario.nameCollection, document);
+		return user;
 	}
 
 	@Override
-	public Usuario leerUsuario(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+	public Usuario leerUsuario(String id) {
+		Document document = MongoConnection.searchByID(Usuario.nameCollection, id);
+		return gson.fromJson(document.toJson(), Usuario.class);
 	}
 
 	@Override
-	public List<Usuario> leerTodosUsuarios(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Usuario> leerTodosUsuarios() {
+		List<Usuario> users = new ArrayList<>();
+		MongoCollection<Document> documents = MongoConnection.findCollection(Usuario.nameCollection);
+		try (MongoCursor<Document> cursor = documents.find().iterator()) {
+			while (cursor.hasNext()) {
+				users.add(gson.fromJson(cursor.next().toJson(), Usuario.class));
+			}
+		}
+		return users;
 	}
 
 	@Override
-	public Usuario actualizarUsuario(Long id, Usuario usuario) {
-		// TODO Auto-generated method stub
-		return null;
+	public Usuario actualizarUsuario(String id, Usuario usuario) {
+		String userJson = gson.toJson(usuario);
+		Document document = Document.parse(userJson);
+		MongoConnection.updateObject(Usuario.nameCollection, id, document);
+		return usuario;
 	}
 
 	@Override
-	public boolean eliminarUsuario(Long id) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean eliminarUsuario(String id) {
+		MongoConnection.deleteByID(Usuario.nameCollection, id);
+		return true;
+	}
+
+	@Override
+	public Usuario leerUsuarioPorNickname(String nickname) {
+		MongoCollection<Document> coleccion = MongoConnection.findCollection(Usuario.nameCollection);
+
+		BasicDBObject query = new BasicDBObject();
+		query.put("nickname", nickname);
+		Document document = coleccion.find(query).first();
+		if( document == null )
+		{
+			return null;
+		}
+		return gson.fromJson(document.toJson(), Usuario.class);
+	}
+
+	@Override
+	public boolean login(String nickname, String password) {
+		MongoCollection<Document> coleccion = MongoConnection.findCollection(Usuario.nameCollection);
+
+		BasicDBObject query = new BasicDBObject();
+		query.put("nickname", nickname);
+		query.put("password", password);
+		Document document = coleccion.find(query).first();
+		return document != null;
 	}
 
 }
