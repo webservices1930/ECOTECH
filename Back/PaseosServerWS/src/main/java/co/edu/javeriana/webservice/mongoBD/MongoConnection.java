@@ -10,23 +10,23 @@ import com.mongodb.client.MongoDatabase;
 
 public class MongoConnection {
 	private static MongoClient mongoClient;
-	
+	private static String db = "Ecotech";
 
 	public MongoConnection() {
 //		MongoClientURI uri = new MongoClientURI(
 //				"mongodb+srv://admin:admin123@cluster0-qhoob.mongodb.net/admin?retryWrites=true&w=majority");
 //		mongoClient = new MongoClient(uri);
 		mongoClient = new MongoClient("localhost", 27017);
-		
+
 	}
 
 	public static MongoCollection<Document> findCollection(String nameColection) {
-		MongoDatabase mongoBD = mongoClient.getDatabase("Ecotech");
+		MongoDatabase mongoBD = mongoClient.getDatabase(db);
 		return mongoBD.getCollection(nameColection);
 	}
 
 	public static void insertObject(String nameColection, Document nDoc) {
-		MongoDatabase mongoBD = mongoClient.getDatabase("Ecotech");
+		MongoDatabase mongoBD = mongoClient.getDatabase(db);
 		MongoCollection<Document> colection = mongoBD.getCollection(nameColection);
 
 		colection.insertOne(nDoc);
@@ -42,7 +42,7 @@ public class MongoConnection {
 	}
 
 	public static Document searchByID(String nameColection, String _id) {
-		MongoDatabase mongoBD = mongoClient.getDatabase("Ecotech");
+		MongoDatabase mongoBD = mongoClient.getDatabase(db);
 		MongoCollection<Document> coleccion = mongoBD.getCollection(nameColection);
 
 		BasicDBObject query = new BasicDBObject();
@@ -52,8 +52,9 @@ public class MongoConnection {
 		return doc;
 	}
 
+
 	public static void deleteByID(String nameColection, String _id) {
-		MongoDatabase mongoBD = mongoClient.getDatabase("Ecotech");
+		MongoDatabase mongoBD = mongoClient.getDatabase(db);
 		MongoCollection<Document> coleccion = mongoBD.getCollection(nameColection);
 
 		BasicDBObject query = new BasicDBObject();

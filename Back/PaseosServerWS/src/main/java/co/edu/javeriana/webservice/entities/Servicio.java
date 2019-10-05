@@ -3,24 +3,34 @@ package co.edu.javeriana.webservice.entities;
 import java.util.List;
 
 public class Servicio {
-	private long id;
+	public static final String collection = "service";
+	private transient String _id;
+	private TipoServicio tipo;
 	private String nombre;
 	private long costo;
 	private String contacto;
 	private String descripcion;
 	private long latitud;
 	private long longitud;
-	private List<Long> calificaciones;
-	private List<String> fotos;
-	private List<Comentario> comentarios;
-	private List<Pregunta> preguntas;
+	private transient List<Long> calificaciones;
+	private transient List<String> fotos;
+	private transient List<Comentario> comentarios;
+	private transient List<Pregunta> preguntas;
 
-	public long getId() {
-		return id;
+	public String get_id() {
+		return _id;
 	}
 
-	public void setId(long id) {
-		this.id = id;
+	public void set_id(String _id) {
+		this._id = _id;
+	}
+
+	public TipoServicio getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(TipoServicio tipo) {
+		this.tipo = tipo;
 	}
 
 	public String getNombre() {
@@ -105,17 +115,17 @@ public class Servicio {
 
 	@Override
 	public String toString() {
-		return "Servicio [id=" + id + ", nombre=" + nombre + ", costo=" + costo + ", contacto=" + contacto
+		return "Servicio [id=" + _id + ", nombre=" + nombre + ", costo=" + costo + ", contacto=" + contacto
 				+ ", descripcion=" + descripcion + ", latitud=" + latitud + ", longitud=" + longitud
 				+ ", calificaciones=" + calificaciones + ", fotos=" + fotos + ", comentarios=" + comentarios
 				+ ", preguntas=" + preguntas + "]";
 	}
 
-	public Servicio(long id, String nombre, long costo, String contacto, String descripcion, long latitud,
+	public Servicio(String id, String nombre, long costo, String contacto, String descripcion, long latitud,
 			long longitud, List<Long> calificaciones, List<String> fotos, List<Comentario> comentarios,
 			List<Pregunta> preguntas) {
 		super();
-		this.id = id;
+		this._id = id;
 		this.nombre = nombre;
 		this.costo = costo;
 		this.contacto = contacto;
@@ -145,7 +155,13 @@ public class Servicio {
 
 	public Servicio() {
 		super();
-
+		this.nombre = "No data";
+		this.costo = -1;
+		this.contacto = "No data";
+		this.descripcion = "No data";
+		this.latitud = -1;
+		this.longitud = -1;
+		this.tipo = TipoServicio.OTRO;
 	}
 
 }
