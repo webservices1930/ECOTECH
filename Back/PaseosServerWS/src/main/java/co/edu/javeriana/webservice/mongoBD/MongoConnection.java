@@ -4,10 +4,7 @@ import org.bson.Document;
 import org.bson.types.ObjectId;
 
 import com.mongodb.BasicDBObject;
-import com.mongodb.Block;
 import com.mongodb.MongoClient;
-import com.mongodb.MongoClientURI;
-import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 
@@ -23,12 +20,9 @@ public class MongoConnection {
 		
 	}
 
-	public static void findCollection(String nameColection) {
+	public static MongoCollection<Document> findCollection(String nameColection) {
 		MongoDatabase mongoBD = mongoClient.getDatabase("Ecotech");
-		MongoCollection<Document> coleccion = mongoBD.getCollection(nameColection);
-
-		Document myDoc = coleccion.find().first();
-		System.out.println(myDoc.toJson());
+		return mongoBD.getCollection(nameColection);
 	}
 
 	public static void insertObject(String nameColection, Document nDoc) {
@@ -36,6 +30,15 @@ public class MongoConnection {
 		MongoCollection<Document> colection = mongoBD.getCollection(nameColection);
 
 		colection.insertOne(nDoc);
+	}
+
+	public static void updateObject(String nameCollection, String _id,  Document nDoc) {
+		MongoDatabase mongoBD = mongoClient.getDatabase("Ecotech");
+		MongoCollection<Document> collection = mongoBD.getCollection(nameCollection);
+		BasicDBObject query = new BasicDBObject();
+		query.put("_id", new ObjectId(_id));
+
+		collection.replaceOne(query, nDoc);
 	}
 
 	public static Document searchByID(String nameColection, String _id) {
