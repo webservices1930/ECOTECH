@@ -40,7 +40,6 @@ public class ServicioPaseo implements InterfaceECHOTECH {
 		gson = new GsonBuilder().create();
 	}
 
-	private Gson gson;
 	@Override
 	public Servicio crearServicio(Servicio paseo) {
 		gson = new GsonBuilder().create();
