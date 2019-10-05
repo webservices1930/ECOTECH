@@ -15,6 +15,7 @@ import com.mongodb.client.MongoCursor;
 import com.sun.xml.ws.developer.SchemaValidation;
 
 import co.edu.javeriana.webservice.entities.*;
+
 import co.edu.javeriana.webservice.interfaceservice.InterfaceComentario;
 import co.edu.javeriana.webservice.interfaceservice.InterfacePregunta;
 import co.edu.javeriana.webservice.interfaceservice.InterfaceService;
@@ -30,44 +31,65 @@ import com.mongodb.client.MongoCursor;
 import org.bson.Document;
 import org.bson.types.ObjectId;
 
+
 @WebService(endpointInterface = "co.edu.javeriana.webservice.interfaceservice.InterfaceECHOTECH")
 public class ServicioPaseo implements InterfaceECHOTECH {
 
+	
 	private Gson gson;
 
-	public ServicioPaseo()
-	{
+	public ServicioPaseo() {
 		gson = new GsonBuilder().create();
 	}
 
 	@Override
 	public Servicio crearServicio(Servicio paseo) {
+
 		gson = new GsonBuilder().create();
 		return null;
+		// TODO Auto-generated method stub
+		String temp = gson.toJson(paseo);
+		Document doc = Document.parse(temp);
+		MongoConnection.insertObject(Servicio.collection, doc);
+		return paseo;
 	}
 
 	@Override
-	public Servicio leerServicio(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+	public Servicio leerServicio(String id) {
+		Document doc = MongoConnection.searchByID(Servicio.collection, id);
+		Servicio s = gson.fromJson(doc.toJson(), Servicio.class);
+		return s;
 	}
 
 	@Override
-	public List<Servicio> leerTodosServicio(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Servicio> leerTodosServicio(String id) {
+		List<Servicio> servicios = new ArrayList<Servicio>();
+		MongoCollection<Document> documents = MongoConnection.findCollection(Servicio.collection);
+		try (MongoCursor<Document> cursor = documents.find().iterator()) {
+			while (cursor.hasNext()) {
+				servicios.add(gson.fromJson(cursor.next().toJson(), Servicio.class));
+			}
+		}
+		return servicios;
 	}
 
 	@Override
-	public Servicio actualizarPaseo(Long id, Servicio paseo) {
-		// TODO Auto-generated method stub
-		return null;
+	public Servicio actualizarServicio(String id, Servicio paseo) {
+		MongoConnection.updateObject(Servicio.collection, paseo.get_id(), Document.parse(gson.toJson(paseo)));
+		return paseo;
 	}
 
 	@Override
-	public boolean eliminarPaseo(Long id) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean eliminarServicio(String id) {
+		try {
+			System.out.println("123456");
+			MongoConnection.deleteByID(Servicio.collection, id);
+			System.out.println("temp");
+			return true;
+		} catch (Exception e) {
+			// TODO: handle exception
+			return false;
+		}
 	}
 
 	@Override

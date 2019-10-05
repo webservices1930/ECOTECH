@@ -51,6 +51,7 @@ public class MongoConnection {
 		return doc;
 	}
 
+
 	public static void deleteByID(String nameColection, String _id) {
 		MongoDatabase mongoBD = mongoClient.getDatabase(db);
 		MongoCollection<Document> coleccion = mongoBD.getCollection(nameColection);

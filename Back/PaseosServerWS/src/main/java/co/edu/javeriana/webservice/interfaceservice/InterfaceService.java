@@ -14,14 +14,14 @@ public interface InterfaceService {
 	public Servicio crearServicio(Servicio paseo);
 
 	@WebMethod
-	public Servicio leerServicio(Long id);
+	public Servicio leerServicio(String id);
 
 	@WebMethod
-	public List<Servicio> leerTodosServicio(Long id);
+	public List<Servicio> leerTodosServicio(String id);
 
 	@WebMethod
-	public Servicio actualizarPaseo(Long id, Servicio paseo);
+	public Servicio actualizarServicio(String id, Servicio paseo);
 
 	@WebMethod
-	public boolean eliminarPaseo(Long id);
+	public boolean eliminarServicio(String id);
 }
