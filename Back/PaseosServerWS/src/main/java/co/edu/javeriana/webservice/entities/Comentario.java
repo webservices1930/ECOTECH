@@ -1,18 +1,19 @@
 package co.edu.javeriana.webservice.entities;
 
 public class Comentario {
-	private long id;
+	public static final String collectionName = "Comments";
+	private transient long _id;
 	private String descripcion;
 	private String fecha;
 	private Cliente cliente;
 	private Servicio servicio;
 
 	public long getId() {
-		return id;
+		return _id;
 	}
 
 	public void setId(long id) {
-		this.id = id;
+		this._id = id;
 	}
 
 	public String getDescripcion() {
@@ -49,13 +50,13 @@ public class Comentario {
 
 	@Override
 	public String toString() {
-		return "Comentario [id=" + id + ", descripcion=" + descripcion + ", fecha=" + fecha + ", cliente=" + cliente
+		return "Comentario [id=" + _id + ", descripcion=" + descripcion + ", fecha=" + fecha + ", cliente=" + cliente
 				+ ", servicio=" + servicio + "]";
 	}
 
 	public Comentario(long id, String descripcion, String fecha, Cliente cliente, Servicio servicio) {
 		super();
-		this.id = id;
+		this._id = id;
 		this.descripcion = descripcion;
 		this.fecha = fecha;
 		this.cliente = cliente;

@@ -1,7 +1,8 @@
 package co.edu.javeriana.webservice.entities;
 
 public class Pregunta {
-	private long id;
+	public static final String collectionName = "Questions";
+	private transient long _id;
 	private String descripcion;
 	private String fecha;
 	private String respuesta;
@@ -9,11 +10,11 @@ public class Pregunta {
 	private Servicio servicio;
 
 	public long getId() {
-		return id;
+		return _id;
 	}
 
 	public void setId(long id) {
-		this.id = id;
+		this._id = id;
 	}
 
 	public String getDescripcion() {
@@ -58,13 +59,13 @@ public class Pregunta {
 
 	@Override
 	public String toString() {
-		return "Pregunta [id=" + id + ", descripcion=" + descripcion + ", fecha=" + fecha + ", respuesta=" + respuesta
+		return "Pregunta [id=" + _id + ", descripcion=" + descripcion + ", fecha=" + fecha + ", respuesta=" + respuesta
 				+ ", clientes=" + clientes + ", servicio=" + servicio + "]";
 	}
 
 	public Pregunta(long id, String descripcion, String fecha, String respuesta, Cliente clientes, Servicio servicio) {
 		super();
-		this.id = id;
+		this._id = id;
 		this.descripcion = descripcion;
 		this.fecha = fecha;
 		this.respuesta = respuesta;
