@@ -46,7 +46,6 @@ public class ServicioPaseo implements InterfaceECHOTECH {
 	public Servicio crearServicio(Servicio paseo) {
 
 		gson = new GsonBuilder().create();
-		return null;
 		// TODO Auto-generated method stub
 		String temp = gson.toJson(paseo);
 		Document doc = Document.parse(temp);
