@@ -35,13 +35,7 @@ import org.bson.types.ObjectId;
 @WebService(endpointInterface = "co.edu.javeriana.webservice.interfaceservice.InterfaceECHOTECH")
 public class ServicioPaseo implements InterfaceECHOTECH {
 
-	private Gson gson;
-
-	public ServicioPaseo()
-	{
-		gson = new GsonBuilder().create();
-	}
-
+	
 	private Gson gson;
 
 	public ServicioPaseo() {
