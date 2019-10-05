@@ -14,15 +14,15 @@ public interface InterfacePregunta {
 	public Pregunta crearPregunta(Pregunta comentario);
 
 	@WebMethod
-	public Pregunta leerPregunta(Long id);
+	public Pregunta leerPregunta(String id);
 
 	@WebMethod
-	public List<Pregunta> leerTodosPreguntas(Long id);
+	public List<Pregunta> leerTodosPreguntas();
 
 	@WebMethod
-	public Pregunta actualizarPregunta(Long id, Pregunta pregunta);
+	public Pregunta actualizarPregunta(String id, Pregunta pregunta);
 
 	@WebMethod
-	public boolean eliminarPregunta(Long id);
+	public boolean eliminarPregunta(String id);
 
 }
