@@ -9,13 +9,15 @@ import { NgxSoapModule } from 'ngx-soap';
 import { ServicesListComponent } from './modules/services-list/services-list.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DetailsComponent } from './modules/details/details.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    ServicesListComponent
+    ServicesListComponent,
+    DetailsComponent
   ],
   imports: [
     BrowserModule,

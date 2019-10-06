@@ -6,4 +6,5 @@ export class Service {
     longitud: number;
     nombre: String;
     tipo: String;
+    id: String;
 }

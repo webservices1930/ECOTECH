@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Service } from 'src/app/model/service';
 import { ServiceService } from 'src/app/services/service.service';
+import { SoapService } from 'src/app/services/soap.service';
+import { Client } from 'ngx-soap';
 
 @Component({
   selector: 'app-services-list',
@@ -12,23 +14,23 @@ export class ServicesListComponent implements OnInit {
   servicios: Service[];
 
   constructor(
-    private serviceService: ServiceService
+    private serviceService: ServiceService,
+    private soapService: SoapService
   ) { }
 
   ngOnInit() {
-
-  }
-  refresh() {
-    this.serviceService.getAllServices().subscribe(res => {
-      console.log('services enviado');
-      console.log(res);
-      console.log(res.result.return[0]);
-      this.servicios = res.result.return;
-      console.log('servicios');
-      console.log(this.servicios);
-      
-      
+    this.soapService.client.then(client => {
+      this.serviceService.getAllServices(client as Client).subscribe(res => {
+        console.log('Services enviado');
+        console.log(res);
+        this.servicios = res.result.return;
+        console.log('servicios');
+        console.log(this.servicios);
+      });
     });
+  }
+  profile() {
+    
   }
 
 }
