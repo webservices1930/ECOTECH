@@ -1,15 +1,14 @@
 package co.edu.javeriana.webservice.service;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.jws.WebService;
 
 
-
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import com.google.gson.*;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import co.edu.javeriana.webservice.entities.*;
@@ -17,6 +16,7 @@ import co.edu.javeriana.webservice.mongoBD.MongoConnection;
 import co.edu.javeriana.webservice.interfaceservice.InterfaceECHOTECH;
 import com.mongodb.BasicDBObject;
 import org.bson.Document;
+import org.bson.types.ObjectId;
 
 @WebService(endpointInterface = "co.edu.javeriana.webservice.interfaceservice.InterfaceECHOTECH")
 public class ServicioPaseo implements InterfaceECHOTECH {
@@ -24,7 +24,21 @@ public class ServicioPaseo implements InterfaceECHOTECH {
 	private Gson gson;
 
 	public ServicioPaseo() {
-		gson = new GsonBuilder().create();
+		gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ssZ")
+				.registerTypeAdapter(ObjectId.class, new JsonSerializer<ObjectId>() {
+					@Override
+					public JsonElement serialize(ObjectId src, Type typeOfSrc, JsonSerializationContext context) {
+						System.out.println("tesjklt");
+						System.out.println(src);
+						return new JsonPrimitive(src.toHexString());
+					}
+				})
+				.registerTypeAdapter(ObjectId.class, new JsonDeserializer<ObjectId>() {
+					@Override
+					public ObjectId deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
+						return new ObjectId(json.getAsJsonObject().get("$oid").getAsString());
+					}
+				}).create();
 	}
 
 	@Override
@@ -260,7 +274,6 @@ public class ServicioPaseo implements InterfaceECHOTECH {
 		System.out.println(document.toJson());
 		Usuario u = gson.fromJson(document.toJson(), Usuario.class);
 		u.update();
-		System.out.println(u);
 		return u;
 	}
 
