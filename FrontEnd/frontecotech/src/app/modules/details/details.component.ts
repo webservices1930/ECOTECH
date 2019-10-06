@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SoapService } from 'src/app/services/soap.service';
 import { ServiceService } from 'src/app/services/service.service';
-import { Service, Paseo } from 'src/app/model/service';
+import { Service, Paseo, Alimentacion, Alojamiento, Otro, Transporte } from 'src/app/model/service';
 import { Client } from 'ngx-soap';
 
 @Component({
@@ -14,6 +14,10 @@ export class DetailsComponent implements OnInit {
   idSer: String = 'teamp';
   service: Service;
   paseo: Paseo;
+  alimentacion: Alimentacion;
+  alojamiento: Alojamiento;
+  otro: Otro;
+  transporte: Transporte;
   pregunta: string = '';
   preguntas: string[] = [];
   preguntastemp: string[] = [];
@@ -37,6 +41,18 @@ export class DetailsComponent implements OnInit {
           this.service = res.result.return;
           console.log('servicio');
           console.log(this.service);
+          if(this.service.tipo=='PASEO')
+          {
+            this.soapService.client.then(client => {
+              this.serviceService.getPaseobyId(client as Client, this.idSer).subscribe(response =>{
+                  console.log('Paseo');
+                  console.log(response);
+
+              });
+            });
+          }
+
+
         });
       });
     });

@@ -32,7 +32,7 @@ export class Otro extends Service {
 
 }
 
-export class Trasporte extends Service {
+export class Transporte extends Service {
 
     horaSalida: string;
     horaLlegada: string;
