@@ -55,9 +55,9 @@ export class DetailsComponent implements OnInit {
           {
             this.soapService.client.then(client => {
               this.serviceService.getPaseobyId(client as Client, this.idSer).subscribe(response =>{
-                  console.log('Paseo');
+                  console.log('Alimentacion');
                   console.log(response);
-                  this.paseo = response.result.return;
+                  this.alimentacion = response.result.return;
               });
             });
           }
@@ -65,9 +65,9 @@ export class DetailsComponent implements OnInit {
           {
             this.soapService.client.then(client => {
               this.serviceService.getPaseobyId(client as Client, this.idSer).subscribe(response =>{
-                  console.log('Paseo');
+                  console.log('Alojameiento');
                   console.log(response);
-                  this.paseo = response.result.return;
+                  this.alojamiento = response.result.return;
               });
             });
           }
@@ -75,9 +75,9 @@ export class DetailsComponent implements OnInit {
           {
             this.soapService.client.then(client => {
               this.serviceService.getPaseobyId(client as Client, this.idSer).subscribe(response =>{
-                  console.log('Paseo');
+                  console.log('Otro');
                   console.log(response);
-                  this.paseo = response.result.return;
+                  this.otro = response.result.return;
               });
             });
           }
@@ -85,9 +85,9 @@ export class DetailsComponent implements OnInit {
           {
             this.soapService.client.then(client => {
               this.serviceService.getPaseobyId(client as Client, this.idSer).subscribe(response =>{
-                  console.log('Paseo');
+                  console.log('Transporta');
                   console.log(response);
-                  this.paseo = response.result.return;
+                  this.transporte = response.result.return;
               });
             });
           }
