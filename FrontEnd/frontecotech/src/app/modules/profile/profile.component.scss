@@ -1,0 +1,38 @@
+body {
+  background-image: url("../login/images/fondo.jpg");
+}
+
+.limiter {
+  width: 100%;
+  margin: 0 auto;
+  background-image: url("../login/images/fondo.jpg");
+}
+
+h1,h2,h3,h4,h5,h6 {
+  margin: 0px;
+}
+
+p {
+  font-family: Ubuntu-Regular;
+  font-size: 14px;
+  line-height: 1.7;
+  color: #666666;
+  margin: 0px;
+}
+
+ul, li {
+  margin: 0px;
+  list-style-type: none;
+}
+
+.titles {
+  font-family: JosefinSans-Bold;
+  src: url('/fonts/ubuntu/JosefinSans-Bold.ttf');
+  font-size: 100px;
+}
+
+.subtitle {
+  font-family: "Comic Sans MS";
+  font-size: 30px;
+  font-style: italic;
+}
