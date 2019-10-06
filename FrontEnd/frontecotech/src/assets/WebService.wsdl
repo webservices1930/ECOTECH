@@ -1,0 +1,862 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+
+<definitions targetNamespace="http://interfaceservice.webservice.javeriana.edu.co/" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://interfaceservice.webservice.javeriana.edu.co/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <binding name="ServicioPaseoPortBinding" type="ns1:InterfaceECHOTECH" xmlns:ns1="http://interfaceservice.webservice.javeriana.edu.co/">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="crearServicio">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="leerServicio">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="leerTodosServicio">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="actualizarServicio">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="eliminarServicio">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="crearUsuario">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="leerUsuario">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="leerTodosUsuarios">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="actualizarUsuario">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="eliminarUsuario">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="leerUsuarioPorNickname">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="login">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="crearComentario">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="leerComentario">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="leerTodosComentarios">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="actualizarComentario">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="eliminarComentario">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="crearPregunta">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="leerPregunta">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="leerTodosPreguntas">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="actualizarPregunta">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="eliminarPregunta">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <service name="ServicioPaseoService">
+    <port name="ServicioPaseoPort" binding="tns:ServicioPaseoPortBinding">
+      <soap:address location="http://localhost/WS/servicios" />
+    </port>
+  </service>
+
+  <types>
+    <xs:schema version="1.0" targetNamespace="http://interfaceservice.webservice.javeriana.edu.co/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+      <xs:element name="actualizarComentario" type="tns:actualizarComentario" />
+
+      <xs:element name="actualizarComentarioResponse" type="tns:actualizarComentarioResponse" />
+
+      <xs:element name="actualizarPregunta" type="tns:actualizarPregunta" />
+
+      <xs:element name="actualizarPreguntaResponse" type="tns:actualizarPreguntaResponse" />
+
+      <xs:element name="actualizarServicio" type="tns:actualizarServicio" />
+
+      <xs:element name="actualizarServicioResponse" type="tns:actualizarServicioResponse" />
+
+      <xs:element name="actualizarUsuario" type="tns:actualizarUsuario" />
+
+      <xs:element name="actualizarUsuarioResponse" type="tns:actualizarUsuarioResponse" />
+
+      <xs:element name="crearComentario" type="tns:crearComentario" />
+
+      <xs:element name="crearComentarioResponse" type="tns:crearComentarioResponse" />
+
+      <xs:element name="crearPregunta" type="tns:crearPregunta" />
+
+      <xs:element name="crearPreguntaResponse" type="tns:crearPreguntaResponse" />
+
+      <xs:element name="crearServicio" type="tns:crearServicio" />
+
+      <xs:element name="crearServicioResponse" type="tns:crearServicioResponse" />
+
+      <xs:element name="crearUsuario" type="tns:crearUsuario" />
+
+      <xs:element name="crearUsuarioResponse" type="tns:crearUsuarioResponse" />
+
+      <xs:element name="eliminarComentario" type="tns:eliminarComentario" />
+
+      <xs:element name="eliminarComentarioResponse" type="tns:eliminarComentarioResponse" />
+
+      <xs:element name="eliminarPregunta" type="tns:eliminarPregunta" />
+
+      <xs:element name="eliminarPreguntaResponse" type="tns:eliminarPreguntaResponse" />
+
+      <xs:element name="eliminarServicio" type="tns:eliminarServicio" />
+
+      <xs:element name="eliminarServicioResponse" type="tns:eliminarServicioResponse" />
+
+      <xs:element name="eliminarUsuario" type="tns:eliminarUsuario" />
+
+      <xs:element name="eliminarUsuarioResponse" type="tns:eliminarUsuarioResponse" />
+
+      <xs:element name="leerComentario" type="tns:leerComentario" />
+
+      <xs:element name="leerComentarioResponse" type="tns:leerComentarioResponse" />
+
+      <xs:element name="leerPregunta" type="tns:leerPregunta" />
+
+      <xs:element name="leerPreguntaResponse" type="tns:leerPreguntaResponse" />
+
+      <xs:element name="leerServicio" type="tns:leerServicio" />
+
+      <xs:element name="leerServicioResponse" type="tns:leerServicioResponse" />
+
+      <xs:element name="leerTodosComentarios" type="tns:leerTodosComentarios" />
+
+      <xs:element name="leerTodosComentariosResponse" type="tns:leerTodosComentariosResponse" />
+
+      <xs:element name="leerTodosPreguntas" type="tns:leerTodosPreguntas" />
+
+      <xs:element name="leerTodosPreguntasResponse" type="tns:leerTodosPreguntasResponse" />
+
+      <xs:element name="leerTodosServicio" type="tns:leerTodosServicio" />
+
+      <xs:element name="leerTodosServicioResponse" type="tns:leerTodosServicioResponse" />
+
+      <xs:element name="leerTodosUsuarios" type="tns:leerTodosUsuarios" />
+
+      <xs:element name="leerTodosUsuariosResponse" type="tns:leerTodosUsuariosResponse" />
+
+      <xs:element name="leerUsuario" type="tns:leerUsuario" />
+
+      <xs:element name="leerUsuarioPorNickname" type="tns:leerUsuarioPorNickname" />
+
+      <xs:element name="leerUsuarioPorNicknameResponse" type="tns:leerUsuarioPorNicknameResponse" />
+
+      <xs:element name="leerUsuarioResponse" type="tns:leerUsuarioResponse" />
+
+      <xs:element name="login" type="tns:login" />
+
+      <xs:element name="loginResponse" type="tns:loginResponse" />
+
+      <xs:complexType name="leerTodosPreguntas">
+        <xs:sequence />
+      </xs:complexType>
+
+      <xs:complexType name="leerTodosPreguntasResponse">
+        <xs:sequence>
+          <xs:element name="return" type="tns:pregunta" minOccurs="0" maxOccurs="unbounded" />
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:complexType name="pregunta">
+        <xs:sequence>
+          <xs:element name="clientes" type="tns:cliente" minOccurs="0" />
+          <xs:element name="descripcion" type="xs:string" minOccurs="0" />
+          <xs:element name="fecha" type="xs:string" minOccurs="0" />
+          <xs:element name="id" type="xs:long" />
+          <xs:element name="respuesta" type="xs:string" minOccurs="0" />
+          <xs:element name="servicio" type="tns:servicio" minOccurs="0" />
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:complexType name="cliente">
+        <xs:complexContent>
+          <xs:extension base="tns:usuario">
+            <xs:sequence>
+              <xs:element name="comentarios" type="tns:comentario" nillable="true" minOccurs="0" maxOccurs="unbounded" />
+              <xs:element name="di" type="xs:string" minOccurs="0" />
+              <xs:element name="preguntas" type="tns:pregunta" nillable="true" minOccurs="0" maxOccurs="unbounded" />
+              <xs:element name="servicios" type="tns:servicio" nillable="true" minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+
+      <xs:complexType name="usuario">
+        <xs:sequence>
+          <xs:element name="correo" type="xs:string" minOccurs="0" />
+          <xs:element name="descripcion" type="xs:string" minOccurs="0" />
+          <xs:element name="fechaNacimiento" type="xs:string" minOccurs="0" />
+          <xs:element name="foto" type="xs:string" minOccurs="0" />
+          <xs:element name="id" type="xs:string" minOccurs="0" />
+          <xs:element name="nickname" type="xs:string" minOccurs="0" />
+          <xs:element name="nombre" type="xs:string" minOccurs="0" />
+          <xs:element name="password" type="xs:string" minOccurs="0" />
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:complexType name="comentario">
+        <xs:sequence>
+          <xs:element name="cliente" type="tns:cliente" minOccurs="0" />
+          <xs:element name="descripcion" type="xs:string" minOccurs="0" />
+          <xs:element name="fecha" type="xs:string" minOccurs="0" />
+          <xs:element name="id" type="xs:long" />
+          <xs:element name="servicio" type="tns:servicio" minOccurs="0" />
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:complexType name="servicio">
+        <xs:sequence>
+          <xs:element name="calificaciones" type="xs:long" nillable="true" minOccurs="0" maxOccurs="unbounded" />
+          <xs:element name="comentarios" type="tns:comentario" nillable="true" minOccurs="0" maxOccurs="unbounded" />
+          <xs:element name="contacto" type="xs:string" minOccurs="0" />
+          <xs:element name="costo" type="xs:long" />
+          <xs:element name="descripcion" type="xs:string" minOccurs="0" />
+          <xs:element name="fotos" type="xs:string" nillable="true" minOccurs="0" maxOccurs="unbounded" />
+          <xs:element name="latitud" type="xs:long" />
+          <xs:element name="longitud" type="xs:long" />
+          <xs:element name="nombre" type="xs:string" minOccurs="0" />
+          <xs:element name="preguntas" type="tns:pregunta" nillable="true" minOccurs="0" maxOccurs="unbounded" />
+          <xs:element name="tipo" type="tns:tipoServicio" minOccurs="0" />
+          <xs:element name="_id" type="xs:string" minOccurs="0" />
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:complexType name="actualizarServicio">
+        <xs:sequence>
+          <xs:element name="arg0" type="xs:string" minOccurs="0" />
+          <xs:element name="arg1" type="tns:servicio" minOccurs="0" />
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:complexType name="actualizarServicioResponse">
+        <xs:sequence>
+          <xs:element name="return" type="tns:servicio" minOccurs="0" />
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:complexType name="crearComentario">
+        <xs:sequence>
+          <xs:element name="arg0" type="tns:comentario" minOccurs="0" />
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:complexType name="crearComentarioResponse">
+        <xs:sequence>
+          <xs:element name="return" type="tns:comentario" minOccurs="0" />
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:complexType name="crearPregunta">
+        <xs:sequence>
+          <xs:element name="arg0" type="tns:pregunta" minOccurs="0" />
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:complexType name="crearPreguntaResponse">
+        <xs:sequence>
+          <xs:element name="return" type="tns:pregunta" minOccurs="0" />
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:complexType name="leerServicio">
+        <xs:sequence>
+          <xs:element name="arg0" type="xs:string" minOccurs="0" />
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:complexType name="leerServicioResponse">
+        <xs:sequence>
+          <xs:element name="return" type="tns:servicio" minOccurs="0" />
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:complexType name="leerUsuarioPorNickname">
+        <xs:sequence>
+          <xs:element name="arg0" type="xs:string" minOccurs="0" />
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:complexType name="leerUsuarioPorNicknameResponse">
+        <xs:sequence>
+          <xs:element name="return" type="tns:usuario" minOccurs="0" />
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:complexType name="leerTodosUsuarios">
+        <xs:sequence />
+      </xs:complexType>
+
+      <xs:complexType name="leerTodosUsuariosResponse">
+        <xs:sequence>
+          <xs:element name="return" type="tns:usuario" minOccurs="0" maxOccurs="unbounded" />
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:complexType name="leerTodosServicio">
+        <xs:sequence>
+          <xs:element name="arg0" type="xs:string" minOccurs="0" />
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:complexType name="leerTodosServicioResponse">
+        <xs:sequence>
+          <xs:element name="return" type="tns:servicio" minOccurs="0" maxOccurs="unbounded" />
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:complexType name="leerComentario">
+        <xs:sequence>
+          <xs:element name="arg0" type="xs:string" minOccurs="0" />
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:complexType name="leerComentarioResponse">
+        <xs:sequence>
+          <xs:element name="return" type="tns:comentario" minOccurs="0" />
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:complexType name="actualizarPregunta">
+        <xs:sequence>
+          <xs:element name="arg0" type="xs:string" minOccurs="0" />
+          <xs:element name="arg1" type="tns:pregunta" minOccurs="0" />
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:complexType name="actualizarPreguntaResponse">
+        <xs:sequence>
+          <xs:element name="return" type="tns:pregunta" minOccurs="0" />
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:complexType name="eliminarServicio">
+        <xs:sequence>
+          <xs:element name="arg0" type="xs:string" minOccurs="0" />
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:complexType name="eliminarServicioResponse">
+        <xs:sequence>
+          <xs:element name="return" type="xs:boolean" />
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:complexType name="actualizarUsuario">
+        <xs:sequence>
+          <xs:element name="arg0" type="xs:string" minOccurs="0" />
+          <xs:element name="arg1" type="tns:usuario" minOccurs="0" />
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:complexType name="actualizarUsuarioResponse">
+        <xs:sequence>
+          <xs:element name="return" type="tns:usuario" minOccurs="0" />
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:complexType name="actualizarComentario">
+        <xs:sequence>
+          <xs:element name="arg0" type="xs:string" minOccurs="0" />
+          <xs:element name="arg1" type="tns:comentario" minOccurs="0" />
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:complexType name="actualizarComentarioResponse">
+        <xs:sequence>
+          <xs:element name="return" type="tns:comentario" minOccurs="0" />
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:complexType name="leerPregunta">
+        <xs:sequence>
+          <xs:element name="arg0" type="xs:string" minOccurs="0" />
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:complexType name="leerPreguntaResponse">
+        <xs:sequence>
+          <xs:element name="return" type="tns:pregunta" minOccurs="0" />
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:complexType name="login">
+        <xs:sequence>
+          <xs:element name="arg0" type="xs:string" minOccurs="0" />
+          <xs:element name="arg1" type="xs:string" minOccurs="0" />
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:complexType name="loginResponse">
+        <xs:sequence>
+          <xs:element name="return" type="xs:boolean" />
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:complexType name="eliminarUsuario">
+        <xs:sequence>
+          <xs:element name="arg0" type="xs:string" minOccurs="0" />
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:complexType name="eliminarUsuarioResponse">
+        <xs:sequence>
+          <xs:element name="return" type="xs:boolean" />
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:complexType name="crearUsuario">
+        <xs:sequence>
+          <xs:element name="arg0" type="tns:usuario" minOccurs="0" />
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:complexType name="crearUsuarioResponse">
+        <xs:sequence>
+          <xs:element name="return" type="tns:usuario" minOccurs="0" />
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:complexType name="crearServicio">
+        <xs:sequence>
+          <xs:element name="arg0" type="tns:servicio" minOccurs="0" />
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:complexType name="crearServicioResponse">
+        <xs:sequence>
+          <xs:element name="return" type="tns:servicio" minOccurs="0" />
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:complexType name="leerUsuario">
+        <xs:sequence>
+          <xs:element name="arg0" type="xs:string" minOccurs="0" />
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:complexType name="leerUsuarioResponse">
+        <xs:sequence>
+          <xs:element name="return" type="tns:usuario" minOccurs="0" />
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:complexType name="leerTodosComentarios">
+        <xs:sequence />
+      </xs:complexType>
+
+      <xs:complexType name="leerTodosComentariosResponse">
+        <xs:sequence>
+          <xs:element name="return" type="tns:comentario" minOccurs="0" maxOccurs="unbounded" />
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:complexType name="eliminarComentario">
+        <xs:sequence>
+          <xs:element name="arg0" type="xs:string" minOccurs="0" />
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:complexType name="eliminarComentarioResponse">
+        <xs:sequence>
+          <xs:element name="return" type="xs:boolean" />
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:complexType name="eliminarPregunta">
+        <xs:sequence>
+          <xs:element name="arg0" type="xs:string" minOccurs="0" />
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:complexType name="eliminarPreguntaResponse">
+        <xs:sequence>
+          <xs:element name="return" type="xs:boolean" />
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:simpleType name="tipoServicio">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="TRANSPORTE" />
+          <xs:enumeration value="PASEO" />
+          <xs:enumeration value="OTRO" />
+          <xs:enumeration value="ALOJAMIENTO" />
+          <xs:enumeration value="ALIMENTACION" />
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:schema>
+  </types>
+  <message name="crearServicio">
+    <part name="parameters" element="tns:crearServicio" />
+  </message>
+  <message name="crearServicioResponse">
+    <part name="parameters" element="tns:crearServicioResponse" />
+  </message>
+  <message name="leerServicio">
+    <part name="parameters" element="tns:leerServicio" />
+  </message>
+  <message name="leerServicioResponse">
+    <part name="parameters" element="tns:leerServicioResponse" />
+  </message>
+  <message name="leerTodosServicio">
+    <part name="parameters" element="tns:leerTodosServicio" />
+  </message>
+  <message name="leerTodosServicioResponse">
+    <part name="parameters" element="tns:leerTodosServicioResponse" />
+  </message>
+  <message name="actualizarServicio">
+    <part name="parameters" element="tns:actualizarServicio" />
+  </message>
+  <message name="actualizarServicioResponse">
+    <part name="parameters" element="tns:actualizarServicioResponse" />
+  </message>
+  <message name="eliminarServicio">
+    <part name="parameters" element="tns:eliminarServicio" />
+  </message>
+  <message name="eliminarServicioResponse">
+    <part name="parameters" element="tns:eliminarServicioResponse" />
+  </message>
+  <message name="crearUsuario">
+    <part name="parameters" element="tns:crearUsuario" />
+  </message>
+  <message name="crearUsuarioResponse">
+    <part name="parameters" element="tns:crearUsuarioResponse" />
+  </message>
+  <message name="leerUsuario">
+    <part name="parameters" element="tns:leerUsuario" />
+  </message>
+  <message name="leerUsuarioResponse">
+    <part name="parameters" element="tns:leerUsuarioResponse" />
+  </message>
+  <message name="leerTodosUsuarios">
+    <part name="parameters" element="tns:leerTodosUsuarios" />
+  </message>
+  <message name="leerTodosUsuariosResponse">
+    <part name="parameters" element="tns:leerTodosUsuariosResponse" />
+  </message>
+  <message name="actualizarUsuario">
+    <part name="parameters" element="tns:actualizarUsuario" />
+  </message>
+  <message name="actualizarUsuarioResponse">
+    <part name="parameters" element="tns:actualizarUsuarioResponse" />
+  </message>
+  <message name="eliminarUsuario">
+    <part name="parameters" element="tns:eliminarUsuario" />
+  </message>
+  <message name="eliminarUsuarioResponse">
+    <part name="parameters" element="tns:eliminarUsuarioResponse" />
+  </message>
+  <message name="leerUsuarioPorNickname">
+    <part name="parameters" element="tns:leerUsuarioPorNickname" />
+  </message>
+  <message name="leerUsuarioPorNicknameResponse">
+    <part name="parameters" element="tns:leerUsuarioPorNicknameResponse" />
+  </message>
+  <message name="login">
+    <part name="parameters" element="tns:login" />
+  </message>
+  <message name="loginResponse">
+    <part name="parameters" element="tns:loginResponse" />
+  </message>
+  <message name="crearComentario">
+    <part name="parameters" element="tns:crearComentario" />
+  </message>
+  <message name="crearComentarioResponse">
+    <part name="parameters" element="tns:crearComentarioResponse" />
+  </message>
+  <message name="leerComentario">
+    <part name="parameters" element="tns:leerComentario" />
+  </message>
+  <message name="leerComentarioResponse">
+    <part name="parameters" element="tns:leerComentarioResponse" />
+  </message>
+  <message name="leerTodosComentarios">
+    <part name="parameters" element="tns:leerTodosComentarios" />
+  </message>
+  <message name="leerTodosComentariosResponse">
+    <part name="parameters" element="tns:leerTodosComentariosResponse" />
+  </message>
+  <message name="actualizarComentario">
+    <part name="parameters" element="tns:actualizarComentario" />
+  </message>
+  <message name="actualizarComentarioResponse">
+    <part name="parameters" element="tns:actualizarComentarioResponse" />
+  </message>
+  <message name="eliminarComentario">
+    <part name="parameters" element="tns:eliminarComentario" />
+  </message>
+  <message name="eliminarComentarioResponse">
+    <part name="parameters" element="tns:eliminarComentarioResponse" />
+  </message>
+  <message name="crearPregunta">
+    <part name="parameters" element="tns:crearPregunta" />
+  </message>
+  <message name="crearPreguntaResponse">
+    <part name="parameters" element="tns:crearPreguntaResponse" />
+  </message>
+  <message name="leerPregunta">
+    <part name="parameters" element="tns:leerPregunta" />
+  </message>
+  <message name="leerPreguntaResponse">
+    <part name="parameters" element="tns:leerPreguntaResponse" />
+  </message>
+  <message name="leerTodosPreguntas">
+    <part name="parameters" element="tns:leerTodosPreguntas" />
+  </message>
+  <message name="leerTodosPreguntasResponse">
+    <part name="parameters" element="tns:leerTodosPreguntasResponse" />
+  </message>
+  <message name="actualizarPregunta">
+    <part name="parameters" element="tns:actualizarPregunta" />
+  </message>
+  <message name="actualizarPreguntaResponse">
+    <part name="parameters" element="tns:actualizarPreguntaResponse" />
+  </message>
+  <message name="eliminarPregunta">
+    <part name="parameters" element="tns:eliminarPregunta" />
+  </message>
+  <message name="eliminarPreguntaResponse">
+    <part name="parameters" element="tns:eliminarPreguntaResponse" />
+  </message>
+  <portType name="InterfaceECHOTECH">
+    <operation name="crearServicio">
+      <input ns1:Action="http://interfaceservice.webservice.javeriana.edu.co/InterfaceECHOTECH/crearServicioRequest" message="tns:crearServicio" xmlns:ns1="http://www.w3.org/2007/05/addressing/metadata" />
+      <output ns2:Action="http://interfaceservice.webservice.javeriana.edu.co/InterfaceECHOTECH/crearServicioResponse" message="tns:crearServicioResponse" xmlns:ns2="http://www.w3.org/2007/05/addressing/metadata" />
+    </operation>
+    <operation name="leerServicio">
+      <input ns3:Action="http://interfaceservice.webservice.javeriana.edu.co/InterfaceECHOTECH/leerServicioRequest" message="tns:leerServicio" xmlns:ns3="http://www.w3.org/2007/05/addressing/metadata" />
+      <output ns4:Action="http://interfaceservice.webservice.javeriana.edu.co/InterfaceECHOTECH/leerServicioResponse" message="tns:leerServicioResponse" xmlns:ns4="http://www.w3.org/2007/05/addressing/metadata" />
+    </operation>
+    <operation name="leerTodosServicio">
+      <input ns5:Action="http://interfaceservice.webservice.javeriana.edu.co/InterfaceECHOTECH/leerTodosServicioRequest" message="tns:leerTodosServicio" xmlns:ns5="http://www.w3.org/2007/05/addressing/metadata" />
+      <output ns6:Action="http://interfaceservice.webservice.javeriana.edu.co/InterfaceECHOTECH/leerTodosServicioResponse" message="tns:leerTodosServicioResponse" xmlns:ns6="http://www.w3.org/2007/05/addressing/metadata" />
+    </operation>
+    <operation name="actualizarServicio">
+      <input ns7:Action="http://interfaceservice.webservice.javeriana.edu.co/InterfaceECHOTECH/actualizarServicioRequest" message="tns:actualizarServicio" xmlns:ns7="http://www.w3.org/2007/05/addressing/metadata" />
+      <output ns8:Action="http://interfaceservice.webservice.javeriana.edu.co/InterfaceECHOTECH/actualizarServicioResponse" message="tns:actualizarServicioResponse" xmlns:ns8="http://www.w3.org/2007/05/addressing/metadata" />
+    </operation>
+    <operation name="eliminarServicio">
+      <input ns9:Action="http://interfaceservice.webservice.javeriana.edu.co/InterfaceECHOTECH/eliminarServicioRequest" message="tns:eliminarServicio" xmlns:ns9="http://www.w3.org/2007/05/addressing/metadata" />
+      <output ns10:Action="http://interfaceservice.webservice.javeriana.edu.co/InterfaceECHOTECH/eliminarServicioResponse" message="tns:eliminarServicioResponse" xmlns:ns10="http://www.w3.org/2007/05/addressing/metadata" />
+    </operation>
+    <operation name="crearUsuario">
+      <input ns11:Action="http://interfaceservice.webservice.javeriana.edu.co/InterfaceECHOTECH/crearUsuarioRequest" message="tns:crearUsuario" xmlns:ns11="http://www.w3.org/2007/05/addressing/metadata" />
+      <output ns12:Action="http://interfaceservice.webservice.javeriana.edu.co/InterfaceECHOTECH/crearUsuarioResponse" message="tns:crearUsuarioResponse" xmlns:ns12="http://www.w3.org/2007/05/addressing/metadata" />
+    </operation>
+    <operation name="leerUsuario">
+      <input ns13:Action="http://interfaceservice.webservice.javeriana.edu.co/InterfaceECHOTECH/leerUsuarioRequest" message="tns:leerUsuario" xmlns:ns13="http://www.w3.org/2007/05/addressing/metadata" />
+      <output ns14:Action="http://interfaceservice.webservice.javeriana.edu.co/InterfaceECHOTECH/leerUsuarioResponse" message="tns:leerUsuarioResponse" xmlns:ns14="http://www.w3.org/2007/05/addressing/metadata" />
+    </operation>
+    <operation name="leerTodosUsuarios">
+      <input ns15:Action="http://interfaceservice.webservice.javeriana.edu.co/InterfaceECHOTECH/leerTodosUsuariosRequest" message="tns:leerTodosUsuarios" xmlns:ns15="http://www.w3.org/2007/05/addressing/metadata" />
+      <output ns16:Action="http://interfaceservice.webservice.javeriana.edu.co/InterfaceECHOTECH/leerTodosUsuariosResponse" message="tns:leerTodosUsuariosResponse" xmlns:ns16="http://www.w3.org/2007/05/addressing/metadata" />
+    </operation>
+    <operation name="actualizarUsuario">
+      <input ns17:Action="http://interfaceservice.webservice.javeriana.edu.co/InterfaceECHOTECH/actualizarUsuarioRequest" message="tns:actualizarUsuario" xmlns:ns17="http://www.w3.org/2007/05/addressing/metadata" />
+      <output ns18:Action="http://interfaceservice.webservice.javeriana.edu.co/InterfaceECHOTECH/actualizarUsuarioResponse" message="tns:actualizarUsuarioResponse" xmlns:ns18="http://www.w3.org/2007/05/addressing/metadata" />
+    </operation>
+    <operation name="eliminarUsuario">
+      <input ns19:Action="http://interfaceservice.webservice.javeriana.edu.co/InterfaceECHOTECH/eliminarUsuarioRequest" message="tns:eliminarUsuario" xmlns:ns19="http://www.w3.org/2007/05/addressing/metadata" />
+      <output ns20:Action="http://interfaceservice.webservice.javeriana.edu.co/InterfaceECHOTECH/eliminarUsuarioResponse" message="tns:eliminarUsuarioResponse" xmlns:ns20="http://www.w3.org/2007/05/addressing/metadata" />
+    </operation>
+    <operation name="leerUsuarioPorNickname">
+      <input ns21:Action="http://interfaceservice.webservice.javeriana.edu.co/InterfaceECHOTECH/leerUsuarioPorNicknameRequest" message="tns:leerUsuarioPorNickname" xmlns:ns21="http://www.w3.org/2007/05/addressing/metadata" />
+      <output ns22:Action="http://interfaceservice.webservice.javeriana.edu.co/InterfaceECHOTECH/leerUsuarioPorNicknameResponse" message="tns:leerUsuarioPorNicknameResponse" xmlns:ns22="http://www.w3.org/2007/05/addressing/metadata" />
+    </operation>
+    <operation name="login">
+      <input ns23:Action="http://interfaceservice.webservice.javeriana.edu.co/InterfaceECHOTECH/loginRequest" message="tns:login" xmlns:ns23="http://www.w3.org/2007/05/addressing/metadata" />
+      <output ns24:Action="http://interfaceservice.webservice.javeriana.edu.co/InterfaceECHOTECH/loginResponse" message="tns:loginResponse" xmlns:ns24="http://www.w3.org/2007/05/addressing/metadata" />
+    </operation>
+    <operation name="crearComentario">
+      <input ns25:Action="http://interfaceservice.webservice.javeriana.edu.co/InterfaceECHOTECH/crearComentarioRequest" message="tns:crearComentario" xmlns:ns25="http://www.w3.org/2007/05/addressing/metadata" />
+      <output ns26:Action="http://interfaceservice.webservice.javeriana.edu.co/InterfaceECHOTECH/crearComentarioResponse" message="tns:crearComentarioResponse" xmlns:ns26="http://www.w3.org/2007/05/addressing/metadata" />
+    </operation>
+    <operation name="leerComentario">
+      <input ns27:Action="http://interfaceservice.webservice.javeriana.edu.co/InterfaceECHOTECH/leerComentarioRequest" message="tns:leerComentario" xmlns:ns27="http://www.w3.org/2007/05/addressing/metadata" />
+      <output ns28:Action="http://interfaceservice.webservice.javeriana.edu.co/InterfaceECHOTECH/leerComentarioResponse" message="tns:leerComentarioResponse" xmlns:ns28="http://www.w3.org/2007/05/addressing/metadata" />
+    </operation>
+    <operation name="leerTodosComentarios">
+      <input ns29:Action="http://interfaceservice.webservice.javeriana.edu.co/InterfaceECHOTECH/leerTodosComentariosRequest" message="tns:leerTodosComentarios" xmlns:ns29="http://www.w3.org/2007/05/addressing/metadata" />
+      <output ns30:Action="http://interfaceservice.webservice.javeriana.edu.co/InterfaceECHOTECH/leerTodosComentariosResponse" message="tns:leerTodosComentariosResponse" xmlns:ns30="http://www.w3.org/2007/05/addressing/metadata" />
+    </operation>
+    <operation name="actualizarComentario">
+      <input ns31:Action="http://interfaceservice.webservice.javeriana.edu.co/InterfaceECHOTECH/actualizarComentarioRequest" message="tns:actualizarComentario" xmlns:ns31="http://www.w3.org/2007/05/addressing/metadata" />
+      <output ns32:Action="http://interfaceservice.webservice.javeriana.edu.co/InterfaceECHOTECH/actualizarComentarioResponse" message="tns:actualizarComentarioResponse" xmlns:ns32="http://www.w3.org/2007/05/addressing/metadata" />
+    </operation>
+    <operation name="eliminarComentario">
+      <input ns33:Action="http://interfaceservice.webservice.javeriana.edu.co/InterfaceECHOTECH/eliminarComentarioRequest" message="tns:eliminarComentario" xmlns:ns33="http://www.w3.org/2007/05/addressing/metadata" />
+      <output ns34:Action="http://interfaceservice.webservice.javeriana.edu.co/InterfaceECHOTECH/eliminarComentarioResponse" message="tns:eliminarComentarioResponse" xmlns:ns34="http://www.w3.org/2007/05/addressing/metadata" />
+    </operation>
+    <operation name="crearPregunta">
+      <input ns35:Action="http://interfaceservice.webservice.javeriana.edu.co/InterfaceECHOTECH/crearPreguntaRequest" message="tns:crearPregunta" xmlns:ns35="http://www.w3.org/2007/05/addressing/metadata" />
+      <output ns36:Action="http://interfaceservice.webservice.javeriana.edu.co/InterfaceECHOTECH/crearPreguntaResponse" message="tns:crearPreguntaResponse" xmlns:ns36="http://www.w3.org/2007/05/addressing/metadata" />
+    </operation>
+    <operation name="leerPregunta">
+      <input ns37:Action="http://interfaceservice.webservice.javeriana.edu.co/InterfaceECHOTECH/leerPreguntaRequest" message="tns:leerPregunta" xmlns:ns37="http://www.w3.org/2007/05/addressing/metadata" />
+      <output ns38:Action="http://interfaceservice.webservice.javeriana.edu.co/InterfaceECHOTECH/leerPreguntaResponse" message="tns:leerPreguntaResponse" xmlns:ns38="http://www.w3.org/2007/05/addressing/metadata" />
+    </operation>
+    <operation name="leerTodosPreguntas">
+      <input ns39:Action="http://interfaceservice.webservice.javeriana.edu.co/InterfaceECHOTECH/leerTodosPreguntasRequest" message="tns:leerTodosPreguntas" xmlns:ns39="http://www.w3.org/2007/05/addressing/metadata" />
+      <output ns40:Action="http://interfaceservice.webservice.javeriana.edu.co/InterfaceECHOTECH/leerTodosPreguntasResponse" message="tns:leerTodosPreguntasResponse" xmlns:ns40="http://www.w3.org/2007/05/addressing/metadata" />
+    </operation>
+    <operation name="actualizarPregunta">
+      <input ns41:Action="http://interfaceservice.webservice.javeriana.edu.co/InterfaceECHOTECH/actualizarPreguntaRequest" message="tns:actualizarPregunta" xmlns:ns41="http://www.w3.org/2007/05/addressing/metadata" />
+      <output ns42:Action="http://interfaceservice.webservice.javeriana.edu.co/InterfaceECHOTECH/actualizarPreguntaResponse" message="tns:actualizarPreguntaResponse" xmlns:ns42="http://www.w3.org/2007/05/addressing/metadata" />
+    </operation>
+    <operation name="eliminarPregunta">
+      <input ns43:Action="http://interfaceservice.webservice.javeriana.edu.co/InterfaceECHOTECH/eliminarPreguntaRequest" message="tns:eliminarPregunta" xmlns:ns43="http://www.w3.org/2007/05/addressing/metadata" />
+      <output ns44:Action="http://interfaceservice.webservice.javeriana.edu.co/InterfaceECHOTECH/eliminarPreguntaResponse" message="tns:eliminarPreguntaResponse" xmlns:ns44="http://www.w3.org/2007/05/addressing/metadata" />
+    </operation>
+  </portType>
+</definitions>

@@ -4,32 +4,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.jws.WebService;
-import javax.print.Doc;
 
-import org.bson.Document;
+
+
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
-import com.sun.xml.ws.developer.SchemaValidation;
-
 import co.edu.javeriana.webservice.entities.*;
-
-import co.edu.javeriana.webservice.interfaceservice.InterfaceComentario;
-import co.edu.javeriana.webservice.interfaceservice.InterfacePregunta;
-import co.edu.javeriana.webservice.interfaceservice.InterfaceService;
-import co.edu.javeriana.webservice.interfaceservice.InterfaceUser;
 import co.edu.javeriana.webservice.mongoBD.MongoConnection;
-import co.edu.javeriana.webservice.interfaceservice.*;
-import co.edu.javeriana.webservice.mongoBD.MongoConnection;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import co.edu.javeriana.webservice.interfaceservice.InterfaceECHOTECH;
 import com.mongodb.BasicDBObject;
-import com.mongodb.client.MongoCollection;
-import com.mongodb.client.MongoCursor;
 import org.bson.Document;
-import org.bson.types.ObjectId;
 
 
 @WebService(endpointInterface = "co.edu.javeriana.webservice.interfaceservice.InterfaceECHOTECH")
