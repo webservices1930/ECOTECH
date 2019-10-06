@@ -491,6 +491,7 @@ public class ServicioPaseo implements InterfaceECHOTECH {
 		}
 
 		return preguntas;
+	}
 
 	@Override
 	public Alimentacion leerAlimentacion(String id) {
