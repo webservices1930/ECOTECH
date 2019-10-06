@@ -19,4 +19,5 @@ export class UserService {
     };
     return this.soapService.client.call('login', body);
   }
+
 }
