@@ -5,7 +5,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './modules/login/login.component';
 import { NgxSoapModule } from 'ngx-soap';
+
 import { ServicesListComponent } from './modules/services-list/services-list.component';
+
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -17,7 +20,9 @@ import { ServicesListComponent } from './modules/services-list/services-list.com
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgxSoapModule
+    NgxSoapModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,29 +1,21 @@
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<title>Login V8</title>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-<!--===============================================================================================-->
-</head>
 <body>
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
-				<!-- <form class="login100-form validate-form p-l-55 p-r-55 p-t-178"> -->
+				<form [formGroup]="userForm" (ngSubmit)="login()" class="login100-form validate-form p-l-55 p-r-55 p-t-178">
 					<p class="login100-form-title">
 						Iniciar Sessión
                     </p>
                     <p class="txt1">Don Quijote de aquella manera, con muestras de tanta tristeza, le dijo: Sábete, Sancho</p>
                     <br/>
 					<div class="wrap-input100 validate-input m-b-16" data-validate="Please enter username">
-						<input class="input100" type="text" name="username" placeholder="Username">
+						<input formControlName="nickname" class="input100" type="text" name="username" placeholder="Username">
 						<span class="focus-input100"></span>
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate = "Please enter password">
-						<input class="input100" type="password" name="pass" placeholder="Password">
+						<input formControlName="password" class="input100" type="password" name="pass" placeholder="Password">
 						<span class="focus-input100"></span>
 					</div>
 
@@ -38,7 +30,7 @@
 					</div>
 
 					<div class="container-login100-form-btn">
-						<button (click)="login()" class="login100-form-btn">
+						<button [disabled]="!userForm.valid" class="login100-form-btn">
 							Iniciar Sesión
 						</button>
 					</div>
@@ -52,12 +44,12 @@
 							Registrate
 						</a>
 					</div>
-				<!-- </form> -->
+				</form>
 			</div>
 		</div>
 	</div>
 </body>
-</html>
+
 
 
 <router-outlet></router-outlet>

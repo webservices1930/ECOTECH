@@ -17,7 +17,7 @@ public interface InterfaceService {
 	public Servicio leerServicio(String id);
 
 	@WebMethod
-	public List<Servicio> leerTodosServicio(String id);
+	public List<Servicio> leerTodosServicio();
 
 	@WebMethod
 	public Servicio actualizarServicio(String id, Servicio paseo);
