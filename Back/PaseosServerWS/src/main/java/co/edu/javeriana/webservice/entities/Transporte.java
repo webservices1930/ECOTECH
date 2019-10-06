@@ -3,6 +3,15 @@ package co.edu.javeriana.webservice.entities;
 public class Transporte extends Servicio {
 	private String horaSalida;
 	private String horaLlegada;
+	private TipoTransporte tipoTransporte;
+
+	public TipoTransporte getTipoTransporte() {
+		return tipoTransporte;
+	}
+
+	public void setTipoTransporte(TipoTransporte tipoTransporte) {
+		this.tipoTransporte = tipoTransporte;
+	}
 
 	public String getHoraSalida() {
 		return horaSalida;
