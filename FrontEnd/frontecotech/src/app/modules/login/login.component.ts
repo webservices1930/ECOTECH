@@ -45,8 +45,9 @@ export class LoginComponent implements OnInit {
         if (res.result.return) {
           this.userService.getUserByNickName(user.nickname, client as  Client).subscribe(
             result => {
-              let userToSave = result.result.return;
-              console.log(userToSave);
+              const userToSave = result.result.return;
+              localStorage.setItem('user', JSON.stringify(userToSave));
+              this.router.navigate(['/services']);
             }
           );
         } else {
