@@ -1,92 +1,62 @@
-<main>
-  <section class="section section-shaped section-lg">
-    <div class="shape shape-style-1 bg-gradient-default">
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-    <div class="container pt-lg-md">
-      <div class="row justify-content-center">
-        <div class="col-lg-5">
-          <div class="card bg-secondary shadow border-0">
-            <div class="card-header bg-white pb-5">
-              <div class="text-muted text-center mb-3">
-                <small>Sign up with</small>
-              </div>
-              <div class="text-center">
-                <a href="javascript:void(0)" class="btn btn-neutral btn-icon mr-4">
-                  <span class="btn-inner--icon">
-                    <img src="./assets/img/icons/common/github.svg">
-                  </span>
-                  <span class="btn-inner--text">Github</span>
-                </a>
-                <a href="javascript:void(0)" class="btn btn-neutral btn-icon">
-                  <span class="btn-inner--icon">
-                    <img src="./assets/img/icons/common/google.svg">
-                  </span>
-                  <span class="btn-inner--text">Google</span>
-                </a>
-              </div>
-            </div>
-            <div class="card-body px-lg-5 py-lg-5">
-              <div class="text-center text-muted mb-4">
-                <small>Or sign up with credentials</small>
-              </div>
-              <form role="form">
-                <div class="form-group" [ngClass]="{'focused':focus===true}">
-                  <div class="input-group input-group-alternative mb-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
-                    </div>
-                    <input class="form-control" placeholder="Name" type="text" (focus)="focus=true" (blur)="focus=false">
-                  </div>
-                </div>
-                <div class="form-group" [ngClass]="{'focused':focus1===true}">
-                  <div class="input-group input-group-alternative mb-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text"><i class="ni ni-email-83"></i></span>
-                    </div>
-                    <input class="form-control" placeholder="Email" type="email" (focus)="focus1=true" (blur)="focus1=false">
-                  </div>
-                </div>
-                <div class="form-group" [ngClass]="{'focused':focus2===true}">
-                  <div class="input-group input-group-alternative">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
-                    </div>
-                    <input class="form-control" placeholder="Password" type="password" (focus)="focus2=true" (blur)="focus2=false">
-                  </div>
-                </div>
-                <div class="text-muted font-italic">
-                  <small>password strength:
-                    <span class="text-success font-weight-700">strong</span>
-                  </small>
-                </div>
-                <div class="row my-4">
-                  <div class="col-12">
-                    <div class="custom-control custom-control-alternative custom-checkbox">
-                      <input class="custom-control-input" id="customCheckRegister" type="checkbox">
-                      <label class="custom-control-label" for="customCheckRegister">
-                        <span>I agree with the
-                          <a href="javascript:void(0)">Privacy Policy</a>
-                        </span>
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                <div class="text-center">
-                  <button type="button" class="btn btn-primary mt-4">Create account</button>
-                </div>
-              </form>
-            </div>
+
+<body>
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
+				<form [formGroup]="userForm" (ngSubmit)="signup()" class="login100-form validate-form p-l-55 p-r-55 p-t-178" >
+					<p class="login100-form-title">
+						Registro
+                    </p>
+                    <p class="txt1">Don Quijote de aquella manera, con muestras de tanta tristeza, le dijo: Sábete, Sancho</p>
+                    <br/>
+					<div class="wrap-input100 validate-input m-b-16" data-validate="Please enter username">
+						<input formControlName="nombre" class="input100" type="text" name="nombre" placeholder="Nombre">
+						<span class="focus-input100"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input m-b-16" data-validate="Please enter username">
+						<input formControlName="correo" class="input100" type="text" name="correo" placeholder="Correo">
+						<span class="focus-input100"></span>
           </div>
-        </div>
-      </div>
-    </div>
-  </section>
-</main>
+          <div class="wrap-input100 validate-input m-b-16" data-validate="Please enter username">
+						<input formControlName="fechaNacimiento" class="input100" type="date" name="fechaNacimiento" placeholder="Fecha nacimiento">
+						<span class="focus-input100"></span>
+					</div>
+					<div class="wrap-input100 validate-input m-b-16" data-validate="Please enter nickname">
+						<input formControlName="nickname" class="input100" type="text" name="username" placeholder="Username">
+						<span class="focus-input100"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input m-b-16" data-validate = "Please enter password">
+						<input formControlName="password" class="input100" type="password" name="pass" placeholder="Password">
+						<span class="focus-input100"></span>
+          </div>
+
+          <div class="wrap-input100 validate-input m-b-16" data-validate="Please enter username">
+						<textarea formControlName="descripcion" class="input100" type="text" name="descripcion" placeholder="Descripción"></textarea>
+						<span class="focus-input100"></span>
+					</div>
+					<div class="container-login100-form-btn">
+						<button [disabled]="!userForm.valid" class="login100-form-btn">
+							Registro
+						</button>
+					</div>
+
+					<div class="flex-col-c p-b-40">
+						<span class="txt1 p-b-9">
+							¿Ya tienes cuenta?
+						</span>
+
+						<a  class="txt3">
+							Inicia sesión
+						</a>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+
+
+
+<router-outlet></router-outlet>

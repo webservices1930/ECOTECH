@@ -6,11 +6,14 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './modules/login/login.component';
 import { NgxSoapModule } from 'ngx-soap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { SignupComponent } from './modules/signup/signup.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
+    SignupComponent,
   ],
   imports: [
     BrowserModule,
