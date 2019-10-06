@@ -43,17 +43,20 @@ public class ServicioPaseo implements InterfaceECHOTECH {
 		System.out.println("ServicioPaseo.leerServicio()");
 		Document doc = MongoConnection.searchByID(Servicio.collection, id);
 		Servicio s = gson.fromJson(doc.toJson(), Servicio.class);
+		s.update();
 		return s;
 	}
 
 	@Override
-	public List<Servicio> leerTodosServicio(String id) {
+	public List<Servicio> leerTodosServicio() {
 		System.out.println("ServicioPaseo.leerTodosServicio()");
 		List<Servicio> servicios = new ArrayList<Servicio>();
 		MongoCollection<Document> documents = MongoConnection.findCollection(Servicio.collection);
 		try (MongoCursor<Document> cursor = documents.find().iterator()) {
 			while (cursor.hasNext()) {
-				servicios.add(gson.fromJson(cursor.next().toJson(), Servicio.class));
+				Servicio s = gson.fromJson(cursor.next().toJson(), Servicio.class);
+				s.update();
+				servicios.add(s);
 			}
 		}
 		return servicios;
@@ -62,7 +65,7 @@ public class ServicioPaseo implements InterfaceECHOTECH {
 	@Override
 	public Servicio actualizarServicio(String id, Servicio paseo) {
 		System.out.println("ServicioPaseo.actualizarServicio()");
-		MongoConnection.updateObject(Servicio.collection, paseo.get_id(), Document.parse(gson.toJson(paseo)));
+		MongoConnection.updateObject(Servicio.collection, id, Document.parse(gson.toJson(paseo)));
 		return paseo;
 	}
 
@@ -92,6 +95,7 @@ public class ServicioPaseo implements InterfaceECHOTECH {
 		System.out.println("ServicioPaseo.leerPregunta()");
 		Document doc = MongoConnection.searchByID(Pregunta.collectionName, id);
 		Pregunta p = gson.fromJson(doc.toJson(), Pregunta.class);
+		p.update();
 		return p;
 	}
 
@@ -102,7 +106,9 @@ public class ServicioPaseo implements InterfaceECHOTECH {
 		List<Pregunta> preguntas = new ArrayList<Pregunta>();
 		try (MongoCursor<Document> cursor = col.find().iterator()) {
 			while (cursor.hasNext()) {
-				preguntas.add(gson.fromJson(cursor.next().toJson(), Pregunta.class));
+				Pregunta p = gson.fromJson(cursor.next().toJson(), Pregunta.class);
+				p.update();
+				preguntas.add(p);
 			}
 		}
 
@@ -145,7 +151,7 @@ public class ServicioPaseo implements InterfaceECHOTECH {
 		Document doc = MongoConnection.searchByID(Comentario.collectionName, id);
 
 		Comentario c = gson.fromJson(doc.toJson(), Comentario.class);
-
+		c.update();
 		return c;
 	}
 
@@ -157,7 +163,9 @@ public class ServicioPaseo implements InterfaceECHOTECH {
 
 		try (MongoCursor<Document> cursor = col.find().iterator()) {
 			while (cursor.hasNext()) {
-				comentarios.add(gson.fromJson(cursor.next().toJson(), Comentario.class));
+				Comentario c = gson.fromJson(cursor.next().toJson(), Comentario.class);
+				c.update();
+				comentarios.add(c);
 			}
 		}
 		return comentarios;
@@ -168,7 +176,7 @@ public class ServicioPaseo implements InterfaceECHOTECH {
 		System.out.println("ServicioPaseo.actualizarComentario()");
 		String c = gson.toJson(comentario);
 		Document doc = Document.parse(c);
-		MongoConnection.updateObject(comentario.collectionName, id, doc);
+		MongoConnection.updateObject(Comentario.collectionName, id, doc);
 
 		return comentario;
 	}
@@ -202,7 +210,9 @@ public class ServicioPaseo implements InterfaceECHOTECH {
 	public Usuario leerUsuario(String id) {
 		System.out.println("ServicioPaseo.leerUsuario()");
 		Document document = MongoConnection.searchByID(Usuario.nameCollection, id);
-		return gson.fromJson(document.toJson(), Usuario.class);
+		Usuario u = gson.fromJson(document.toJson(), Usuario.class);
+		u.update();
+		return u;
 	}
 
 	@Override
@@ -212,7 +222,9 @@ public class ServicioPaseo implements InterfaceECHOTECH {
 		MongoCollection<Document> documents = MongoConnection.findCollection(Usuario.nameCollection);
 		try (MongoCursor<Document> cursor = documents.find().iterator()) {
 			while (cursor.hasNext()) {
-				users.add(gson.fromJson(cursor.next().toJson(), Usuario.class));
+				Usuario u =gson.fromJson(cursor.next().toJson(), Usuario.class);
+				u.update();
+				users.add(u);
 			}
 		}
 		return users;
@@ -245,7 +257,11 @@ public class ServicioPaseo implements InterfaceECHOTECH {
 		if (document == null) {
 			return null;
 		}
-		return gson.fromJson(document.toJson(), Usuario.class);
+		System.out.println(document.toJson());
+		Usuario u = gson.fromJson(document.toJson(), Usuario.class);
+		u.update();
+		System.out.println(u);
+		return u;
 	}
 
 	@Override

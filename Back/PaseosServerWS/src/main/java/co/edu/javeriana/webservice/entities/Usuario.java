@@ -1,8 +1,11 @@
 package co.edu.javeriana.webservice.entities;
 
+import org.bson.types.ObjectId;
+
 public class Usuario {
 	public static final String nameCollection = "User";
-	private transient String _id;
+	private ObjectId _id;
+	private String id;
 	private String nombre;
 	private String fechaNacimiento;
 	private String foto;
@@ -14,10 +17,11 @@ public class Usuario {
 	public Usuario() {
 	};
 
-	public Usuario(String _id, String nombre, String fechaNacimiento, String foto, String descripcion, String nickname,
+	public Usuario(ObjectId _id, String nombre, String fechaNacimiento, String foto, String descripcion, String nickname,
 			String correo) {
 		super();
 		this._id = _id;
+		this.id = _id.toString();
 		this.nombre = nombre;
 		this.fechaNacimiento = fechaNacimiento;
 		this.foto = foto;
@@ -39,16 +43,30 @@ public class Usuario {
 
 	@Override
 	public String toString() {
-		return "Usuario [id=" + _id + ", nombre=" + nombre + ", fechaNacimiento=" + fechaNacimiento + ", foto=" + foto
+		return "Usuario [_id=" + _id + ", id=" + id + ", nombre=" + nombre + ", fechaNacimiento=" + fechaNacimiento + ", foto=" + foto
 				+ ", descripcion=" + descripcion + ", nickname=" + nickname + ", correo=" + correo + "]";
 	}
 
 	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public void update(){
+		this.id = this._id.toString();
+	}
+
+	public ObjectId get_id() {
 		return _id;
 	}
 
-	public void setId(String _id) {
+	public void set_id(ObjectId _id) {
+
 		this._id = _id;
+		this.setId(this._id.toString());
 	}
 
 	public String getNombre() {
