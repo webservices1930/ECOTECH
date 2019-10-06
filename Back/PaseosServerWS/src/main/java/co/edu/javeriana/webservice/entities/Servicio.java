@@ -132,7 +132,7 @@ public class Servicio {
 	public String toString() {
 		return "Servicio [id=" + _id + ", nombre=" + nombre + ", costo=" + costo + ", contacto=" + contacto
 				+ ", descripcion=" + descripcion + ", latitud=" + latitud + ", longitud=" + longitud
-				+ ", calificaciones=" + calificaciones + ", fotos=" + fotos + "]";
+				+ ", calificaciones=" + calificaciones + ", fotos=" + fotos + "]"+ id;
 	}
 
 	public Servicio(ObjectId _id, String nombre, long costo, String contacto, String descripcion, long latitud,

@@ -1,1 +1,50 @@
 <p>details works!</p>
+{{idSer}}
+<div *ngIf="service">
+    {{service.contacto}}
+    {{service.costo}}
+    {{service.descripcion}}
+    {{service.latitud}}
+    {{service.nombre}}
+    {{service.longitud}}
+    {{service.tipo}}
+</div>
+
+<h1 class="text-center">Detalles Servicio</h1>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col"></div>
+    <div class="col-7">
+      <table class="table table-striped border border-dark rounded-10">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Dato</th>
+            <th scope="col">Valor</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Nombre</th>
+            <td>{{service.nombre}}</td>
+          </tr>
+          <tr>
+            <th scope="row">Tipo</th>
+            <td>{{service.tipo</td>
+          </tr>
+          <tr>
+            <th scope="row">Descripción</th>
+            <td>{{service.descripcion}}</td>
+          </tr>
+          <tr>
+            <th scope="row">Fecha</th>
+            <td>{{service.costo}}</td>
+          </tr>
+
+        </tbody>
+      </table>
+      <button type="button" class="btn btn-outline-dark" [routerLink]= "['/']">+ Carrito</button>
+      <button type="button" class="btn btn-primary" [routerLink]="['/services']">Lista Servicios</button>
+    </div>
+    <div class="col"></div>
+  </div>
+</div>

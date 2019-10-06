@@ -40,8 +40,9 @@ public class ServicioPaseo implements InterfaceECHOTECH {
 
 	@Override
 	public Servicio leerServicio(String id) {
-		System.out.println("ServicioPaseo.leerServicio()");
+		System.out.println("ServicioPaseo.leerServicio() -->" + id);
 		Document doc = MongoConnection.searchByID(Servicio.collection, id);
+		System.out.println(doc.toString());
 		Servicio s = gson.fromJson(doc.toJson(), Servicio.class);
 		s.update();
 		return s;
@@ -54,9 +55,15 @@ public class ServicioPaseo implements InterfaceECHOTECH {
 		MongoCollection<Document> documents = MongoConnection.findCollection(Servicio.collection);
 		try (MongoCursor<Document> cursor = documents.find().iterator()) {
 			while (cursor.hasNext()) {
-				Servicio s = gson.fromJson(cursor.next().toJson(), Servicio.class);
+				String str = cursor.next().toJson();
+				System.out.println(str);
+				System.out.println();
+				Servicio s = gson.fromJson(str, Servicio.class);
 				s.update();
 				servicios.add(s);
+				System.out.println(s);
+				System.out.println(s.get_id().hashCode());
+				System.out.println(s.get_id().toStringMongod());
 			}
 		}
 		return servicios;

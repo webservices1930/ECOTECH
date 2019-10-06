@@ -18,4 +18,11 @@ export class ServiceService {
     };
     return client.call('leerTodosServicio', body);
   }
+
+  getServicebyId(client: Client, id: String){
+    const body = {
+      'arg0': id
+    };
+    return client.call('leerServicio', body);
+  }
 }
