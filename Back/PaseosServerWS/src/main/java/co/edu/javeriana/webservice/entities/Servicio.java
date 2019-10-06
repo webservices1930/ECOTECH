@@ -1,10 +1,13 @@
 package co.edu.javeriana.webservice.entities;
 
+import org.bson.types.ObjectId;
+
 import java.util.List;
 
 public class Servicio {
 	public static final String collection = "Service";
-	private transient String _id;
+	private ObjectId _id;
+	private String id;
 	private TipoServicio tipo;
 	private String nombre;
 	private long costo;
@@ -17,11 +20,23 @@ public class Servicio {
 //	private transient List<Comentario> comentarios;
 //	private transient List<Pregunta> preguntas;
 
-	public String get_id() {
+	public void update(){
+		this.id = this._id.toString();
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public ObjectId get_id() {
 		return _id;
 	}
 
-	public void set_id(String _id) {
+	public void set_id(ObjectId _id) {
 		this._id = _id;
 	}
 
@@ -117,14 +132,14 @@ public class Servicio {
 	public String toString() {
 		return "Servicio [id=" + _id + ", nombre=" + nombre + ", costo=" + costo + ", contacto=" + contacto
 				+ ", descripcion=" + descripcion + ", latitud=" + latitud + ", longitud=" + longitud
-				+ ", calificaciones=" + calificaciones + ", fotos=" + fotos + "]";
+				+ ", calificaciones=" + calificaciones + ", fotos=" + fotos + "]"+ id;
 	}
 
-	public Servicio(String id, String nombre, long costo, String contacto, String descripcion, long latitud,
+	public Servicio(ObjectId _id, String nombre, long costo, String contacto, String descripcion, long latitud,
 			long longitud, List<Long> calificaciones, List<String> fotos, List<Comentario> comentarios,
 			List<Pregunta> preguntas) {
 		super();
-		this._id = id;
+		this._id = _id;
 		this.nombre = nombre;
 		this.costo = costo;
 		this.contacto = contacto;

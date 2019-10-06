@@ -1,0 +1,33 @@
+<button class="btn btn-1 btn-primary" type="button" (click)="profile()"> Profile </button>
+<div class="row justify-content-md-center">
+
+    <div class="col-6">
+        <div>
+            <h1 class="text-center">Lista de servicios</h1>
+        </div>
+        <form [formGroup]="serviceForm" (ngSubmit)="search()">
+
+            <input formControlName="keyword" class="form-control" type="text" placeholder="Search" >
+
+        </form>
+        <br>
+        <div class="card" style="margin-bottom: 15px;" *ngFor="let service of servicios">
+            <h5 class="card-header">{{service.tipo}}</h5>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-3">
+                        <img src="..\..\..\assets\img\brand\Imagen_Televisión.png" class="img-fluid rounded shadow-lg"
+                            alt="imagen">
+                    </div>
+                    <div class="col-9">
+                        <h4 class="card-title">{{service.nombre}}</h4>
+                        <h5 class="card-body">Costo: $ {{service.costo}}</h5>
+                        <p class="card-text">{{service.descripcion}}</p>
+                        <a [routerLink]="['/details', service.id]" class="btn btn-primary">Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

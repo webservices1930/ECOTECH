@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../services/user.service';
 import { Usuario } from 'src/app/model/usuario';
-import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Client } from 'ngx-soap';
 import { SoapService } from '../../services/soap.service';
 import { Router } from '@angular/router';
+import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
+import { User } from '../../models/user.model';
 
 @Component({
   selector: 'app-login',
@@ -35,7 +37,7 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    const user = this.userForm.value as Usuario;
+    const user = this.userForm.value as User;
     console.log(user);
     this.soapService.client.then( client => {
       this.userService.login(user.nickname, user.password, client as Client ).subscribe(res => {

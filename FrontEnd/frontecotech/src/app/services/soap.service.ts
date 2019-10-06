@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { NgxSoapService, Client } from 'ngx-soap';
+import { Observable, of, from } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
