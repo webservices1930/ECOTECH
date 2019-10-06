@@ -20,6 +20,18 @@ public interface InterfaceService {
 	public Paseo leerPaseo(String id);
 
 	@WebMethod
+	public Alimentacion leerAlimentacion(String id);
+
+	@WebMethod
+	public Alojamiento leerAlojamiento(String id);
+
+	@WebMethod
+	public Otro leerOtro(String id);
+
+	@WebMethod
+	public Transporte leerTransporte(String id);
+
+	@WebMethod
 	public List<Servicio> leerTodosServicio();
 
 	@WebMethod

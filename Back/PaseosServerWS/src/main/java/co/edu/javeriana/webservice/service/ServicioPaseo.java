@@ -52,25 +52,7 @@ public class ServicioPaseo implements InterfaceECHOTECH {
 		return paseo;
 	}
 
-	@Override
-	public Servicio leerServicio(String id) {
-		System.out.println("ServicioPaseo.leerServicio() -->" + id);
-		Document doc = MongoConnection.searchByID(Servicio.collection, id);
-		System.out.println(doc.toString());
-		Servicio s = gson.fromJson(doc.toJson(), Servicio.class);
-		s.update();
-		return s;
-	}
 	
-	@Override
-	public Paseo leerPaseo(String id) {
-		System.out.println("ServicioPaseo.leerPaseo() -->" + id);
-		Document doc = MongoConnection.searchByID(Servicio.collection, id);
-		System.out.println(doc.toString());
-		Paseo s = gson.fromJson(doc.toJson(), Paseo.class);
-		s.update();
-		return s;
-	}
 
 	@Override
 	public List<Servicio> leerTodosServicio() {
@@ -324,6 +306,66 @@ public class ServicioPaseo implements InterfaceECHOTECH {
 			// TODO: handle exception
 			return false;
 		}
+	}
+	
+	@Override
+	public Servicio leerServicio(String id) {
+		System.out.println("ServicioPaseo.leerServicio() -->" + id);
+		Document doc = MongoConnection.searchByID(Servicio.collection, id);
+		System.out.println(doc.toString());
+		Servicio s = gson.fromJson(doc.toJson(), Servicio.class);
+		s.update();
+		return s;
+	}
+	
+	@Override
+	public Paseo leerPaseo(String id) {
+		System.out.println("ServicioPaseo.leerPaseo() -->" + id);
+		Document doc = MongoConnection.searchByID(Servicio.collection, id);
+		System.out.println(doc.toString());
+		Paseo s = gson.fromJson(doc.toJson(), Paseo.class);
+		s.update();
+		return s;
+	}
+
+	@Override
+	public Alimentacion leerAlimentacion(String id) {
+		System.out.println("ServicioPaseo.leerPaseo() -->" + id);
+		Document doc = MongoConnection.searchByID(Servicio.collection, id);
+		System.out.println(doc.toString());
+		Alimentacion s = gson.fromJson(doc.toJson(), Alimentacion.class);
+		s.update();
+		return s;
+	}
+
+	@Override
+	public Alojamiento leerAlojamiento(String id) {
+		System.out.println("ServicioPaseo.leerPaseo() -->" + id);
+		Document doc = MongoConnection.searchByID(Servicio.collection, id);
+		System.out.println(doc.toString());
+		Alojamiento s = gson.fromJson(doc.toJson(), Alojamiento.class);
+		s.update();
+		return s;
+	}
+
+	@Override
+	public Otro leerOtro(String id) {
+		System.out.println("ServicioPaseo.leerPaseo() -->" + id);
+		Document doc = MongoConnection.searchByID(Servicio.collection, id);
+		System.out.println(doc.toString());
+		Otro s = gson.fromJson(doc.toJson(), Otro.class);
+		s.update();
+		return s;
+	}
+
+	@Override
+	public Transporte leerTransporte(String id) {
+		System.out.println("ServicioPaseo.leerPaseo() -->" + id);
+		Document doc = MongoConnection.searchByID(Servicio.collection, id);
+		System.out.println(doc.toString());
+		Transporte s = gson.fromJson(doc.toJson(), Transporte.class);
+		s.update();
+		return s;
 	}
 
 }
