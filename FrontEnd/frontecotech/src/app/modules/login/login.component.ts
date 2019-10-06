@@ -5,6 +5,8 @@ import { Router } from '@angular/router';
 import { User } from '../../models/user.model';
 import { SoapService } from '../../services/soap.service';
 import { Client } from 'ngx-soap';
+import { CookieService } from 'ngx-cookie-service';
+
 
 @Component({
   selector: 'app-login',
@@ -17,13 +19,16 @@ export class LoginComponent implements OnInit {
     private formBuilder: FormBuilder,
     private userService: UserService,
     private soapService: SoapService,
-    private router: Router
+    private router: Router,
+    private cookieService: CookieService
   ) { }
 
   userForm: FormGroup;
 
   ngOnInit() {
     this.buildUserForm();
+    this.cookieService.deleteAll();
+    this.cookieService.set("count","0");
   }
 
 

@@ -4,6 +4,7 @@ import { SoapService } from 'src/app/services/soap.service';
 import { ServiceService } from 'src/app/services/service.service';
 import { Service, Paseo } from 'src/app/model/service';
 import { Client } from 'ngx-soap';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-details',
@@ -21,7 +22,8 @@ export class DetailsComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private serviceService: ServiceService,
-    private soapService: SoapService
+    private soapService: SoapService,
+    private cookieService: CookieService
   ) { }
 
   ngOnInit() {
@@ -41,6 +43,14 @@ export class DetailsComponent implements OnInit {
     });
 
 
+  }
+  addService(){
+    var countServices = this.cookieService.get("count");
+    var num = Number(countServices)+1;
+    console.log('Cookie creada');
+    this.cookieService.set("SCS"+num,""+this.idSer);
+    this.cookieService.set("count",""+num);
+    console.log('Cookie creada');
   }
 
 
