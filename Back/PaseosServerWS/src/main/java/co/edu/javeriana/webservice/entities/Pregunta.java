@@ -1,19 +1,31 @@
 package co.edu.javeriana.webservice.entities;
 
+import org.bson.types.ObjectId;
+
 public class Pregunta {
 	public static final String collectionName = "Questions";
-	private transient long _id;
+	private ObjectId _id;
+	private String id;
 	private String descripcion;
 	private String fecha;
 	private String respuesta;
 	private Cliente clientes;
 	private Servicio servicio;
 
-	public long getId() {
+
+	public void update(){
+		this.id = this._id.toString();
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public ObjectId getId() {
 		return _id;
 	}
 
-	public void setId(long id) {
+	public void setId(ObjectId id) {
 		this._id = id;
 	}
 
@@ -63,7 +75,7 @@ public class Pregunta {
 				+ ", clientes=" + clientes + ", servicio=" + servicio + "]";
 	}
 
-	public Pregunta(long id, String descripcion, String fecha, String respuesta, Cliente clientes, Servicio servicio) {
+	public Pregunta(ObjectId id, String descripcion, String fecha, String respuesta, Cliente clientes, Servicio servicio) {
 		super();
 		this._id = id;
 		this.descripcion = descripcion;
