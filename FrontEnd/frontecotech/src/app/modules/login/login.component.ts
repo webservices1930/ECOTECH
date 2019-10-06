@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../services/user.service';
-import { Usuario } from 'src/app/model/usuario';
 import { Client } from 'ngx-soap';
 import { SoapService } from '../../services/soap.service';
 import { Router } from '@angular/router';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
-import { Router } from '@angular/router';
 import { User } from '../../models/user.model';
 
 @Component({

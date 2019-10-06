@@ -3437,3 +3437,35 @@
   margin-left: auto;
   margin-right: auto;
 }
+
+.button1 {
+	border-radius: 8px;
+	background-color: #4CAF50;
+	padding: 10px 24px;
+	width: 200px;
+	-webkit-transition-duration: 0.4s; /* Safari */
+	transition-duration: 0.4s;
+	color: white;
+}
+
+.button1:hover {
+	background-color: white; 
+  	color: #4CAF50; 
+  	border: 2px solid #4CAF50;
+}
+
+.button2 {
+	border-radius: 8px;
+	background-color: #f44336;
+	padding: 10px 24px;
+	width: 200px;
+	-webkit-transition-duration: 0.4s; /* Safari */
+	transition-duration: 0.4s;
+	color: white;
+}
+
+.button2:hover {
+	background-color: white; 
+  	color: #f44336; 
+  	border: 2px solid #f44336;
+}
