@@ -1,10 +1,10 @@
 export class Service {
-    contacto: String;
+    contacto: string;
     costo: number;
-    descripcion: String;
+    descripcion: string;
     latitud: number;
     longitud: number;
-    nombre: String;
-    tipo: String;
-    id: String;
+    nombre: string;
+    tipo: string;
+    id: string;
 }
