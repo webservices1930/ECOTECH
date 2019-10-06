@@ -14,14 +14,14 @@ public interface InterfaceComentario {
 	public Comentario crearComentario(Comentario comentario);
 
 	@WebMethod
-	public Comentario leerComentario(Long id);
+	public Comentario leerComentario(String id);
 
 	@WebMethod
-	public List<Comentario> leerTodosComentarios(Long id);
+	public List<Comentario> leerTodosComentarios();
 
 	@WebMethod
-	public Comentario actualizarComentario(Long id, Comentario comentario);
+	public Comentario actualizarComentario(String id, Comentario comentario);
 
 	@WebMethod
-	public boolean eliminarComentario(Long id);
+	public boolean eliminarComentario(String id);
 }
