@@ -15,7 +15,8 @@ export class DetailsComponent implements OnInit {
   service: Service;
   paseo: Paseo;
   pregunta: string = '';
-  preguntas: String[] = [];
+  preguntas: string[] = [];
+  preguntastemp: string[] = [];
 
   constructor(
     private router: Router,
@@ -39,9 +40,10 @@ export class DetailsComponent implements OnInit {
         });
       });
     });
-
-
   }
 
+  pregutar(){
+    this.preguntastemp.push(this.pregunta);
+  }
 
 }
