@@ -122,6 +122,7 @@ public class ServicioPaseo implements InterfaceECHOTECH {
 		return s;
 	}
 
+
 	@Override
 	public List<Servicio> leerTodosServicio() {
 		System.out.println("ServicioPaseo.leerTodosServicio()");
@@ -436,6 +437,47 @@ public class ServicioPaseo implements InterfaceECHOTECH {
 			// TODO: handle exception
 			return false;
 		}
+	}
+
+
+	@Override
+	public Alimentacion leerAlimentacion(String id) {
+		System.out.println("ServicioPaseo.leerPaseo() -->" + id);
+		Document doc = MongoConnection.searchByID(Servicio.collection, id);
+		System.out.println(doc.toString());
+		Alimentacion s = gson.fromJson(doc.toJson(), Alimentacion.class);
+		s.update();
+		return s;
+	}
+
+	@Override
+	public Alojamiento leerAlojamiento(String id) {
+		System.out.println("ServicioPaseo.leerPaseo() -->" + id);
+		Document doc = MongoConnection.searchByID(Servicio.collection, id);
+		System.out.println(doc.toString());
+		Alojamiento s = gson.fromJson(doc.toJson(), Alojamiento.class);
+		s.update();
+		return s;
+	}
+
+	@Override
+	public Otro leerOtro(String id) {
+		System.out.println("ServicioPaseo.leerPaseo() -->" + id);
+		Document doc = MongoConnection.searchByID(Servicio.collection, id);
+		System.out.println(doc.toString());
+		Otro s = gson.fromJson(doc.toJson(), Otro.class);
+		s.update();
+		return s;
+	}
+
+	@Override
+	public Transporte leerTransporte(String id) {
+		System.out.println("ServicioPaseo.leerPaseo() -->" + id);
+		Document doc = MongoConnection.searchByID(Servicio.collection, id);
+		System.out.println(doc.toString());
+		Transporte s = gson.fromJson(doc.toJson(), Transporte.class);
+		s.update();
+		return s;
 	}
 
 }
