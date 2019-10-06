@@ -11,6 +11,7 @@ import { ServicesListComponent } from './modules/services-list/services-list.com
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SignupComponent } from './modules/signup/signup.component';
 import { DetailsComponent } from './modules/details/details.component';
+import { CreateServiceComponent } from './modules/create-service/create-service.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { DetailsComponent } from './modules/details/details.component';
     LoginComponent,
     SignupComponent,
     ServicesListComponent,
-    DetailsComponent
+    DetailsComponent,
+    CreateServiceComponent
   ],
   imports: [
     BrowserModule,
