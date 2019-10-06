@@ -8,16 +8,33 @@
 <!--===============================================================================================-->
 </head>
 <body>
-	<div class="w3-container" >
-    <div class="row">
-      <div class="col-sm-1">
-        <p class = "titles" align = "center">
-          Sobre mí...
-        </p>
-        <p align = "center" class = "subtitle">
-          @Mr. XXX
-        </p>
-        <button class="btn btn-1 btn-primary" type="button" (click)="getUser()"> Get user </button>
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
+            <p class="titles" align="center"> Sobre mí... </p>
+            <p class="subtitle" align="center" *ngIf="user">@{{user.nickname}}</p>
+            <br/>
+            <div class="box">
+                <div class="left">
+                    <div class="content">
+                        <p class="contenidos">Nombre:</p>
+                        <p class="subtitle" *ngIf="user">{{user.nombre}}</p>
+                        <p class="contenidos">Correo:</p>
+                        <p class="subtitle" *ngIf="user">{{user.correo}}</p>
+                        <p class="contenidos">Fecha de nacimiento:</p>
+                        <p class="subtitle" *ngIf="user">{{user.fechaNacimiento}}</p>
+                        <p class="contenidos">Descripción:</p>
+                        <p class="subtitle" *ngIf="user">{{user.descripcion}}</p>
+                    </div>
+                </div>
+                <div class="right">
+                    <div class="content">
+                        <p class="contenidos">Imagen de perfil</p>
+                        <p class="subtitle" align="center" *ngIf="user">{{user.descripcion}}</p>
+                        <img src="..\..\assets\img\perfil.jpg" alt="profile" class="profile" align="center">
+                    </div>
+                </div>
+            </div>    
       </div>
     </div>
 	</div>

@@ -6,14 +6,10 @@ import { NgxSoapService, Client } from 'ngx-soap';
 })
 export class SoapService {
 
-  public client: Client;
+  constructor(private soap: NgxSoapService) {  }
 
-  constructor(private soap: NgxSoapService) {
-    this.soap.createClient('assets/WebService.wsdl').then(client => {
-      this.client = client;
-      console.log(this.client);
-
-    })
+  get client() {
+    return this.soap.createClient('assets/WebService.wsdl')
       .catch(err => console.log('Error', err));
   }
 

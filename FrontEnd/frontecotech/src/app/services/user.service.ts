@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { SoapService } from './soap.service';
 import { Observer, Observable } from 'rxjs';
+import { Client } from 'ngx-soap';
 
 
 @Injectable({
@@ -12,11 +13,19 @@ export class UserService {
     private soapService: SoapService
   ) { }
 
-  login(nickname: string, password: string): Observable<any> {
+  login(nickname: string, password: string, client: Client): Observable<any> {
     const body = {
       nickname,
       password
     };
-    return this.soapService.client.call('login', body);
+    return client.call('login', body);
+  }
+
+  getUserByNickName(nickname: string,  client: Client ): Observable<any> {
+    const body = {
+      arg0: nickname,
+    };
+
+    return client.call('leerUsuarioPorNickname', body);
   }
 }

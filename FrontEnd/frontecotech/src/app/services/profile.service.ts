@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { SoapService } from './soap.service';
 import { Observable } from 'rxjs';
+import { Client } from 'ngx-soap';
 
 @Injectable({
   providedIn: 'root'
@@ -11,11 +12,11 @@ export class ProfileService {
     private soapService: SoapService
   ) { }
 
-  searchByNickname(nickname: String): Observable<any> {
+  searchByNickname(nickname: string, client: Client): Observable<any> {
     const body = {
       arg0: nickname
     };
-    return this.soapService.client.call('leerUsuarioPorNickname', body);
+    return client.call('leerUsuarioPorNickname', body);
   }
 
 }

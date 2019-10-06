@@ -1,9 +1,9 @@
 export class Usuario {
-	nombre: String;
-	fechaNacimiento: String;
-	foto: String;
-	descripcion: String;
-	nickname: String;
-	correo: String;
-	password: String;
+	nombre: string;
+	fechaNacimiento: string;
+	foto: string;
+	descripcion: string;
+	nickname: string;
+	correo: string;
+	password: string;
 }
