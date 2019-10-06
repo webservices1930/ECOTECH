@@ -9,7 +9,7 @@ export class Service {
     id: string;
 }
 
-export class Paseo extends Service{
+export class Paseo extends Service {
     horaSalida: string;
     horaLlegada: string;
     trayecto: string;
@@ -23,12 +23,12 @@ export class Alimentacion extends Service {
 
 export class Alojamiento extends Service {
     numHabaitaciones: number;
-    numHuespedes:  number;
-    extras: String;
+    numHuespedes: number;
+    extras: string;
 }
 
 export class Otro extends Service {
-    tioServicio: String;
+    tioServicio: string;
 
 }
 

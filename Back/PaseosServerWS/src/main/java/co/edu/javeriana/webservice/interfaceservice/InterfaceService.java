@@ -14,6 +14,21 @@ public interface InterfaceService {
 	public Servicio crearServicio(Servicio paseo);
 
 	@WebMethod
+	public Alimentacion crearServicioAlimentacion(Alimentacion alimentacion);
+
+	@WebMethod
+	public Alojamiento crearServicioAlojamiento(Alojamiento alojamiento);
+
+	@WebMethod
+	public Paseo crearServicioPaseo(Paseo paseo);
+
+	@WebMethod
+	public Otro crearServicioOtro(Otro otro);
+
+	@WebMethod
+	public Transporte crearServicioTransporte(Transporte transporte);
+
+	@WebMethod
 	public Servicio leerServicio(String id);
 	
 	@WebMethod
