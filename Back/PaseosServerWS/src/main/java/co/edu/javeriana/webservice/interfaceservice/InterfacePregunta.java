@@ -24,5 +24,8 @@ public interface InterfacePregunta {
 
 	@WebMethod
 	public boolean eliminarPregunta(String id);
+	
+	@WebMethod
+	public Pregunta agregarPregunta(String descripcion, String idServicio, String idCliente);
 
 }
