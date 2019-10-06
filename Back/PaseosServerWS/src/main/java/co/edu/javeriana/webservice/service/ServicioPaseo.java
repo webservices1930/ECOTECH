@@ -61,6 +61,16 @@ public class ServicioPaseo implements InterfaceECHOTECH {
 		s.update();
 		return s;
 	}
+	
+	@Override
+	public Paseo leerPaseo(String id) {
+		System.out.println("ServicioPaseo.leerPaseo() -->" + id);
+		Document doc = MongoConnection.searchByID(Servicio.collection, id);
+		System.out.println(doc.toString());
+		Paseo s = gson.fromJson(doc.toJson(), Paseo.class);
+		s.update();
+		return s;
+	}
 
 	@Override
 	public List<Servicio> leerTodosServicio() {

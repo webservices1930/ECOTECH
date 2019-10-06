@@ -25,4 +25,11 @@ export class ServiceService {
     };
     return client.call('leerServicio', body);
   }
+
+  getPaseobyId(client: Client, id: String){
+    const body = {
+      'arg0': id
+    };
+    return client.call('leerPaseo', body);
+  }
 }

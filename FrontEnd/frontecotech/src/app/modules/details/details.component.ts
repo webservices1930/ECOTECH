@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SoapService } from 'src/app/services/soap.service';
 import { ServiceService } from 'src/app/services/service.service';
-import { Service } from 'src/app/model/service';
+import { Service, Paseo } from 'src/app/model/service';
 import { Client } from 'ngx-soap';
 
 @Component({
@@ -13,6 +13,10 @@ import { Client } from 'ngx-soap';
 export class DetailsComponent implements OnInit {
   idSer: String = 'teamp';
   service: Service;
+  paseo: Paseo;
+  pregunta: string = '';
+  preguntas: String[] = [];
+
   constructor(
     private router: Router,
     private route: ActivatedRoute,
@@ -24,7 +28,7 @@ export class DetailsComponent implements OnInit {
     this.route.paramMap.subscribe(params => {
       this.idSer = params.get('id');
       console.log(this.idSer);
-      
+
       this.soapService.client.then(client => {
         this.serviceService.getServicebyId(client as Client, this.idSer).subscribe(res => {
           console.log('Services enviado');
@@ -36,8 +40,8 @@ export class DetailsComponent implements OnInit {
       });
     });
 
-    
+
   }
 
-  
+
 }
