@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Cliente extends Usuario {
 	private String di;
-	private List<Servicio> servicios;
+	private List<String> idServicios;
 	private List<Pregunta> preguntas;
 	private List<Comentario> comentarios;
 
@@ -16,12 +16,12 @@ public class Cliente extends Usuario {
 		this.di = di;
 	}
 
-	public List<Servicio> getServicios() {
-		return servicios;
+	public List<String> getServicios() {
+		return idServicios;
 	}
 
-	public void setServicios(List<Servicio> servicios) {
-		this.servicios = servicios;
+	public void setServicios(List<String> servicios) {
+		this.idServicios = servicios;
 	}
 
 	public List<Pregunta> getPreguntas() {
@@ -42,14 +42,14 @@ public class Cliente extends Usuario {
 
 	@Override
 	public String toString() {
-		return "Cliente [di=" + di + ", servicios=" + servicios + ", preguntas=" + preguntas + ", comentarios="
+		return "Cliente [di=" + di + ", servicios=" + idServicios + ", preguntas=" + preguntas + ", comentarios="
 				+ comentarios + "]";
 	}
 
-	public Cliente(String di, List<Servicio> servicios, List<Pregunta> preguntas, List<Comentario> comentarios) {
+	public Cliente(String di, List<String> servicios, List<Pregunta> preguntas, List<Comentario> comentarios) {
 		super();
 		this.di = di;
-		this.servicios = servicios;
+		this.idServicios = servicios;
 		this.preguntas = preguntas;
 		this.comentarios = comentarios;
 	}

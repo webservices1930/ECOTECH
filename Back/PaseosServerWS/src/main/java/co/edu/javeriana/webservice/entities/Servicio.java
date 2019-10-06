@@ -3,7 +3,7 @@ package co.edu.javeriana.webservice.entities;
 import java.util.List;
 
 public class Servicio {
-	public static final String collection = "service";
+	public static final String collection = "Service";
 	private transient String _id;
 	private TipoServicio tipo;
 	private String nombre;
@@ -14,8 +14,8 @@ public class Servicio {
 	private long longitud;
 	private transient List<Long> calificaciones;
 	private transient List<String> fotos;
-	private transient List<Comentario> comentarios;
-	private transient List<Pregunta> preguntas;
+//	private transient List<Comentario> comentarios;
+//	private transient List<Pregunta> preguntas;
 
 	public String get_id() {
 		return _id;
@@ -97,28 +97,27 @@ public class Servicio {
 		this.fotos = fotos;
 	}
 
-	public List<Comentario> getComentarios() {
-		return comentarios;
-	}
-
-	public void setComentarios(List<Comentario> comentarios) {
-		this.comentarios = comentarios;
-	}
-
-	public List<Pregunta> getPreguntas() {
-		return preguntas;
-	}
-
-	public void setPreguntas(List<Pregunta> preguntas) {
-		this.preguntas = preguntas;
-	}
+//	public List<Comentario> getComentarios() {
+//		return comentarios;
+//	}
+//
+//	public void setComentarios(List<Comentario> comentarios) {
+//		this.comentarios = comentarios;
+//	}
+//
+//	public List<Pregunta> getPreguntas() {
+//		return preguntas;
+//	}
+//
+//	public void setPreguntas(List<Pregunta> preguntas) {
+//		this.preguntas = preguntas;
+//	}
 
 	@Override
 	public String toString() {
 		return "Servicio [id=" + _id + ", nombre=" + nombre + ", costo=" + costo + ", contacto=" + contacto
 				+ ", descripcion=" + descripcion + ", latitud=" + latitud + ", longitud=" + longitud
-				+ ", calificaciones=" + calificaciones + ", fotos=" + fotos + ", comentarios=" + comentarios
-				+ ", preguntas=" + preguntas + "]";
+				+ ", calificaciones=" + calificaciones + ", fotos=" + fotos + "]";
 	}
 
 	public Servicio(String id, String nombre, long costo, String contacto, String descripcion, long latitud,
@@ -134,8 +133,8 @@ public class Servicio {
 		this.longitud = longitud;
 		this.calificaciones = calificaciones;
 		this.fotos = fotos;
-		this.comentarios = comentarios;
-		this.preguntas = preguntas;
+//		this.comentarios = comentarios;
+//		this.preguntas = preguntas;
 	}
 
 	public Servicio(String nombre, long costo, String contacto, String descripcion, long latitud, long longitud,
@@ -149,8 +148,8 @@ public class Servicio {
 		this.longitud = longitud;
 		this.calificaciones = calificaciones;
 		this.fotos = fotos;
-		this.comentarios = comentarios;
-		this.preguntas = preguntas;
+//		this.comentarios = comentarios;
+//		this.preguntas = preguntas;
 	}
 
 	public Servicio() {
