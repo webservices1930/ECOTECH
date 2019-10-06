@@ -5,25 +5,18 @@ import java.util.List;
 
 import javax.jws.WebService;
 
-import org.bson.Document;
+
+
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
-
 import co.edu.javeriana.webservice.entities.*;
-
 import co.edu.javeriana.webservice.mongoBD.MongoConnection;
-import co.edu.javeriana.webservice.interfaceservice.*;
-import co.edu.javeriana.webservice.mongoBD.MongoConnection;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import co.edu.javeriana.webservice.interfaceservice.InterfaceECHOTECH;
 import com.mongodb.BasicDBObject;
-import com.mongodb.client.MongoCollection;
-import com.mongodb.client.MongoCursor;
 import org.bson.Document;
-import org.bson.types.ObjectId;
 
 @WebService(endpointInterface = "co.edu.javeriana.webservice.interfaceservice.InterfaceECHOTECH")
 public class ServicioPaseo implements InterfaceECHOTECH {
