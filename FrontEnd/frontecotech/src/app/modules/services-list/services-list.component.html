@@ -1,0 +1,48 @@
+<app-navbar></app-navbar>
+<div class="row justify-content-md-center limiter">
+
+    <div class="col-6">
+        <div>
+            <h1 class="text-center" style="color: white;">Lista de servicios</h1>
+        </div>
+        <div class="row">
+            <div class="col-9"><form [formGroup]="serviceForm" (ngSubmit)="search()">
+            
+                    <input formControlName="keyword" class="form-control" type="text" placeholder="Search" >
+                    
+                </form></div>
+            <div class="col-3">
+                    <select (change)="searchType($event)">
+                            <option value="Alimentacion">Alimentacion</option>
+                            <option value="Paseo">Paseo</option>
+                            <option value="Alojamiento">Alojamiento</option>
+                            <option value="Otro">Otro</option>
+                            <option value="Transporte">Transporte</option>
+                    </select>
+            </div>
+
+        </div>
+        
+        
+        <br>
+        <div class="card" style="margin-bottom: 15px;" *ngFor="let service of servicios">
+            <h5 class="card-header">{{service.tipo}}</h5>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-3" >
+                        <img *ngIf="service.fotos" [src]="service.fotos[0]" class="img-fluid rounded shadow-lg"
+                            alt="imagen">
+                    </div>
+                    <div class="col-9">
+                        <h4 class="card-title">{{service.nombre}}</h4>
+                        <h5 class="card-body">Costo: $ {{service.costo}}</h5>
+                        <p class="card-text">{{service.descripcion}}</p>
+                        <a [routerLink]="['/details', service.id]" class="btn btn-primary">Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
