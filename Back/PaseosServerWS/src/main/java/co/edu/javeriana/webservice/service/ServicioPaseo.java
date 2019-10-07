@@ -1,6 +1,8 @@
 package co.edu.javeriana.webservice.service;
 
 import java.lang.reflect.Type;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -28,14 +30,18 @@ public class ServicioPaseo implements InterfaceECHOTECH {
 				.registerTypeAdapter(ObjectId.class, new JsonSerializer<ObjectId>() {
 					@Override
 					public JsonElement serialize(ObjectId src, Type typeOfSrc, JsonSerializationContext context) {
-						System.out.println("tesjklt");
+
 						System.out.println(src);
-						return new JsonPrimitive(src.toHexString());
+						JsonObject ret = new JsonObject();
+						ret.addProperty("$oid", src.toHexString());
+						return ret;
 					}
 				})
 				.registerTypeAdapter(ObjectId.class, new JsonDeserializer<ObjectId>() {
 					@Override
 					public ObjectId deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
+						if( !json.isJsonObject() )
+							return new ObjectId(json.getAsString());
 						return new ObjectId(json.getAsJsonObject().get("$oid").getAsString());
 					}
 				}).create();
@@ -105,7 +111,7 @@ public class ServicioPaseo implements InterfaceECHOTECH {
 		s.update();
 		return s;
 	}
-	
+
 	@Override
 	public Paseo leerPaseo(String id) {
 		System.out.println("ServicioPaseo.leerPaseo() -->" + id);
@@ -433,6 +439,53 @@ public class ServicioPaseo implements InterfaceECHOTECH {
 		}
 	}
 
+	@Override
+	public Pregunta agregarPregunta(String descripcion, String idServicio, String idCliente) {
+		Pregunta p = new Pregunta();
+		LocalDate time = LocalDate.now();
+		String fecha = time.toString();
+
+		Document d = MongoConnection.searchByID(Cliente.nameCollection, idCliente);
+		Cliente c = gson.fromJson(d.toJson(), Cliente.class);
+
+		d = MongoConnection.searchByID(Servicio.collection, idServicio);
+		Servicio s = gson.fromJson(d.toJson(), Servicio.class);
+
+		System.out.println(s.toString());
+		System.out.println(c.toString());
+
+		p.setDescripcion(descripcion);
+		p.setFecha(fecha);
+		p.setClientes(c);
+		p.setServicio(s);
+
+		String aux = gson.toJson(p);
+		System.out.print(aux);
+		Document docPregunta = Document.parse(aux);
+
+		MongoConnection.insertObject(Pregunta.collectionName, docPregunta);
+
+		return p;
+	}
+
+	@Override
+	public List<Pregunta> getListaPreguntas(String idServicio) {
+
+		List<Pregunta> preguntas = new ArrayList<Pregunta>();
+		MongoCollection<Document> docs = MongoConnection.findCollection(Pregunta.collectionName);
+		try (MongoCursor<Document> cursor = docs.find().iterator()) {
+			while (cursor.hasNext()) {
+				Pregunta p = gson.fromJson(cursor.next().toJson(), Pregunta.class);
+				System.out.println(p.toString());
+				System.out.println(p.getServicio().get_id().toString());
+				if (p.getServicio().get_id().toString().equals(idServicio)) {
+					preguntas.add(p);
+				}
+			}
+		}
+
+		return preguntas;
+	}
 
 	@Override
 	public Alimentacion leerAlimentacion(String id) {

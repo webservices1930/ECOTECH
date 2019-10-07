@@ -57,4 +57,7 @@ public interface InterfaceService {
 	
 	@WebMethod
 	public boolean agregarUsuarioAServicio(String idServicio, String idUsuario);
+	
+	@WebMethod
+	public List<Pregunta> getListaPreguntas(String idServicio);
 }

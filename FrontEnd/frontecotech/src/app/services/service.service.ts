@@ -31,6 +31,8 @@ export class ServiceService {
     const body = {
       arg0: id
     };
+    console.log(client);
+    
     return client.call('leerPaseo', body);
   }
 
