@@ -8,6 +8,7 @@ import { ServicesListComponent } from './modules/services-list/services-list.com
 import { DetailsComponent } from './modules/details/details.component';
 import { CreateServiceComponent } from './modules/create-service/create-service.component';
 import { RoleGuardService } from './auth/role-guard.service';
+import { NotfoundComponent } from './modules/notfound/notfound.component';
 
 
 
@@ -41,6 +42,10 @@ const routes: Routes = [
     canActivate: [RoleGuardService],
     data: { rol: 'PROVEEDOR' }
   },
+  {
+    path: '**',
+    component: NotfoundComponent
+  }
 ];
 
 @NgModule({

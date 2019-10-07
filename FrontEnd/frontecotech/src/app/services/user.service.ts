@@ -3,6 +3,7 @@ import { SoapService } from './soap.service';
 import { Observer, Observable, of } from 'rxjs';
 import { Client } from 'ngx-soap';
 import { User } from '../models/user.model';
+import { map } from 'rxjs/operators';
 
 
 @Injectable({
@@ -70,6 +71,21 @@ export class UserService {
   logout() {
     localStorage.removeItem('user');
     this.userToReturn = null;
+  }
+
+  isClient(): Observable<boolean> {
+    return this.decode().pipe(
+      map(user => {
+        return user != null && user.rolUsuario === 'CLIENTE';
+      })
+    );
+  }
+  isProvider(): Observable<boolean> {
+    return this.decode().pipe(
+      map(user => {
+        return user != null && user.rolUsuario === 'PROVEEDOR';
+      })
+    );
   }
 
 }

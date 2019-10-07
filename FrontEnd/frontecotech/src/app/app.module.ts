@@ -14,6 +14,7 @@ import { SignupComponent } from './modules/signup/signup.component';
 import { DetailsComponent } from './modules/details/details.component';
 import { CreateServiceComponent } from './modules/create-service/create-service.component';
 import { NavbarComponent } from './modules/navbar/navbar.component';
+import { NotfoundComponent } from './modules/notfound/notfound.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { NavbarComponent } from './modules/navbar/navbar.component';
     ServicesListComponent,
     DetailsComponent,
     CreateServiceComponent,
-    NavbarComponent
+    NavbarComponent,
+    NotfoundComponent,
   ],
   imports: [
     BrowserModule,
