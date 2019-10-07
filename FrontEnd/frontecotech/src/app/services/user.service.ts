@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { SoapService } from './soap.service';
 import { Observer, Observable, of } from 'rxjs';
 import { Client } from 'ngx-soap';
-import { User } from '../models/user.model';
+import { User, Cliente, Proveedor } from '../models/user.model';
 
 
 @Injectable({
@@ -40,6 +40,22 @@ export class UserService {
     };
 
     return client.call('crearUsuario', body);
+  }
+
+  createClient( cliente: Cliente, client: Client ): Observable<any> {
+    const body = {
+      arg0: cliente,
+    };
+
+    return client.call('crearCliente', body);
+  }
+
+  createProveedor( proveedor: Proveedor, client: Client ): Observable<any> {
+    const body = {
+      arg0: proveedor,
+    };
+
+    return client.call('crearProveedor', body);
   }
 
   getProviderByNickname(nickname: string, client: Client): Observable<any> {
