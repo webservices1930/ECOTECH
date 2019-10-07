@@ -1,3 +1,4 @@
+<app-navbar></app-navbar>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,6 +26,10 @@
                         <p class="subtitle" *ngIf="user">{{user.fechaNacimiento}}</p>
                         <p class="contenidos">Descripción:</p>
                         <p class="subtitle" *ngIf="user">{{user.descripcion}}</p>
+                        <p class="contenidos" *ngIf="p">Contacto</p>
+                        <p class="subtitle" *ngIf="p">{{p.telefono}}</p>
+                        <p class="contenidos" *ngIf="p">Web: {{p.web}}</p>
+                        <p class="contenidos" *ngIf="c">Documento: {{c.di}}</p>
                         <br/>
                     </div>
                 </div>
@@ -32,10 +37,13 @@
                     <div class="content">
                         <img src={{user.foto}} alt="profile" class="profile" *ngIf="user">
                         <br/>
+                        <p class="contenidos" *ngIf="p">Twitter: {{p.usuarioTwitter}}</p>
+                        <p class="contenidos" *ngIf="p">Facebook: {{p.usuarioFacebook}}</p>
+                        <p class="contenidos" *ngIf="p">Instagram: {{p.usuarioInstagram}}</p>
+                        <br/><br/>
                         <input type="button" class="button1" value="Editar perfil">
                         <br/><br/>
                         <input type="button" class="button2" value="Eliminar perfil">
-                        <br/><br/>
                     </div>
                 </div>
             </div>    

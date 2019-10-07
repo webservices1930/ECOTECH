@@ -52,7 +52,7 @@ export class ServiceService {
       arg0: id
     };
     console.log(client);
-    
+
     return client.call('leerPaseo', body);
   }
 
@@ -62,7 +62,7 @@ export class ServiceService {
     };
     return client.call('crearServicio', body);
   }
-  
+
   createServiceAlimentacion(client: Client, alimentacion: Alimentacion) {
     const body = {
       arg0: alimentacion
