@@ -26,19 +26,22 @@ export class ShopCarComponent implements OnInit {
     this.soapService.client.then(client => {
       this.serviceService.getAllServices(client as Client).subscribe(res => {
         console.log('Services enviado');
-        console.log(res);
         this.servicios = res.result.return;
-        console.log('servicios');
-        console.log(this.servicios);
       });
     });
     this.cargarServicios();
   }
 
   cargarServicios(){
+    console.log('cargando servicios');
     var numServicios = Number(this.cookieService.get("count"));
-    for(var i=0;i<10){
-
+    for(var i=1;i<=numServicios;i++){
+      var cookie = this.cookieService.get("SCS"+i);
+      for(let j of this.servicios){
+        if(j.id == cookie){
+          this.serviciosTemp.push(j);
+        }
+      }
     }
   }  
 
