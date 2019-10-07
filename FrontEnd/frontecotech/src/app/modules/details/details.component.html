@@ -5,7 +5,14 @@
     <div class="row">
       <div class="col"></div>
       <div class="col-7" *ngIf="service">
-
+        <div class="container">
+        <div class="row justify-content-md-center">
+          <img *ngIf="service.fotos" [src]="service.fotos[0]" class="img-fluid rounded shadow-lg"
+                            alt="imagen">
+        </div>
+        <br>
+        </div>
+        
         <table class="table table-striped border border-dark rounded-10">
           <thead class="thead-dark">
             <tr>

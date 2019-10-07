@@ -6,7 +6,7 @@
                 <a class="nav-link" routerLink="/profile">Perfil</a>
          </li>
         <li class="nav-item" >
-         <a class="nav-link" *ngIf="(userService.isClient() | async)" routerLink="/services">Servicios</a>
+         <a class="nav-link"  routerLink="/services">Servicios</a>
         </li>
         <li class="nav-item" >
          <a class="nav-link" *ngIf="(userService.isProvider() | async)"  routerLink="/create-service">Crear servicio</a>

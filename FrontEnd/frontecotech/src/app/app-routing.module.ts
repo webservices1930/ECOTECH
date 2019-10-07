@@ -38,7 +38,7 @@ const routes: Routes = [
     path: 'services',
     component: ServicesListComponent,
     canActivate: [RoleGuardService],
-    data: { rol: 'CLIENTE' }
+    data: { rol: '*' }
   },
   {
     path: 'shopCar',

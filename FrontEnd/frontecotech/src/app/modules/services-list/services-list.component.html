@@ -15,8 +15,8 @@
             <h5 class="card-header">{{service.tipo}}</h5>
             <div class="card-body">
                 <div class="row">
-                    <div class="col-3">
-                        <img [src]="service.img[0]" class="img-fluid rounded shadow-lg"
+                    <div class="col-3" >
+                        <img *ngIf="service.fotos" [src]="service.fotos[0]" class="img-fluid rounded shadow-lg"
                             alt="imagen">
                     </div>
                     <div class="col-9">
