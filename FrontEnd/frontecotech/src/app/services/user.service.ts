@@ -51,5 +51,9 @@ export class UserService {
     }
   }
 
+  logout() {
+    localStorage.removeItem('user');
+    this.userToReturn = null;
+  }
 
 }
