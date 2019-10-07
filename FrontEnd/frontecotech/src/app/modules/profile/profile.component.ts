@@ -36,4 +36,11 @@ export class ProfileComponent implements OnInit {
             });
         });
     }
+
+    esProveedor(): boolean {
+        if (this.user.rol === 'PROVEEDOR') {
+            return true;
+        }
+        return false;
+    }
 }

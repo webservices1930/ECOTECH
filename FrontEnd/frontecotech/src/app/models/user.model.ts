@@ -7,4 +7,8 @@ export interface User {
   fechaNacimiento?: Date;
   nickname: string;
   password?: string;
+  rol?: string;
+  telefono?: string;
+  web?: string;
+  redes?: string;
 }
