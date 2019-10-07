@@ -14,10 +14,10 @@ public class MongoConnection {
 	private static String db = "Ecotech";
 
 	public MongoConnection() {
-		MongoClientURI uri = new MongoClientURI(
-		"mongodb+srv://admin:admin123@cluster0-qhoob.mongodb.net/admin?retryWrites=true&w=majority");
-		mongoClient = new MongoClient(uri);
-		//mongoClient = new MongoClient("localhost", 27017);
+//		MongoClientURI uri = new MongoClientURI(
+//		"mongodb+srv://admin:admin123@cluster0-qhoob.mongodb.net/admin?retryWrites=true&w=majority");
+//		mongoClient = new MongoClient(uri);
+		mongoClient = new MongoClient("localhost", 27017);
 	}
 
 	public static MongoCollection<Document> findCollection(String nameColection) {

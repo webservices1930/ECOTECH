@@ -1,5 +1,5 @@
-<button class="btn btn-1 btn-primary" type="button" (click)="profile()"> Profile </button>
-<div class="row justify-content-md-center">
+<app-navbar></app-navbar>
+<div class="row justify-content-md-center limiter">
 
     <div class="col-6">
         <div>
@@ -15,8 +15,8 @@
             <h5 class="card-header">{{service.tipo}}</h5>
             <div class="card-body">
                 <div class="row">
-                    <div class="col-3">
-                        <img src="..\..\..\assets\img\brand\Imagen_Televisión.png" class="img-fluid rounded shadow-lg"
+                    <div class="col-3" >
+                        <img *ngIf="service.fotos" [src]="service.fotos[0]" class="img-fluid rounded shadow-lg"
                             alt="imagen">
                     </div>
                     <div class="col-9">

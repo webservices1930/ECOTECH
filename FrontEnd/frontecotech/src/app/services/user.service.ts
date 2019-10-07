@@ -3,6 +3,7 @@ import { SoapService } from './soap.service';
 import { Observer, Observable, of } from 'rxjs';
 import { Client } from 'ngx-soap';
 import { User } from '../models/user.model';
+import { map } from 'rxjs/operators';
 
 
 @Injectable({
@@ -42,6 +43,22 @@ export class UserService {
     return client.call('crearUsuario', body);
   }
 
+  getProviderByNickname(nickname: string, client: Client): Observable<any> {
+    const body = {
+      arg0: nickname,
+    };
+
+    return client.call('obtenerProveedorPorNickname', body);
+  }
+
+  getClienteByNickname(nickname: string, client: Client): Observable<any> {
+    const body = {
+      arg0: nickname,
+    };
+
+    return client.call('obtenerClientePorNickname', body);
+  }
+
   decode(): Observable<any> {
     if (this.userToReturn == null ) {
       this.userToReturn = JSON.parse(localStorage.getItem('user'));
@@ -51,5 +68,24 @@ export class UserService {
     }
   }
 
+  logout() {
+    localStorage.removeItem('user');
+    this.userToReturn = null;
+  }
+
+  isClient(): Observable<boolean> {
+    return this.decode().pipe(
+      map(user => {
+        return user != null && user.rolUsuario === 'CLIENTE';
+      })
+    );
+  }
+  isProvider(): Observable<boolean> {
+    return this.decode().pipe(
+      map(user => {
+        return user != null && user.rolUsuario === 'PROVEEDOR';
+      })
+    );
+  }
 
 }

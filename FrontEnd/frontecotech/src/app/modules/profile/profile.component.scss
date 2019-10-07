@@ -3407,12 +3407,13 @@
 ////////////////////////////////////////////////////////////////////////////////////
 .box {
   overflow: hidden;
+  padding: 20px
 }
 
 .content {
   font-size: 15px;
   line-height: 20px;
-  padding: 0 20px;
+  padding: 10px 20px;
   text-align: justify;
 }
 
@@ -3422,7 +3423,7 @@
 }
 
 .left .content {
-  border-right: 5px solid #4BB495  ;
+  border-right: 2px solid #4BB495  ;
 }
 
 .right {
@@ -3433,6 +3434,7 @@
 .profile {
   border-radius: 50%;
   height: 130px;
+  width: 130px;
   display: block;
   margin-left: auto;
   margin-right: auto;
