@@ -37,6 +37,7 @@ export class CreateServiceComponent implements OnInit {
   }
 
   createServiceWithClient( client: Client ) {
+    this.serviceForm.value.tipo = this.serviceForm.value.tipo.toUpperCase();
     const service = this.serviceForm.value as Service;
     console.log(service);
     console.log(TypeService.Alimentacion.toString());
@@ -44,27 +45,27 @@ export class CreateServiceComponent implements OnInit {
       this.serviceService.createService(client, service).subscribe( res => {
         this.goodAction();
       });
-    } else if (service.tipo === 'Alimentacion') {
+    } else if (service.tipo === 'Alimentacion'.toUpperCase()) {
       const alimentacion = this.serviceForm.value as Alimentacion;
       this.serviceService.createServiceAlimentacion(client, alimentacion).subscribe(res => {
         this.goodAction();
       });
-    } else if (service.tipo === 'Alojamiento') {
+    } else if (service.tipo === 'Alojamiento'.toUpperCase()) {
       const alojamiento = this.serviceForm.value as Alojamiento;
       this.serviceService.createServiceAlojamiento(client, alojamiento).subscribe(res => {
         this.goodAction();
       });
-    } else if (service.tipo === 'Otro') {
+    } else if (service.tipo === 'Otro'.toUpperCase()) {
       const otro = this.serviceForm.value as Otro;
       this.serviceService.createServiceOtro(client, otro).subscribe(res => {
         this.goodAction();
       });
-    } else if (service.tipo === 'Paseo') {
+    } else if (service.tipo === 'Paseo'.toUpperCase()) {
       const paseo = this.serviceForm.value as Paseo;
       this.serviceService.createServicePaseo(client, paseo).subscribe(res => {
         this.goodAction();
       });
-    } else if (service.tipo === 'Transporte') {
+    } else if (service.tipo === 'Transporte'.toUpperCase()) {
       const transporte = this.serviceForm.value as Transporte;
       this.serviceService.createServiceTransporte(client, transporte).subscribe(res => {
         this.goodAction();
@@ -83,7 +84,7 @@ export class CreateServiceComponent implements OnInit {
     this.serviceForm = this.formBuilder.group({
       nombre: ['', [Validators.required]],
       // tipo: ['', ],
-      descipcion: ['', [Validators.required]],
+      descripcion: ['', [Validators.required]],
       contacto: ['', [Validators.required]],
       costo: ['', [Validators.required]],
       latitud: ['', [Validators.required]],

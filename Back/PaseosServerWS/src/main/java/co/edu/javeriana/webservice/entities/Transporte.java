@@ -40,4 +40,7 @@ public class Transporte extends Servicio {
 		this.horaLlegada = horaLlegada;
 	}
 
+	public Transporte() {
+		super();
+	}
 }
