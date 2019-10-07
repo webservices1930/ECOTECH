@@ -9,7 +9,7 @@ import { CookieService } from 'ngx-cookie-service';
 @Component({
   selector: 'app-shop-car',
   templateUrl: './shop-car.component.html',
-  styleUrls: ['./shop-car.component.css']
+  styleUrls: ['./shop-car.component.scss']
 })
 export class ShopCarComponent implements OnInit {
 
