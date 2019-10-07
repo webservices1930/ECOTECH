@@ -39,12 +39,11 @@ export class ShopCarComponent implements OnInit {
   cargarServicios(){
     console.log('cargando servicios');
     var numServicios = Number(this.cookieService.get("count"));
-    console.log(this.servicios);
     for(var i=1;i<=numServicios;i++){
       var cookie = this.cookieService.get("SCS"+(i));
       for(var j =0;j<this.arrayServicios.length;j++){
         if(this.arrayServicios[j].id === cookie){
-          this.valor += this.arrayServicios[j].costo;
+          this.valor = Number(this.arrayServicios[j].costo)+this.valor;
           this.servicios.push(this.arrayServicios[j]);
         }
       }
@@ -53,7 +52,13 @@ export class ShopCarComponent implements OnInit {
 
   borrarService(idServ:string){
     console.log(idServ)
-    this.cookieService.delete(""+idServ);
+    this.cookieService.delete("SCS"+idServ);
+    var numServicios = Number(this.cookieService.get("count"))-1;
+    //this.cookieService.set("count",""+numServicios);
+  }
+
+  checkout(){
+    this.cookieService.set("costo",""+this.valor);
   }
 
 }

@@ -15,8 +15,8 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr *ngFor="let service of servicios">
-							<td>1</td>
+						<tr *ngFor="let service of servicios; let i = index">
+							<td>{{i+1}}</td>
 							<td data-th="Product">
 								<div class="row">
 									<div class="col-sm-2 hidden-xs">
@@ -30,7 +30,7 @@
 							</td>
 							<td data-th="Price">{{service.costo}}</td>
 							<td class="actions" data-th="">
-								<button class="btn btn-danger btn-sm" (click)="borrarService(service.id)" href="/shopCar"><i class="fa fa-trash-o"></i></button>								
+								<button class="btn btn-danger btn-sm" (click)="borrarService(i+1)" [routerLink]="['/shopCar']"><i class="fa fa-trash-o"></i></button>								
 							</td>
 						</tr>
 					</tbody>
@@ -39,7 +39,7 @@
 							<td><a href="/services" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continuar Comprando</a></td>
 							<td colspan="2" class="hidden-xs"></td>
 							<td class="hidden-xs text-center"><strong>Total  ${{valor}}</strong></td>
-							<td><a href="/check" class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></a></td>
+							<td><a href="/check" class="btn btn-success btn-block" (click)="checkout()">Checkout<i class="fa fa-angle-right"></i></a></td>
 						</tr>
 					</tfoot>
 				</table>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { del } from 'selenium-webdriver/http';
 import { delay } from 'q';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-check-pay',
@@ -10,14 +11,15 @@ import { delay } from 'q';
 export class CheckPayComponent implements OnInit {
 
   private messages = "Su Pago fue Exitoso"
+  valor:number = 0;
 
-  constructor() { }
+  constructor(private cookieService: CookieService) { }
 
   ngOnInit() {
+    this.valor = Number(this.cookieService.get("costo"));
   }
 
   message(){
-    delay(3000);
     alert(this.messages);
   }
 
