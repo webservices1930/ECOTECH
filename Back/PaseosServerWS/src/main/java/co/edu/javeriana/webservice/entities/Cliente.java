@@ -42,8 +42,9 @@ public class Cliente extends Usuario {
 
 	@Override
 	public String toString() {
+		String toStringUser = super.toString();
 		return "Cliente [di=" + di + ", servicios=" + idServicios + ", preguntas=" + preguntas + ", comentarios="
-				+ comentarios + "]";
+				+ comentarios + "]"+ toStringUser ;
 	}
 
 	public Cliente(String di, List<String> servicios, List<Pregunta> preguntas, List<Comentario> comentarios) {

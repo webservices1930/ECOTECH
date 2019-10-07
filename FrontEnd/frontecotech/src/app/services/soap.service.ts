@@ -13,4 +13,5 @@ export class SoapService {
     return this.soap.createClient('assets/WebService.wsdl')
       .catch(err => console.log('Error', err));
   }
+
 }
