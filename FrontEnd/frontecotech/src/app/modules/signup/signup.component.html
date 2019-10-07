@@ -33,9 +33,54 @@
           </div>
 
           <div class="wrap-input100 validate-input m-b-16" data-validate="Please enter username">
-						<textarea formControlName="descripcion" class="input100" type="text" name="descripcion" placeholder="Descripción"></textarea>
+						<input formControlName="descripcion" class="input100" type="text" name="descripcion" placeholder="Descripción">
 						<span class="focus-input100"></span>
 					</div>
+
+					<div class="wrap-input100 validate-input m-b-16" data-validate="Please enter a link">
+						<input formControlName="foto" class="input100" type="text" name="Foto" placeholder="Link a fotografia">
+						<span class="focus-input100"></span>
+					</div>
+
+					<div>
+					<select class="form-control" formControlName="selectedValue">
+							<option value="">--Select--</option>
+							<option value="1">PROVEEDOR</option>
+							<option value="2">CLIENTE</option>
+					</select>
+					<br/>
+					</div>
+
+					<div class="wrap-input100 validate-input m-b-16" data-validate="Please enter a DI" *ngIf="userForm.value.selectedValue === '2' ">
+							<input formControlName="di" class="input100" type="text" name="di" placeholder="Ingrese su identificación">
+							<span class="focus-input100"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input m-b-16" data-validate="Please enter a phone" *ngIf="userForm.value.selectedValue === '1'">
+							<input formControlName="telefono" class="input100" type="text" name="telefono" placeholder="Ingrese su telefono">
+							<span class="focus-input100"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input m-b-16" data-validate="Please enter a WebPage" *ngIf="userForm.value.selectedValue === '1'">
+							<input formControlName="web" class="input100" type="text" name="web" placeholder="Ingrese su página web">
+							<span class="focus-input100"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input m-b-16" data-validate="Please enter a Twitter Username" *ngIf="userForm.value.selectedValue === '1'">
+							<input formControlName="usuarioTwitter" class="input100" type="text" name="usuarioTwitter" placeholder="Ingrese su usuario de twitter">
+							<span class="focus-input100"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input m-b-16" data-validate="Please enter a Facebook Username" *ngIf="userForm.value.selectedValue === '1'">
+							<input formControlName="usuarioFacebook" class="input100" type="text" name="usuarioFacebook" placeholder="Ingrese su usuario de facebook">
+							<span class="focus-input100"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input m-b-16" data-validate="Please enter a Instagram Username" *ngIf="userForm.value.selectedValue === '1'">
+							<input formControlName="usuarioInstagram" class="input100" type="text" name="usuarioInstagram" placeholder="Ingrese su usuario de instagram">
+							<span class="focus-input100"></span>
+					</div>
+
 					<div class="container-login100-form-btn">
 						<button [disabled]="!userForm.valid" class="login100-form-btn">
 							Registro

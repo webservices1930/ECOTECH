@@ -4,7 +4,7 @@ import { UserService } from '../../services/user.service';
 import { SoapService } from '../../services/soap.service';
 import { Router } from '@angular/router';
 import { Client } from 'ngx-soap';
-import { User } from '../../models/user.model';
+import { User, Cliente, Proveedor } from '../../models/user.model';
 
 @Component({
     selector: 'app-signup',
@@ -12,6 +12,11 @@ import { User } from '../../models/user.model';
     styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
+
+  options = [
+    {id: 1, name: 'PROVEEDOR'},
+    {id: 2, name: 'CLIENTE'},
+  ];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -33,10 +38,54 @@ export class SignupComponent implements OnInit {
       fechaNacimiento: ['', [Validators.required]],
       nickname: ['', [Validators.required]],
       password: ['', [Validators.required]],
+      foto: [''],
+      rolUsuario: [''],
+      di: [''],
+      usuarioTwitter: [''],
+      usuarioFacebook: [''],
+      usuarioInstagram: [''],
+      web: [''],
+      telefono: [''],
+      selectedValue: ['', [Validators.required]],
     });
   }
+
   signup() {
-    const userToCreate = this.userForm.value as User;
+    if (this.userForm.value.selectedValue === '2') {
+      this.userForm.value.rolUsuario = 'CLIENTE';
+      const clientToCreate = this.userForm.value as Cliente;
+      this.soapService.client.then( client => {
+        this.userService.createClient(clientToCreate, client as Client).subscribe( res => {
+          if ( res.result != null ) {
+            alert('Usuario creado');
+            this.router.navigate(['/login']);
+          } else {
+              alert('Nickname ya existe.');
+          }
+        }, error => {
+          alert('Nickname ya existe.');
+        });
+      });
+
+    }
+
+    if (this.userForm.value.selectedValue === '1') {
+      this.userForm.value.rolUsuario = 'PROVEEDOR';
+      const providerToCreate = this.userForm.value as Proveedor;
+      this.soapService.client.then( client => {
+        this.userService.createProveedor(providerToCreate, client as Client).subscribe( res => {
+          if ( res.result != null ) {
+            alert('Usuario creado');
+            this.router.navigate(['/login']);
+          } else {
+              alert('Nickname ya existe.');
+          }
+        }, error => {
+          alert('Nickname ya existe.');
+        });
+      });
+    }
+    /*const userToCreate = this.userForm.value as User;
     this.soapService.client.then( client => {
       this.userService.createUser(userToCreate, client as Client).subscribe( res => {
 
@@ -50,7 +99,7 @@ export class SignupComponent implements OnInit {
       }, error => {
         alert('Nickname ya existe.');
       });
-    });
+    });*/
 
   }
 
