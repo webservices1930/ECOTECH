@@ -36,18 +36,18 @@ export class ProfileComponent implements OnInit {
                 this.user = res.result.return;
                 console.log(this.user);
                 if (this.user.rolUsuario === 'PROVEEDOR') {
-                    this.soapService.client.then(client => {
-                        this.service.getProviderByNickname(this.nickname, client as Client).subscribe(res => {
-                            this.p = res.result.return;
+                    this.soapService.client.then(client1 => {
+                        this.service.getProviderByNickname(this.nickname, client1 as Client).subscribe(res1 => {
+                            this.p = res1.result.return;
                             console.log(this.p);
                         });
                     });
                 }
 
                 if (this.user.rolUsuario === 'CLIENTE') {
-                    this.soapService.client.then(client => {
-                        this.service.getClienteByNickname(this.nickname, client as Client).subscribe(res => {
-                            this.c = res.result.return;
+                    this.soapService.client.then(client1 => {
+                        this.service.getClienteByNickname(this.nickname, client1 as Client).subscribe(res1 => {
+                            this.c = res1.result.return;
                             console.log(this.c);
                         });
                     });

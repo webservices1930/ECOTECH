@@ -13,6 +13,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SignupComponent } from './modules/signup/signup.component';
 import { DetailsComponent } from './modules/details/details.component';
 import { CreateServiceComponent } from './modules/create-service/create-service.component';
+import { NavbarComponent } from './modules/navbar/navbar.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { CreateServiceComponent } from './modules/create-service/create-service.
     SignupComponent,
     ServicesListComponent,
     DetailsComponent,
-    CreateServiceComponent
+    CreateServiceComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
