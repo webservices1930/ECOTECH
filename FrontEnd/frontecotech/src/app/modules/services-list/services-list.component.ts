@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Service } from 'src/app/model/service';
+import { Service } from 'src/app/models/service';
 import { ServiceService } from 'src/app/services/service.service';
 import { SoapService } from 'src/app/services/soap.service';
 import { Client } from 'ngx-soap';

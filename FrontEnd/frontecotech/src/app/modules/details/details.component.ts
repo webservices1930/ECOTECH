@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SoapService } from 'src/app/services/soap.service';
 import { ServiceService } from 'src/app/services/service.service';
-import { Service, Paseo } from 'src/app/model/service';
+import { Service, Paseo } from 'src/app/models/service';
 import { Client } from 'ngx-soap';
 
 @Component({
@@ -11,11 +11,11 @@ import { Client } from 'ngx-soap';
   styleUrls: ['./details.component.css']
 })
 export class DetailsComponent implements OnInit {
-  idSer: String = 'teamp';
+  idSer: string = 'teamp';
   service: Service;
   paseo: Paseo;
   pregunta: string = '';
-  preguntas: String[] = [];
+  preguntas: string[] = [];
 
   constructor(
     private router: Router,
