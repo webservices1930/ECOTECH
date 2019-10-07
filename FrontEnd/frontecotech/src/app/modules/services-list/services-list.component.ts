@@ -69,4 +69,14 @@ export class ServicesListComponent implements OnInit {
     });
   }
 
+  private searchType(event: any){
+    console.log(event.target.value);
+    this.servicios = [];
+    this.serviciosTemp.forEach(servicio => {
+      if (servicio.tipo.toLowerCase().includes(event.target.value.toLowerCase()) ) {
+        this.servicios.push(servicio);
+      }
+    });
+  }
+
 }
