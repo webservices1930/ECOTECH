@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SoapService } from 'src/app/services/soap.service';
 import { ServiceService } from 'src/app/services/service.service';
-import { Service, Paseo, Alimentacion, Alojamiento, Otro, Transporte } from 'src/app/model/service';
+import { Service, Paseo, Alimentacion, Alojamiento, Otro, Transporte } from 'src/app/models/service';
 import { Client } from 'ngx-soap';
 
 @Component({
