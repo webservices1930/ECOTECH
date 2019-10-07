@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Service } from 'src/app/model/service';
+import { Service } from 'src/app/models/service';
 import { ServiceService } from 'src/app/services/service.service';
 import { SoapService } from 'src/app/services/soap.service';
 import { Client } from 'ngx-soap';
@@ -13,8 +13,9 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class ShopCarComponent implements OnInit {
 
-  servicios: Service[];
-  serviciosTemp: Service[];
+  arrayServicios: Service[];
+  servicios: Service[] = [];
+  valor: number = 0;
 
   constructor(
     private serviceService: ServiceService,
@@ -26,23 +27,33 @@ export class ShopCarComponent implements OnInit {
     this.soapService.client.then(client => {
       this.serviceService.getAllServices(client as Client).subscribe(res => {
         console.log('Services enviado');
-        this.servicios = res.result.return;
+        this.arrayServicios = res.result.return;
+        console.log(res);
+        console.log(this.arrayServicios);
+        this.cargarServicios();
       });
     });
-    this.cargarServicios();
+    
   }
 
   cargarServicios(){
     console.log('cargando servicios');
     var numServicios = Number(this.cookieService.get("count"));
+    console.log(this.servicios);
     for(var i=1;i<=numServicios;i++){
-      var cookie = this.cookieService.get("SCS"+i);
-      for(let j of this.servicios){
-        if(j.id == cookie){
-          this.serviciosTemp.push(j);
+      var cookie = this.cookieService.get("SCS"+(i));
+      for(var j =0;j<this.arrayServicios.length;j++){
+        if(this.arrayServicios[j].id === cookie){
+          this.valor += this.arrayServicios[j].costo;
+          this.servicios.push(this.arrayServicios[j]);
         }
       }
     }
   }  
+
+  borrarService(idServ:string){
+    console.log(idServ)
+    this.cookieService.delete(""+idServ);
+  }
 
 }

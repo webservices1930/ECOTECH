@@ -14,6 +14,7 @@ import { SignupComponent } from './modules/signup/signup.component';
 import { DetailsComponent } from './modules/details/details.component';
 import { ShopCarComponent } from './modules/shop-car/shop-car.component';
 import { CreateServiceComponent } from './modules/create-service/create-service.component';
+import { CheckPayComponent } from './modules/check-pay/check-pay.component';
 
 
 
@@ -25,7 +26,8 @@ import { CreateServiceComponent } from './modules/create-service/create-service.
     ServicesListComponent,
     DetailsComponent,
     ShopCarComponent,
-    CreateServiceComponent
+    CreateServiceComponent,
+    CheckPayComponent
   ],
   imports: [
     BrowserModule,

@@ -9,6 +9,7 @@ import { DetailsComponent } from './modules/details/details.component';
 import { ShopCarComponent} from './modules/shop-car/shop-car.component';
 
 import { CreateServiceComponent } from './modules/create-service/create-service.component';
+import { CheckPayComponent } from './modules/check-pay/check-pay.component';
 
 
 
@@ -27,6 +28,7 @@ const routes: Routes = [
   {path: 'services', component: ServicesListComponent },
 
   {path: 'shopCar', component: ShopCarComponent },
+  {path: 'check', component: CheckPayComponent },
 
   {path: 'details/:id', component: DetailsComponent },
   {
