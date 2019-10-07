@@ -16,7 +16,7 @@ public class MongoConnection {
 	public MongoConnection() {
 		MongoClientURI uri = new MongoClientURI(
 		"mongodb+srv://admin:admin123@cluster0-qhoob.mongodb.net/admin?retryWrites=true&w=majority");
-//		mongoClient = new MongoClient(uri);
+		mongoClient = new MongoClient(uri);
 		//mongoClient = new MongoClient("localhost", 27017);
 	}
 
