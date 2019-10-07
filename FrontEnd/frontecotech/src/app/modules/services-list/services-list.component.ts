@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Service } from 'src/app/model/service';
+import { Service } from 'src/app/models/service';
 import { ServiceService } from 'src/app/services/service.service';
 import { SoapService } from 'src/app/services/soap.service';
 import { Client } from 'ngx-soap';
 import { FormGroup, FormBuilder } from '@angular/forms';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-services-list',
@@ -14,9 +15,11 @@ export class ServicesListComponent implements OnInit {
 
   servicios: Service[];
   serviciosTemp: Service[];
+  user: string;
 
   constructor(
     private serviceService: ServiceService,
+    private userService: UserService,
     private formBuilder: FormBuilder,
     private soapService: SoapService,
   ) { }
@@ -33,6 +36,12 @@ export class ServicesListComponent implements OnInit {
         console.log('servicios');
         console.log(this.servicios);
       });
+    });
+
+    this.userService.decode().subscribe(res => {
+      console.log("USER");
+      this.user = res.nickname;
+      console.log(res);
     });
     this.buildServiceForm();
   }

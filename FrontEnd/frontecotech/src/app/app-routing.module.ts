@@ -5,7 +5,11 @@ import { SignupComponent } from './modules/signup/signup.component';
 
 import { ServicesListComponent } from './modules/services-list/services-list.component';
 import { DetailsComponent } from './modules/details/details.component';
+
 import { ShopCarComponent} from './modules/shop-car/shop-car.component';
+
+import { CreateServiceComponent } from './modules/create-service/create-service.component';
+
 
 
 
@@ -21,8 +25,15 @@ const routes: Routes = [
     component: SignupComponent
   },
   {path: 'services', component: ServicesListComponent },
+
   {path: 'shopCar', component: ShopCarComponent },
-  {path: 'details/:id', component: DetailsComponent }
+
+  {path: 'details/:id', component: DetailsComponent },
+  {
+    path: 'create-service',
+    component: CreateServiceComponent
+  },
+
 ];
 
 @NgModule({

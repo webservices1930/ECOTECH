@@ -5,6 +5,8 @@ import java.util.List;
 import javax.jws.WebMethod;
 import javax.jws.WebService;
 
+import co.edu.javeriana.webservice.entities.Cliente;
+import co.edu.javeriana.webservice.entities.Proveedor;
 import co.edu.javeriana.webservice.entities.Usuario;
 
 @WebService
@@ -30,4 +32,16 @@ public interface InterfaceUser {
 
 	@WebMethod
 	public boolean login(String nickname, String password);
+
+	@WebMethod
+	public Cliente obtenerClientePorNickname(String nickname);
+
+	@WebMethod
+	public Proveedor obtenerProveedorPorNickname(String nickname);
+
+	@WebMethod
+	public Cliente crearCliente(Cliente cliente);
+
+	@WebMethod
+	public Proveedor crearProveedor(Proveedor proveedor);
 }

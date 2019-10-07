@@ -13,6 +13,9 @@ public class Usuario {
 	private String nickname;
 	private String correo;
 	private String password;
+	private RolUsuario rolUsuario;
+
+
 
 	public Usuario() {
 	};
@@ -45,6 +48,14 @@ public class Usuario {
 	public String toString() {
 		return "Usuario [_id=" + _id + ", id=" + id + ", nombre=" + nombre + ", fechaNacimiento=" + fechaNacimiento + ", foto=" + foto
 				+ ", descripcion=" + descripcion + ", nickname=" + nickname + ", correo=" + correo + "]";
+	}
+
+	public RolUsuario getRolUsuario() {
+		return rolUsuario;
+	}
+
+	public void setRolUsuario(RolUsuario rolUsuario) {
+		this.rolUsuario = rolUsuario;
 	}
 
 	public String getId() {

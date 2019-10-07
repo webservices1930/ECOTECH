@@ -13,6 +13,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SignupComponent } from './modules/signup/signup.component';
 import { DetailsComponent } from './modules/details/details.component';
 import { ShopCarComponent } from './modules/shop-car/shop-car.component';
+import { CreateServiceComponent } from './modules/create-service/create-service.component';
+
 
 
 @NgModule({
@@ -22,7 +24,8 @@ import { ShopCarComponent } from './modules/shop-car/shop-car.component';
     SignupComponent,
     ServicesListComponent,
     DetailsComponent,
-    ShopCarComponent
+    ShopCarComponent,
+    CreateServiceComponent
   ],
   imports: [
     BrowserModule,

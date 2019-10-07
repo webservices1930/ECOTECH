@@ -55,7 +55,7 @@
 
 
             <h1 class="text-center">Detalles de {{service.tipo}}</h1>
-            <table class="table table-striped border border-dark rounded-10">
+            <table class="table table-striped border border-dark rounded-10" *ngIf="service.tipo == 'PASEO'">
                 <thead class="thead-dark">
                     <tr>
                         <th scope="col">Dato</th>
@@ -65,30 +65,103 @@
                 <tbody>
                     <tr>
                         <th scope="row">Hora Salida</th>
-                        <td></td>
+                        <td>{{paseo.horaSalida}}</td>
                     </tr>
                     <tr>
                         <th scope="row">Hora Llegada</th>
-                        <td></td>
+                        <td>{{paseo.horaLlegada}}</td>
                     </tr>
                     <tr>
-                        <th scope="row">Trayacto</th>
-                        <td></td>
+                        <th scope="row">Trayecto</th>
+                        <td>{{paseo.trayecto}}</td>
                     </tr>
                     <tr>
                         <th scope="row">Restricciones</th>
-                        <td></td>
+                        <td>{{paseo.restricciones}}</td>
                     </tr>
                     <tr>
                         <th scope="row">Sugerencias</th>
-                        <td></td>
+                        <td>{{paseo.sugerencias}}</td>
                     </tr>
                 </tbody>
             </table>
 
-            <button type="button" class="btn btn-outline-dark" (click)="addService()" [routerLink]="['/shopCar']">Carrito</button>
-            <div *ngIf="service.tipo == 'PASEO'"> </div>
-            <button type="button" class="btn btn-primary" [routerLink]="['/services']">Lista
+            <table class="table table-striped border border-dark rounded-10" *ngIf="service.tipo == 'ALIMENTACION'">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Dato</th>
+                        <th scope="col">Valor</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">Tipo de comida</th>
+                        <td>{{alimentacion.tipoComida}}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <table class="table table-striped border border-dark rounded-10" *ngIf="service.tipo == 'ALOJAMIENTO'">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Dato</th>
+                        <th scope="col">Valor</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">Num. Habitaciones</th>
+                        <td>{{alojamiento.numHabaitaciones}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Num. Huespedes</th>
+                        <td>{{alojamiento.numHuespedes}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Extras</th>
+                        <td>{{alojamiento.extras}}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <table class="table table-striped border border-dark rounded-10" *ngIf="service.tipo == 'OTRO'">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Dato</th>
+                        <th scope="col">Valor</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">Tipo</th>
+                        <td>{{otro.tioServicio}}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <table class="table table-striped border border-dark rounded-10" *ngIf="service.tipo == 'TRANSPORTE'">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Dato</th>
+                        <th scope="col">Valor</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">Hora Salida</th>
+                        <td>{{transporte.horaSalida}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Hora Llegada</th>
+                        <td>{{transporte}}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+
+            <button type="button" class="btn btn-outline-dark" [routerLink]="['/']">+ Carrito</button>
+            <br><br>
+            <button type="button" class="btn btn-dark" [routerLink]="['/services']">Lista
                 Servicios</button>
 
                 <h3 class="text-center">¿Preguntas?</h3>
@@ -98,11 +171,11 @@
                     <input type="text" class="form-control" placeholder="Preguntas?" [(ngModel)]="pregunta"
                         aria-label="Recipient's username" aria-describedby="button-addon2">
                     <div class="input-group-append">
-                        <button class="btn btn-outline-primary" type="button" id="button-addon2">Preguntar</button>
+                        <button class="btn btn-outline-dark" type="button" id="button-addon2" (click)="pregutar()">Preguntar</button>
                     </div>
                 </div>
             </div>
-            <div class= "row" *ngFor="let preg of preguntas">
+            <div class= "row" *ngFor="let preg of preguntastemp">
                 {{preg}}
             </div>
         </div>
