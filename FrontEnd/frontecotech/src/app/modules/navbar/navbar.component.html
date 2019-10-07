@@ -16,7 +16,7 @@
 
       <li class="nav-item">
         <a class="nav-link" *ngIf="(userService.isClient() | async)" routerLink="/shopCar">Carrito de Compras 
-          <p style="color: white">{{carrito}}</p>
+          <a style="color: white">{{carrito}}</a>
         </a>
       </li>
       <li class="nav-item">
