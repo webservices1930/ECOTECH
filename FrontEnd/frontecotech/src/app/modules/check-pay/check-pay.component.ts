@@ -21,6 +21,8 @@ export class CheckPayComponent implements OnInit {
 
   message(){
     alert(this.messages);
+    this.cookieService.deleteAll();
+    this.cookieService.set('count', '0');
   }
 
 }
