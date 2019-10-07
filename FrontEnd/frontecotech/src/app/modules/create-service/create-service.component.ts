@@ -39,7 +39,12 @@ export class CreateServiceComponent implements OnInit {
   createServiceWithClient( client: Client ) {
     this.serviceForm.value.tipo = this.serviceForm.value.tipo.toUpperCase();
     const service = this.serviceForm.value as Service;
+    let s:string = this.serviceForm.get('img').value;
+    console.log(s);
+    service.img = [];
+    service.img.push(s);
     console.log(service);
+    
     console.log(TypeService.Alimentacion.toString());
     if (service.tipo == null) {
       this.serviceService.createService(client, service).subscribe( res => {
@@ -89,6 +94,7 @@ export class CreateServiceComponent implements OnInit {
       costo: ['', [Validators.required]],
       latitud: ['', [Validators.required]],
       longitud: ['', [Validators.required]],
+      img: ['', [Validators.required]],
       tipo: ['', [Validators.required]],
       // Paseo && Transporte
       horaSalida: [''],

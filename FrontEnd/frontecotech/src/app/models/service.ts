@@ -6,6 +6,7 @@ export class Service {
     longitud: number;
     nombre: string;
     tipo: string;
+    img: string[];
     id: string;
 }
 
