@@ -41,8 +41,7 @@ export class DetailsComponent implements OnInit {
           this.service = res.result.return;
           console.log('servicio');
           console.log(this.service);
-          if(this.service.tipo=='PASEO')
-          {
+          if (this.service.tipo === 'PASEO') {
             this.soapService.client.then(client => {
               this.serviceService.getPaseobyId(client as Client, this.idSer).subscribe(response =>{
                   console.log('Paseo');
