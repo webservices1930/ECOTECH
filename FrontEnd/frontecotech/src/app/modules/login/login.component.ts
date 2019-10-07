@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
             result => {
               const userToSave = result.result.return;
               localStorage.setItem('user', JSON.stringify(userToSave));
-              this.router.navigate(['/services']);
+              this.router.navigate(['/profile']);
             }
           );
         } else {

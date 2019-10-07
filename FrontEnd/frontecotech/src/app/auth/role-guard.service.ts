@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -23,10 +24,10 @@ export class RoleGuardService implements CanActivate {
         this.router.navigate(['/404']);
         return false;
       }
-      /*
-      if (next.data.role === '*' || user.role === 'ADMIN' || user.role === next.data.role) {
+
+      if (next.data.rol === '*' || user.rolUsuario === 'ADMIN' || user.rolUsuario === next.data.rol) {
         return true;
-      }*/
+      }
       // navigate to not found page
       this.router.navigate(['/404']);
       return false;
