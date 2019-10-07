@@ -55,6 +55,38 @@ export class ServiceService {
 
     return client.call('leerPaseo', body);
   }
+  getAlimentacionbyId(client: Client, id: string) {
+    const body = {
+      arg0: id
+    };
+    console.log(client);
+
+    return client.call('leerAlimentacion', body);
+  }
+  getOtrobyId(client: Client, id: string) {
+    const body = {
+      arg0: id
+    };
+    console.log(client);
+
+    return client.call('leerOtro', body);
+  }
+  getAlojamientobyId(client: Client, id: string) {
+    const body = {
+      arg0: id
+    };
+    console.log(client);
+
+    return client.call('leerAlojamiento', body);
+  }
+  getTransportebyId(client: Client, id: string) {
+    const body = {
+      arg0: id
+    };
+    console.log(client);
+
+    return client.call('leerTransporte', body);
+  }
 
   createService(client: Client, service: Service) {
     const body = {

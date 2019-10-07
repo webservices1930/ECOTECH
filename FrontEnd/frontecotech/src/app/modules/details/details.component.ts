@@ -65,7 +65,7 @@ export class DetailsComponent implements OnInit {
           this.service = res.result.return;
           console.log('servicio');
           console.log(this.service);
-          if(this.service.tipo=='PASEO')
+          if(this.service.tipo==='PASEO')
           {
             this.soapService.client.then(client => {
               this.serviceService.getPaseobyId(client as Client, this.idSer).subscribe(response =>{
@@ -75,20 +75,20 @@ export class DetailsComponent implements OnInit {
               });
             });
           }
-          if(this.service.tipo=='ALIMENTACION')
+          if(this.service.tipo==='ALIMENTACION')
           {
             this.soapService.client.then(client => {
-              this.serviceService.getPaseobyId(client as Client, this.idSer).subscribe(response =>{
+              this.serviceService.getAlimentacionbyId(client as Client, this.idSer).subscribe(response =>{
                   console.log('Alimentacion');
                   console.log(response);
                   this.alimentacion = response.result.return;
               });
             });
           }
-          if(this.service.tipo=='ALOJAMIENTO')
+          if(this.service.tipo==='ALOJAMIENTO')
           {
             this.soapService.client.then(client => {
-              this.serviceService.getPaseobyId(client as Client, this.idSer).subscribe(response =>{
+              this.serviceService.getAlojamientobyId(client as Client, this.idSer).subscribe(response =>{
                   console.log('Alojameiento');
                   console.log(response);
                   this.alojamiento = response.result.return;
@@ -98,7 +98,7 @@ export class DetailsComponent implements OnInit {
           if(this.service.tipo=='OTRO')
           {
             this.soapService.client.then(client => {
-              this.serviceService.getPaseobyId(client as Client, this.idSer).subscribe(response =>{
+              this.serviceService.getOtrobyId(client as Client, this.idSer).subscribe(response =>{
                   console.log('Otro');
                   console.log(response);
                   this.otro = response.result.return;
@@ -108,7 +108,7 @@ export class DetailsComponent implements OnInit {
           if(this.service.tipo=='TRANSPORTE')
           {
             this.soapService.client.then(client => {
-              this.serviceService.getPaseobyId(client as Client, this.idSer).subscribe(response =>{
+              this.serviceService.getTransportebyId(client as Client, this.idSer).subscribe(response =>{
                   console.log('Transporta');
                   console.log(response);
                   this.transporte = response.result.return;
