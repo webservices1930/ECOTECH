@@ -86,7 +86,7 @@
                 </tbody>
             </table>
 
-            <button type="button" class="btn btn-outline-dark" (click)="addService()">Carrito</button>
+            <button type="button" class="btn btn-outline-dark" (click)="addService()" [routerLink]="['/shopCar']">Carrito</button>
             <div *ngIf="service.tipo == 'PASEO'"> </div>
             <button type="button" class="btn btn-primary" [routerLink]="['/services']">Lista
                 Servicios</button>
