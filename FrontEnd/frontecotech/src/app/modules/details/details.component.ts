@@ -6,6 +6,7 @@ import { Service, Paseo, Alimentacion, Alojamiento, Otro, Transporte } from 'src
 import { Client } from 'ngx-soap';
 import { User } from 'src/app/models/user.model';
 import { UserService } from 'src/app/services/user.service';
+import { Pregunta } from 'src/app/models/pregunta';
 
 @Component({
   selector: 'app-details',
@@ -21,8 +22,7 @@ export class DetailsComponent implements OnInit {
   otro: Otro;
   transporte: Transporte;
   pregunta: string = '';
-  preguntas: string[] = [];
-  preguntastemp: string[] = [];
+  preguntastemp: Pregunta[] = [];
   user: User;
 
   constructor(
@@ -43,8 +43,19 @@ export class DetailsComponent implements OnInit {
 
     this.route.paramMap.subscribe(params => {
       this.idSer = params.get('id');
-      console.log(this.idSer);
 
+      this.soapService.client.then(client => {
+        this.serviceService.getPreguntas(client as Client, this.idSer).subscribe(
+          res => {
+            console.log('Pregutnas'); 
+            console.log(res);
+            this.preguntastemp = res.result.return;
+            console.log(this.preguntastemp);
+          }
+        );
+      });
+
+      console.log(this.idSer);
       this.soapService.client.then(client => {
         this.serviceService.getServicebyId(client as Client, this.idSer).subscribe(res => {
           console.log('Services enviado');
@@ -110,15 +121,13 @@ export class DetailsComponent implements OnInit {
   }
 
   pregutar(){
-    this.preguntastemp.push(this.pregunta);
+    //this.preguntastemp.push(this.pregunta);
 
     this.soapService.client.then(client => {
       this.serviceService.addPregunta(client as Client, this.pregunta, this.idSer, this.user.id).subscribe(res => {
         console.log('Pregunta enviado');
         console.log(res);
-        //this.service = res.result.return;
-        //console.log('servicio');
-        //console.log(this.service);
+        this.preguntastemp.push(res.result.return);
       });
     });
 

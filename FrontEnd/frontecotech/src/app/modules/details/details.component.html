@@ -175,7 +175,8 @@
                 </div>
             </div>
             <div class= "row" *ngFor="let preg of preguntastemp">
-                {{preg}}
+                
+                ({{preg.fecha}}) {{'          '+preg.descripcion}}  
             </div>
         </div>
         <div class="col"></div>

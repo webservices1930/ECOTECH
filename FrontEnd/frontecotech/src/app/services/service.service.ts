@@ -38,6 +38,15 @@ export class ServiceService {
     return client.call('agregarPregunta', body);
   }
 
+   getPreguntas(client: Client, idServ: string): Observable<any> {
+    const body = {
+      arg0: idServ
+    };
+    console.log(client);
+    
+    return client.call('getListaPreguntas', body);
+  }
+
   getPaseobyId(client: Client, id: string) {
     const body = {
       arg0: id

@@ -1,4 +1,4 @@
-export class pregunta {
+export class Pregunta {
     id: string;
     descripcion: string;
     fecha: string;
