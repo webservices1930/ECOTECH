@@ -52,9 +52,14 @@ export class ShopCarComponent implements OnInit {
 
   borrarService(idServ:string){
     console.log(idServ)
-    this.cookieService.delete("SCS"+idServ);
-    var numServicios = Number(this.cookieService.get("count"))-1;
-    //this.cookieService.set("count",""+numServicios);
+    this.servicios.splice(Number(idServ)-1,1);
+    this.cookieService.deleteAll();
+    this.cookieService.set("count",""+this.servicios.length);
+    this.valor = 0;
+    for(var i=1;i<=this.servicios.length;i++){
+      this.cookieService.set("SCS"+i,""+this.servicios[i-1].id);
+      this.valor = this.valor + Number(this.servicios[i-1].costo);
+    }
   }
 
   checkout(){
