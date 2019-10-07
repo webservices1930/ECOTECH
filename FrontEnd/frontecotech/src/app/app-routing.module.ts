@@ -7,6 +7,7 @@ import { SignupComponent } from './modules/signup/signup.component';
 import { ServicesListComponent } from './modules/services-list/services-list.component';
 import { DetailsComponent } from './modules/details/details.component';
 import { CreateServiceComponent } from './modules/create-service/create-service.component';
+import { NotfoundComponent } from './modules/notfound/notfound.component';
 
 
 
@@ -31,6 +32,10 @@ const routes: Routes = [
     path: 'create-service',
     component: CreateServiceComponent
   },
+  {
+    path: '**',
+    component: NotfoundComponent
+  }
 ];
 
 @NgModule({
