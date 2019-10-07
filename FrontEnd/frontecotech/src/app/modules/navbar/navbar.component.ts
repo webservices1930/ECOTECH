@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
+import { count } from 'rxjs/operators';
 
 @Component({
   selector: 'app-navbar',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  carrito:string;
+
+  constructor(private cookieService: CookieService) { }
 
   ngOnInit() {
+    this.carrito = this.cookieService.get("count");
   }
 
 }
