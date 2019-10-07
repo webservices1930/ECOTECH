@@ -357,7 +357,7 @@
   </binding>
   <service name="ServicioPaseoService">
     <port name="ServicioPaseoPort" binding="tns:ServicioPaseoPortBinding">
-      <soap:address location="http://localhost/WS/servicios" />
+      <soap:address location="http://3.81.211.250/WS/servicios" />
     </port>
   </service>
   <types>
