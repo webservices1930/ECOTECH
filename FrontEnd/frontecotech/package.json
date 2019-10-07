@@ -31,6 +31,7 @@
     "lodash": "^4.17.15",
     "ng-bootstrap": "^1.6.3",
     "ng2-nouislider": "^1.8.2",
+    "ngx-cookie-service": "^2.2.0",
     "ngx-soap": "^0.6.0",
     "nouislider": "^14.0.2",
     "rxjs": "~6.4.0",

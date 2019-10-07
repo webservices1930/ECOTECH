@@ -6,9 +6,14 @@ import { SignupComponent } from './modules/signup/signup.component';
 
 import { ServicesListComponent } from './modules/services-list/services-list.component';
 import { DetailsComponent } from './modules/details/details.component';
+
+import { ShopCarComponent} from './modules/shop-car/shop-car.component';
+
 import { CreateServiceComponent } from './modules/create-service/create-service.component';
 import { RoleGuardService } from './auth/role-guard.service';
 import { NotfoundComponent } from './modules/notfound/notfound.component';
+import { CheckPayComponent } from './modules/check-pay/check-pay.component';
+
 
 
 
@@ -35,7 +40,24 @@ const routes: Routes = [
     canActivate: [RoleGuardService],
     data: { rol: 'CLIENTE' }
   },
-  {path: 'details/:id', component: DetailsComponent },
+  {
+    path: 'shopCar',
+     component: ShopCarComponent,
+    canActivate: [RoleGuardService],
+    data: { rol: 'CLIENTE' }
+  },
+  {
+    path: 'check',
+     component: CheckPayComponent,
+    canActivate: [RoleGuardService],
+    data: { rol: 'CLIENTE' }
+  },
+  {
+    path: 'details/:id',
+     component: DetailsComponent,
+     canActivate: [RoleGuardService],
+    data: { rol: '*' }
+  },
   {
     path: 'create-service',
     component: CreateServiceComponent,
