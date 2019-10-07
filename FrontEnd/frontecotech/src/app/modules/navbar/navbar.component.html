@@ -1,29 +1,28 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-secondary">
-    <a class="navbar-brand" routerLink="/">ECOTECH</a>
-    <div class="collapse navbar-collapse" id="mainNavbar">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item" >
-                <a class="nav-link" routerLink="/profile">Perfil</a>
-         </li>
-        <li class="nav-item" >
-         <a class="nav-link"  routerLink="/services">Servicios</a>
-        </li>
-        <li class="nav-item" >
-         <a class="nav-link" *ngIf="(userService.isProvider() | async)"  routerLink="/create-service">Crear servicio</a>
-        </li>
-      </ul>
-      <ul class="navbar-nav ml-auto">
-       
-        <li class="nav-item" >
-          <a class="nav-link" *ngIf="(userService.isClient() | async)" routerLink="/shopCar">Carrito de Compras <a style="color: white">{{carrito}}</a>
-        </li>
-        <li class="nav-item" >
-          <a (click)="logout()" class="nav-link">Logout
-          </a>
-        </li>
-      </ul>
-    </div>
-</nav>
-<div class="space">
+  <a class="navbar-brand" routerLink="/">ECOTECH</a>
+  <div class="collapse navbar-collapse" id="mainNavbar">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/profile">Perfil</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/services">Servicios</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" *ngIf="(userService.isProvider() | async)" routerLink="/create-service">Crear servicio</a>
+      </li>
+    </ul>
+    <ul class="navbar-nav ml-auto">
 
-</div>
+      <li class="nav-item">
+        <a class="nav-link" *ngIf="(userService.isClient() | async)" routerLink="/shopCar">Carrito de Compras 
+          <p style="color: white">{{carrito}}</p>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a (click)="logout()" class="nav-link">Logout
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
