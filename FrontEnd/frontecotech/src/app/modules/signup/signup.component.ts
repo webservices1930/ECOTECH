@@ -73,7 +73,7 @@ export class SignupComponent implements OnInit {
       this.userForm.value.rolUsuario = 'PROVEEDOR';
       const providerToCreate = this.userForm.value as Proveedor;
       this.soapService.client.then( client => {
-        this.userService.createClient(providerToCreate, client as Client).subscribe( res => {
+        this.userService.createProveedor(providerToCreate, client as Client).subscribe( res => {
           if ( res.result != null ) {
             alert('Usuario creado');
             this.router.navigate(['/login']);
