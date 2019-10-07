@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Service } from 'src/app/model/service';
+import { Service } from 'src/app/models/service';
 import { ServiceService } from 'src/app/services/service.service';
 import { SoapService } from 'src/app/services/soap.service';
 import { Client } from 'ngx-soap';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { UserService } from 'src/app/services/user.service';
-import { User } from 'src/app/models/user.model';
 
 @Component({
   selector: 'app-services-list',

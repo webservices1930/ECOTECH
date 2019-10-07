@@ -50,8 +50,6 @@ public class ServicioPaseo implements InterfaceECHOTECH {
 	@Override
 	public Servicio crearServicio(Servicio paseo) {
 		System.out.println("ServicioPaseo.crearServicio()");
-		gson = new GsonBuilder().create();
-		// TODO Auto-generated method stub
 		String temp = gson.toJson(paseo);
 		Document doc = Document.parse(temp);
 		MongoConnection.insertObject(Servicio.collection, doc);
@@ -61,7 +59,6 @@ public class ServicioPaseo implements InterfaceECHOTECH {
 	@Override
 	public Alimentacion crearServicioAlimentacion(Alimentacion alimentacion) {
 		System.out.println("ServicioPaseo.crearServicioAlimentacion()");
-		gson = new GsonBuilder().create();
 		String temp = gson.toJson(alimentacion);
 		Document doc = Document.parse(temp);
 		MongoConnection.insertObject(Servicio.collection, doc);
@@ -71,7 +68,6 @@ public class ServicioPaseo implements InterfaceECHOTECH {
 	@Override
 	public Alojamiento crearServicioAlojamiento(Alojamiento alojamiento) {
 		System.out.println("ServicioPaseo.crearServicioAlojamiento()");
-		gson = new GsonBuilder().create();
 		String temp = gson.toJson(alojamiento);
 		Document doc = Document.parse(temp);
 		MongoConnection.insertObject(Servicio.collection, doc);
@@ -81,7 +77,6 @@ public class ServicioPaseo implements InterfaceECHOTECH {
 	@Override
 	public Paseo crearServicioPaseo(Paseo paseo) {
 		System.out.println("ServicioPaseo.crearServicioPaseo()");
-		gson = new GsonBuilder().create();
 		String temp = gson.toJson(paseo);
 		Document doc = Document.parse(temp);
 		MongoConnection.insertObject(Servicio.collection, doc);
@@ -91,7 +86,6 @@ public class ServicioPaseo implements InterfaceECHOTECH {
 	@Override
 	public Otro crearServicioOtro(Otro otro) {
 		System.out.println("ServicioPaseo.crearServicioOtro()");
-		gson = new GsonBuilder().create();
 		String temp = gson.toJson(otro);
 		Document doc = Document.parse(temp);
 		MongoConnection.insertObject(Servicio.collection, doc);
@@ -101,7 +95,7 @@ public class ServicioPaseo implements InterfaceECHOTECH {
 	@Override
 	public Transporte crearServicioTransporte(Transporte transporte) {
 		System.out.println("ServicioPaseo.crearServicioTransporte()");
-		gson = new GsonBuilder().create();
+
 		String temp = gson.toJson(transporte);
 		Document doc = Document.parse(temp);
 		MongoConnection.insertObject(Servicio.collection, doc);

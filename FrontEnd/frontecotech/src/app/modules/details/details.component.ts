@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SoapService } from 'src/app/services/soap.service';
 import { ServiceService } from 'src/app/services/service.service';
-import { Service, Paseo, Alimentacion, Alojamiento, Otro, Transporte } from 'src/app/model/service';
+import { Service, Paseo, Alimentacion, Alojamiento, Otro, Transporte } from 'src/app/models/service';
 import { Client } from 'ngx-soap';
 
 @Component({
@@ -11,7 +11,7 @@ import { Client } from 'ngx-soap';
   styleUrls: ['./details.component.css']
 })
 export class DetailsComponent implements OnInit {
-  idSer: String = 'teamp';
+  idSer: string = 'teamp';
   service: Service;
   paseo: Paseo;
   alimentacion: Alimentacion;
@@ -47,7 +47,47 @@ export class DetailsComponent implements OnInit {
               this.serviceService.getPaseobyId(client as Client, this.idSer).subscribe(response =>{
                   console.log('Paseo');
                   console.log(response);
-
+                  this.paseo = response.result.return;
+              });
+            });
+          }
+          if(this.service.tipo=='ALIMENTACION')
+          {
+            this.soapService.client.then(client => {
+              this.serviceService.getPaseobyId(client as Client, this.idSer).subscribe(response =>{
+                  console.log('Alimentacion');
+                  console.log(response);
+                  this.alimentacion = response.result.return;
+              });
+            });
+          }
+          if(this.service.tipo=='ALOJAMIENTO')
+          {
+            this.soapService.client.then(client => {
+              this.serviceService.getPaseobyId(client as Client, this.idSer).subscribe(response =>{
+                  console.log('Alojameiento');
+                  console.log(response);
+                  this.alojamiento = response.result.return;
+              });
+            });
+          }
+          if(this.service.tipo=='OTRO')
+          {
+            this.soapService.client.then(client => {
+              this.serviceService.getPaseobyId(client as Client, this.idSer).subscribe(response =>{
+                  console.log('Otro');
+                  console.log(response);
+                  this.otro = response.result.return;
+              });
+            });
+          }
+          if(this.service.tipo=='TRANSPORTE')
+          {
+            this.soapService.client.then(client => {
+              this.serviceService.getPaseobyId(client as Client, this.idSer).subscribe(response =>{
+                  console.log('Transporta');
+                  console.log(response);
+                  this.transporte = response.result.return;
               });
             });
           }
