@@ -16,7 +16,7 @@ public class Servicio {
 	private long latitud;
 	private long longitud;
 	private transient List<Long> calificaciones;
-	private transient List<String> fotos;
+	private List<String> fotos;
 //	private transient List<Comentario> comentarios;
 //	private transient List<Pregunta> preguntas;
 

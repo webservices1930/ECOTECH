@@ -18,6 +18,7 @@ import { CreateServiceComponent } from './modules/create-service/create-service.
 import { CheckPayComponent } from './modules/check-pay/check-pay.component';
 
 import { NavbarComponent } from './modules/navbar/navbar.component';
+import { NotfoundComponent } from './modules/notfound/notfound.component';
 
 
 
@@ -32,7 +33,8 @@ import { NavbarComponent } from './modules/navbar/navbar.component';
     ShopCarComponent,
     CheckPayComponent,
     CreateServiceComponent,
-    NavbarComponent
+    NavbarComponent,
+    NotfoundComponent,
   ],
   imports: [
     BrowserModule,

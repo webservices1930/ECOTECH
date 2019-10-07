@@ -27,6 +27,26 @@ export class ServiceService {
     return client.call('leerServicio', body);
   }
 
+  addPregunta(client: Client, descrip: string, idServ: string, idClient: string): Observable<any> {
+    const body = {
+      arg0: descrip,
+      arg1: idServ,
+      arg2: idClient
+    };
+    console.log(client);
+    
+    return client.call('agregarPregunta', body);
+  }
+
+   getPreguntas(client: Client, idServ: string): Observable<any> {
+    const body = {
+      arg0: idServ
+    };
+    console.log(client);
+    
+    return client.call('getListaPreguntas', body);
+  }
+
   getPaseobyId(client: Client, id: string) {
     const body = {
       arg0: id

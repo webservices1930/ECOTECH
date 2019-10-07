@@ -10,7 +10,7 @@ import { Client } from 'ngx-soap';
 @Component({
   selector: 'app-create-service',
   templateUrl: './create-service.component.html',
-  styleUrls: ['./create-service.component.css']
+  styleUrls: ['./create-service.component.scss']
 })
 export class CreateServiceComponent implements OnInit {
 
@@ -39,7 +39,12 @@ export class CreateServiceComponent implements OnInit {
   createServiceWithClient( client: Client ) {
     this.serviceForm.value.tipo = this.serviceForm.value.tipo.toUpperCase();
     const service = this.serviceForm.value as Service;
+    let s:string = this.serviceForm.get('fotos').value;
+    console.log(s);
+    service.fotos = [];
+    service.fotos.push(s);
     console.log(service);
+    
     console.log(TypeService.Alimentacion.toString());
     if (service.tipo == null) {
       this.serviceService.createService(client, service).subscribe( res => {
@@ -89,6 +94,7 @@ export class CreateServiceComponent implements OnInit {
       costo: ['', [Validators.required]],
       latitud: ['', [Validators.required]],
       longitud: ['', [Validators.required]],
+      fotos: ['', [Validators.required]],
       tipo: ['', [Validators.required]],
       // Paseo && Transporte
       horaSalida: [''],
