@@ -1,0 +1,301 @@
+<h1 class="text-center">Crear Servicio</h1>
+<form [formGroup]="serviceForm" (ngSubmit)="createService()">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col"></div>
+      <div class="col-7">
+        <table class="table table-striped border border-dark rounded-10">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">Dato</th>
+              <th scope="col">Valor</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Nombre</th>
+              <td>
+                <div class="input-group mb-3">
+                  <input
+                    formControlName="nombre"
+                    class="form-control"
+                    type="text"
+                    name="pass"
+                    placeholder="Nombre"
+                  />
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">Tipo</th>
+              <td>
+                <div class="input-group mb-3">
+                  <input
+                  
+                    class="form-control"
+                    type="text"
+                    name="pass"
+                    placeholder="Tipo"
+                    disabled="true"
+                    [value]="serviceForm.value.tipo"
+                  />
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">Descripción</th>
+              <td>
+                <div class="input-group mb-3">
+                  <input
+                    formControlName="descripcion"
+                    class="form-control"
+                    type="text"
+                    name="pass"
+                    placeholder="Descipción"
+                  />
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">Contacto</th>
+              <td>
+                <div class="input-group mb-3">
+                  <input
+                    formControlName="contacto"
+                    class="form-control"
+                    type="text"
+                    name="pass"
+                    placeholder="Contacto"
+                  />
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">Costo</th>
+              <td>
+                <div class="input-group mb-3">
+                  <input
+                    formControlName="costo"
+                    class="form-control"
+                    type="number"
+                    name="pass"
+                    placeholder="Costo"
+                  />
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">Ubicación</th>
+              <td>
+                <div class="input-group mb-3">
+                  <input
+                    formControlName="latitud"
+                    class="form-control"
+                    type="number"
+                    name="pass"
+                    placeholder="Latitud"
+                  />
+                  <input
+                    formControlName="longitud"
+                    class="form-control"
+                    type="number"
+                    name="pass"
+                    placeholder="Longitud"
+                  />
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="form-group">
+          <label for="selectorTypeService">Detalles de </label>
+          <select
+            class="form-control"
+            id="selectorTypeService"
+            formControlName="tipo"
+          >
+            <option
+              *ngFor="let type of typeService; let i = index"
+              [value]="type"
+              [selected]="i == 0"
+              >{{ type }}</option
+            >
+          </select>
+        </div>
+        <table class="table table-striped border border-dark rounded-10">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">Dato</th>
+              <th scope="col">Valor</th>
+            </tr>
+          </thead>
+          <!-- Paseo -->
+          <tbody *ngIf="serviceForm.value.tipo == 'Paseo'">
+            <tr>
+              <th scope="row">Hora Salida</th>
+              <td>
+                <input
+                    formControlName="horaSalida"
+                    class="form-control"
+                    type="datetime-local"
+                    name="pass"
+                    placeholder="Hora salida"
+                  />
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">Hora Llegada</th>
+              <td>
+                <input
+                    formControlName="horaLlegada"
+                    class="form-control"
+                    type="datetime-local"
+                    name="pass"
+                    placeholder="Hora llegada"
+                  />
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">Trayecto</th>
+              <td>
+                <input
+                    formControlName="trayecto"
+                    class="form-control"
+                    type="text"
+                    name="pass"
+                    placeholder="Trayecto"
+                  />
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">Restricciones</th>
+              <td>
+                <input
+                    formControlName="restricciones"
+                    class="form-control"
+                    type="text"
+                    name="pass"
+                    placeholder="Restricciones"
+                  />
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">Sugerencias</th>
+              <td>
+                <input
+                    formControlName="sugerencias"
+                    class="form-control"
+                    type="text"
+                    name="pass"
+                    placeholder="Sugerencias"
+                  />
+              </td>
+            </tr>
+          </tbody>
+          <!-- Transporte -->
+          <tbody *ngIf="serviceForm.value.tipo == 'Transporte'">
+            <tr>
+              <th scope="row">Hora Salida</th>
+              <td>
+                <input
+                    formControlName="horaSalida"
+                    class="form-control"
+                    type="datetime-local"
+                    name="pass"
+                    placeholder="Hora salida"
+                  />
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">Hora Llegada</th>
+              <td>
+                <input
+                    formControlName="horaLlegada"
+                    class="form-control"
+                    type="datetime-local"
+                    name="pass"
+                    placeholder="Hora llegada"
+                  />
+              </td>
+            </tr>
+          </tbody>
+          <!-- Alimentacion -->
+          <tbody *ngIf="serviceForm.value.tipo == 'Alimentacion'">
+            <tr>
+              <th scope="row">Tipo comida</th>
+              <td>
+                <input
+                    formControlName="tipoComida"
+                    class="form-control"
+                    type="text"
+                    name="pass"
+                    placeholder="Tipo comida"
+                  />
+              </td>
+            </tr>
+          </tbody>
+          <!-- Alojamientos -->
+          <tbody *ngIf="serviceForm.value.tipo == 'Alojamiento'">
+            <tr>
+              <th scope="row">Numero de habitaciones</th>
+              <td>
+                <input
+                    formControlName="numHabitaciones"
+                    class="form-control"
+                    type="number"
+                    name="pass"
+                    placeholder="Numero de habitaciones"
+                  />
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">Numero de huespedes</th>
+              <td>
+                <input
+                    formControlName="numHuespedes"
+                    class="form-control"
+                    type="number"
+                    name="pass"
+                    placeholder="Numero de huespedes"
+                  />
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">Extras</th>
+              <td>
+                <input
+                    formControlName="extras"
+                    class="form-control"
+                    type="text"
+                    name="pass"
+                    placeholder="Extras"
+                  />
+              </td>
+            </tr>
+          </tbody>
+          <!-- Otro -->
+          <tbody *ngIf="serviceForm.value.tipo == 'Otro'">
+            <tr>
+              <th scope="row">Tipo servicio</th>
+              <td>
+                <input
+                    formControlName="tipoServicio"
+                    class="form-control"
+                    type="text"
+                    name="pass"
+                    placeholder="Tipo servicio"
+                  />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="row justify-content-md-center">
+          <button [disabled]="!serviceForm.valid"  type="submit" class="btn btn-outline-dark" >Crear Servicio</button>
+        </div>
+      </div>
+      <div class="col"></div>
+    </div>
+  </div>
+</form>

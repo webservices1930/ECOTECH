@@ -4,6 +4,15 @@ public class Alojamiento extends Servicio {
 	private int numHabitaciones;
 	private int numHuespedes;
 	private String extras;
+	private TipoAlojamiento tipoAlojamiento;
+
+	public TipoAlojamiento getTipoAlojamiento() {
+		return tipoAlojamiento;
+	}
+
+	public void setTipoAlojamiento(TipoAlojamiento tipoAlojamiento) {
+		this.tipoAlojamiento = tipoAlojamiento;
+	}
 
 	public int getNumHabitaciones() {
 		return numHabitaciones;
