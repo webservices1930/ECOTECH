@@ -22,13 +22,13 @@ export class Alimentacion extends Service {
 }
 
 export class Alojamiento extends Service {
-    numHabaitaciones: number;
+    numHabitaciones: number;
     numHuespedes: number;
     extras: string;
 }
 
 export class Otro extends Service {
-    tioServicio: string;
+    tipoServicio: string;
 
 }
 
@@ -36,4 +36,12 @@ export class Transporte extends Service {
 
     horaSalida: string;
     horaLlegada: string;
+}
+
+export enum TypeService {
+  Paseo,
+  Alimentacion,
+  Alojamiento,
+  Otro,
+  Transporte
 }

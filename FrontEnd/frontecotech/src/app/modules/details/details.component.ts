@@ -11,7 +11,7 @@ import { Client } from 'ngx-soap';
   styleUrls: ['./details.component.css']
 })
 export class DetailsComponent implements OnInit {
-  idSer: String = 'teamp';
+  idSer: string = 'teamp';
   service: Service;
   paseo: Paseo;
   alimentacion: Alimentacion;
