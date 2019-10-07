@@ -1,0 +1,52 @@
+<app-navbar></app-navbar>
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+<app-navbar></app-navbar>
+<div class="container">
+	<table id="cart" class="table table-hover table-condensed">
+		<thead>
+			<tr>
+				<th style="width:5%">#</th>
+				<th style="width:70%">Servicio</th>
+				<th style="width:15%">Precio</th>
+				<th style="width:10%"></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let service of servicios; let i = index">
+				<td>{{i+1}}</td>
+				<td data-th="Product">
+					<div class="row">
+						<div class="col-sm-2 hidden-xs">
+							<img *ngIf="service.img"  [src]="service.img[0]"
+								alt="..." class="img-responsive" />
+						</div>
+						<div class="col-sm-10">
+							<h4 class="nomargin">{{service.nombre}}</h4>
+							<p>{{service.descripcion}}</p>
+						</div>
+					</div>
+				</td>
+				<td data-th="Price">{{service.costo}}</td>
+				<td class="actions" data-th="">
+					<button class="btn btn-danger btn-sm" (click)="borrarService(i+1)" [routerLink]="['/shopCar']"><i
+							class="fa fa-trash-o"></i></button>
+				</td>
+			</tr>
+		</tbody>
+		<tfoot>
+			<tr>
+				<td><a href="/services" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continuar Comprando</a>
+				</td>
+				<td colspan="2" class="hidden-xs"></td>
+				<td class="hidden-xs text-center"><strong>Total ${{valor}}</strong></td>
+				<td><a href="/check" class="btn btn-success btn-block" (click)="checkout()">Checkout<i
+							class="fa fa-angle-right"></i></a></td>
+			</tr>
+		</tfoot>
+	</table>
+</div>

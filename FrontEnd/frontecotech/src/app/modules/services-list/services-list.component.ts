@@ -9,7 +9,7 @@ import { UserService } from 'src/app/services/user.service';
 @Component({
   selector: 'app-services-list',
   templateUrl: './services-list.component.html',
-  styleUrls: ['./services-list.component.css']
+  styleUrls: ['./services-list.component.scss']
 })
 export class ServicesListComponent implements OnInit {
 
@@ -66,6 +66,16 @@ export class ServicesListComponent implements OnInit {
   private buildServiceForm() {
     this.serviceForm = this.formBuilder.group({
       keyword: ['', ],
+    });
+  }
+
+  private searchType(event: any){
+    console.log(event.target.value);
+    this.servicios = [];
+    this.serviciosTemp.forEach(servicio => {
+      if (servicio.tipo.toLowerCase().includes(event.target.value.toLowerCase()) ) {
+        this.servicios.push(servicio);
+      }
     });
   }
 
