@@ -38,7 +38,7 @@ export class ProfileComponent implements OnInit {
     }
 
     esProveedor(): boolean {
-        if (this.user.rol === 'PROVEEDOR') {
+        if (this.user.rolUsuario === 'PROVEEDOR') {
             return true;
         }
         return false;
