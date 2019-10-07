@@ -42,6 +42,22 @@ export class UserService {
     return client.call('crearUsuario', body);
   }
 
+  getProviderByNickname(nickname: string, client: Client): Observable<any> {
+    const body = {
+      arg0: nickname,
+    };
+
+    return client.call('obtenerProveedorPorNickname', body);
+  }
+
+  getClienteByNickname(nickname: string, client: Client): Observable<any> {
+    const body = {
+      arg0: nickname,
+    };
+
+    return client.call('obtenerClientePorNickname', body);
+  }
+
   decode(): Observable<any> {
     if (this.userToReturn == null ) {
       this.userToReturn = JSON.parse(localStorage.getItem('user'));

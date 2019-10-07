@@ -46,7 +46,47 @@ export class DetailsComponent implements OnInit {
               this.serviceService.getPaseobyId(client as Client, this.idSer).subscribe(response =>{
                   console.log('Paseo');
                   console.log(response);
-
+                  this.paseo = response.result.return;
+              });
+            });
+          }
+          if(this.service.tipo=='ALIMENTACION')
+          {
+            this.soapService.client.then(client => {
+              this.serviceService.getPaseobyId(client as Client, this.idSer).subscribe(response =>{
+                  console.log('Alimentacion');
+                  console.log(response);
+                  this.alimentacion = response.result.return;
+              });
+            });
+          }
+          if(this.service.tipo=='ALOJAMIENTO')
+          {
+            this.soapService.client.then(client => {
+              this.serviceService.getPaseobyId(client as Client, this.idSer).subscribe(response =>{
+                  console.log('Alojameiento');
+                  console.log(response);
+                  this.alojamiento = response.result.return;
+              });
+            });
+          }
+          if(this.service.tipo=='OTRO')
+          {
+            this.soapService.client.then(client => {
+              this.serviceService.getPaseobyId(client as Client, this.idSer).subscribe(response =>{
+                  console.log('Otro');
+                  console.log(response);
+                  this.otro = response.result.return;
+              });
+            });
+          }
+          if(this.service.tipo=='TRANSPORTE')
+          {
+            this.soapService.client.then(client => {
+              this.serviceService.getPaseobyId(client as Client, this.idSer).subscribe(response =>{
+                  console.log('Transporta');
+                  console.log(response);
+                  this.transporte = response.result.return;
               });
             });
           }
