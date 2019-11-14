@@ -24,4 +24,5 @@ public class ServicesController {
 		MongoConnection.insertObject("Service", doc);
 		return service;
 	}
+
 }
