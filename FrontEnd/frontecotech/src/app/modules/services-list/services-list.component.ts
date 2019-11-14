@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Service } from 'src/app/models/service';
 import { ServiceService } from 'src/app/services/service.service';
-import { SoapService } from 'src/app/services/soap.service';
+
 import { Client } from 'ngx-soap';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { UserService } from 'src/app/services/user.service';
@@ -21,25 +21,23 @@ export class ServicesListComponent implements OnInit {
     private serviceService: ServiceService,
     private userService: UserService,
     private formBuilder: FormBuilder,
-    private soapService: SoapService,
   ) { }
 
   serviceForm: FormGroup;
 
   ngOnInit() {
-    this.soapService.client.then(client => {
-      this.serviceService.getAllServices(client as Client).subscribe(res => {
-        console.log('Services enviado');
-        console.log(res);
-        this.servicios = res.result.return;
-        this.serviciosTemp = this.servicios.slice();
-        console.log('servicios');
-        console.log(this.servicios);
-      });
+
+    this.serviceService.getAllServices().subscribe(res => {
+      console.log('Services enviado');
+      console.log(res);
+      this.servicios = res.result.return;
+      this.serviciosTemp = this.servicios.slice();
+      console.log('servicios');
+      console.log(this.servicios);
     });
 
     this.userService.decode().subscribe(res => {
-      console.log("USER");
+      console.log('USER');
       this.user = res.nickname;
       console.log(res);
     });
@@ -69,7 +67,7 @@ export class ServicesListComponent implements OnInit {
     });
   }
 
-  private searchType(event: any){
+  private searchType(event: any) {
     console.log(event.target.value);
     this.servicios = [];
     this.serviciosTemp.forEach(servicio => {
