@@ -19,7 +19,7 @@ public class ServicesController {
 	private Gson gson = new Gson();
 
 	@PostMapping(value = "", produces = "application/json")
-	public Servicio postService(@RequestBody Servicio service) {
+	public Object postService(@RequestBody Object service) {
 		Document doc = Document.parse(gson.toJson(service));
 		MongoConnection.insertObject("Service", doc);
 		return service;
