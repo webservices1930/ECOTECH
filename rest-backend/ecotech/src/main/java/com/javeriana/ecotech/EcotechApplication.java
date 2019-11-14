@@ -8,7 +8,7 @@ import com.javeriana.ecotech.integration.MongoConnection;
 @SpringBootApplication
 public class EcotechApplication {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		new MongoConnection();
 		SpringApplication.run(EcotechApplication.class, args);
 	}
