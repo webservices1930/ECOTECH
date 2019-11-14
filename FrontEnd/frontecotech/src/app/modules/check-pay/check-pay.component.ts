@@ -10,16 +10,16 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class CheckPayComponent implements OnInit {
 
-  private messages = "Su Pago fue Exitoso"
-  valor:number = 0;
+  private messages = 'Su Pago fue Exitoso';
+  valor = 0;
 
   constructor(private cookieService: CookieService) { }
 
   ngOnInit() {
-    this.valor = Number(this.cookieService.get("costo"));
+    this.valor = Number(this.cookieService.get('costo'));
   }
 
-  message(){
+  message() {
     alert(this.messages);
     this.cookieService.deleteAll();
     this.cookieService.set('count', '0');

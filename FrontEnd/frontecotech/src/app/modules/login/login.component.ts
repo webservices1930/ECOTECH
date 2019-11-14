@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../services/user.service';
 import { Client } from 'ngx-soap';
-import { SoapService } from '../../services/soap.service';
 import { Router } from '@angular/router';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { User } from '../../models/user.model';
@@ -18,7 +17,6 @@ export class LoginComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private userService: UserService,
-    private soapService: SoapService,
     private router: Router,
     private cookieService: CookieService
   ) { }
@@ -42,24 +40,24 @@ export class LoginComponent implements OnInit {
   login() {
     const user = this.userForm.value as User;
     console.log(user);
-    this.soapService.client.then( client => {
-      this.userService.login(user.nickname, user.password, client as Client ).subscribe(res => {
-        console.log('Login enviado');
-        const credentialsCorrect = res.result.return;
-        console.log(credentialsCorrect);
-        if (res.result.return) {
-          this.userService.getUserByNickName(user.nickname, client as  Client).subscribe(
-            result => {
-              const userToSave = result.result.return;
-              localStorage.setItem('user', JSON.stringify(userToSave));
-              this.router.navigate(['/profile']);
-            }
-          );
-        } else {
-          alert('Usuario o contraseña incorrecto.');
-        }
-      });
+
+    this.userService.loginUser(user.nickname, user.password ).subscribe(res => {
+      console.log('Login enviado');
+      const credentialsCorrect = res;
+      console.log(credentialsCorrect);
+      if (res) {
+        this.userService.getUserByNickName(user.nickname).subscribe(
+          result => {
+            const userToSave = result;
+            localStorage.setItem('user', JSON.stringify(userToSave));
+            this.router.navigate(['/profile']);
+          }
+        );
+      } else {
+        alert('Usuario o contraseña incorrecto.');
+      }
     });
+
 
   }
 }

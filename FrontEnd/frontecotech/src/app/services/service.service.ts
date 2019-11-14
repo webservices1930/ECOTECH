@@ -1,17 +1,23 @@
 import { Injectable } from '@angular/core';
-import { SoapService } from './soap.service';
 import { Observable } from 'rxjs';
 import { Client } from 'ngx-soap';
 import { Service, Alimentacion, Alojamiento, Paseo, Otro, Transporte } from '../models/service';
+import { BASE_URL } from '../shared/constants';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ServiceService {
 
+  readonly SERVICE_END_POINT = BASE_URL + 'services/';
+
   constructor(
-    private soapService: SoapService
+    private http: HttpClient,
     ) { }
+
+  /*
+    -------BEFORE
 
 
   getAllServices(client: Client): Observable<any> {
@@ -34,7 +40,7 @@ export class ServiceService {
       arg2: idClient
     };
     console.log(client);
-    
+
     return client.call('agregarPregunta', body);
   }
 
@@ -43,7 +49,7 @@ export class ServiceService {
       arg0: idServ
     };
     console.log(client);
-    
+
     return client.call('getListaPreguntas', body);
   }
 
@@ -125,5 +131,22 @@ export class ServiceService {
       arg0: transporte
     };
     return client.call('crearServicioTransporte', body);
+  }
+  */
+
+  getAllServices(): Observable<any> {
+    return this.http.get<Service[]>(this.SERVICE_END_POINT, {
+      withCredentials: true
+    });
+  }
+
+  getServicebyId(id: string) {
+    return this.http.get<Service>(`${this.SERVICE_END_POINT}${id}`, {
+      withCredentials: true
+    });
+  }
+
+  createService(service: Service) {
+    return this.http.post<Service>(`${this.SERVICE_END_POINT}`, service);
   }
 }

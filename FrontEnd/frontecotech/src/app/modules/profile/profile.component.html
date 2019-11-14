@@ -27,9 +27,9 @@
                         <p class="contenidos">Descripción:</p>
                         <p class="subtitle" *ngIf="user">{{user.descripcion}}</p>
                         <p class="contenidos" *ngIf="p">Contacto</p>
-                        <p class="subtitle" *ngIf="p">{{p.telefono}}</p>
-                        <p class="contenidos" *ngIf="p">Web: {{p.web}}</p>
-                        <p class="contenidos" *ngIf="c">Documento: {{c.di}}</p>
+                        <p class="subtitle" *ngIf="p">{{user.telefono}}</p>
+                        <p class="contenidos" *ngIf="p">Web: {{user.web}}</p>
+                        <p class="contenidos" *ngIf="c">Documento: {{user.di}}</p>
                         <br/>
                     </div>
                 </div>
@@ -37,16 +37,16 @@
                     <div class="content">
                         <img src={{user.foto}} alt="profile" class="profile" *ngIf="user">
                         <br/>
-                        <p class="contenidos" *ngIf="p">Twitter: {{p.usuarioTwitter}}</p>
-                        <p class="contenidos" *ngIf="p">Facebook: {{p.usuarioFacebook}}</p>
-                        <p class="contenidos" *ngIf="p">Instagram: {{p.usuarioInstagram}}</p>
+                        <p class="contenidos" *ngIf="p">Twitter: {{user.usuarioTwitter}}</p>
+                        <p class="contenidos" *ngIf="p">Facebook: {{user.usuarioFacebook}}</p>
+                        <p class="contenidos" *ngIf="p">Instagram: {{user.usuarioInstagram}}</p>
                         <br/><br/>
                         <!-- <input type="button" class="button1" value="Editar perfil">
                         <br/><br/>
                         <input type="button" class="button2" value="Eliminar perfil"> -->
                     </div>
                 </div>
-            </div>    
+            </div>
       </div>
     </div>
 	</div>
