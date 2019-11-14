@@ -1,9 +1,9 @@
 import { User } from './user.model';
 
 export class Pregunta {
-    id: string;
+    id?: string;
     descripcion: string;
-    fecha: string;
-    respuesta: string;
-    clientes: User;
+    fecha?: string;
+    respuesta?: string;
+    cliente?: User;
 }

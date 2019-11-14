@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { SoapService } from 'src/app/services/soap.service';
 import { ServiceService } from 'src/app/services/service.service';
 import { Service, Paseo, Alimentacion, Alojamiento, Otro, Transporte } from 'src/app/models/service';
 import { Client } from 'ngx-soap';
@@ -8,6 +7,7 @@ import { User } from 'src/app/models/user.model';
 import { UserService } from 'src/app/services/user.service';
 import { Pregunta } from 'src/app/models/pregunta';
 import { CookieService } from 'ngx-cookie-service';
+import { QuestionService } from '../../services/question.service';
 
 @Component({
   selector: 'app-details',
@@ -15,14 +15,14 @@ import { CookieService } from 'ngx-cookie-service';
   styleUrls: ['./details.component.scss']
 })
 export class DetailsComponent implements OnInit {
-  idSer: string = 'teamp';
+  idSer = 'teamp';
   service: Service;
-  paseo: Paseo;
-  alimentacion: Alimentacion;
-  alojamiento: Alojamiento;
-  otro: Otro;
-  transporte: Transporte;
-  pregunta: string = '';
+  // paseo: Paseo;
+  // alimentacion: Alimentacion;
+  // alojamiento: Alojamiento;
+  // otro: Otro;
+  // transporte: Transporte;
+  pregunta = '';
   preguntastemp: Pregunta[] = [];
   user: User;
 
@@ -31,14 +31,14 @@ export class DetailsComponent implements OnInit {
     private route: ActivatedRoute,
     private userService: UserService,
     private serviceService: ServiceService,
-    private soapService: SoapService,
+    private questionService: QuestionService,
     private cookieService: CookieService
   ) { }
 
   ngOnInit() {
 
     this.userService.decode().subscribe(res => {
-      console.log("USER");
+      console.log('USER');
       this.user = res;
       console.log(res);
     });
@@ -46,18 +46,18 @@ export class DetailsComponent implements OnInit {
     this.route.paramMap.subscribe(params => {
       this.idSer = params.get('id');
 
-      this.soapService.client.then(client => {
-        this.serviceService.getPreguntas(client as Client, this.idSer).subscribe(
-          res => {
-            console.log('Pregutnas'); 
-            console.log(res);
-            this.preguntastemp = res.result.return;
-            console.log(this.preguntastemp);
-          }
-        );
-      });
+      this.questionService.getQuestionsById(this.idSer).subscribe(
+        res => {
+          console.log('Preguntas');
+          console.log(res);
+          this.preguntastemp = res.result.return;
+          console.log(this.preguntastemp);
+        }
+      );
+
 
       console.log(this.idSer);
+      /*
       this.soapService.client.then(client => {
         this.serviceService.getServicebyId(client as Client, this.idSer).subscribe(res => {
           console.log('Services enviado');
@@ -118,28 +118,38 @@ export class DetailsComponent implements OnInit {
 
 
         });
-      });
-    });
-  }
-  addService(){
-    var countServices = this.cookieService.get("count");
-    var num = Number(countServices)+1;
-    console.log('Cookie creada');
-    this.cookieService.set("SCS"+num,""+this.idSer);
-    this.cookieService.set("count",""+num);
-    console.log('Cookie creada');
-  }
 
-  pregutar(){
-    //this.preguntastemp.push(this.pregunta);
-
-    this.soapService.client.then(client => {
-      this.serviceService.addPregunta(client as Client, this.pregunta, this.idSer, this.user.id).subscribe(res => {
-        console.log('Pregunta enviado');
+      });*/
+      this.serviceService.getServicebyId(this.idSer).subscribe(res => {
+        console.log('Services enviado');
         console.log(res);
-        this.preguntastemp.push(res.result.return);
+        this.service = res;
+        console.log('servicio');
+        console.log(this.service);
       });
     });
+  }
+  addService() {
+    const countServices = this.cookieService.get('count');
+    const num = Number(countServices) + 1;
+    console.log('Cookie creada');
+    this.cookieService.set('SCS' + num, '' + this.idSer);
+    this.cookieService.set('count', '' + num);
+    console.log('Cookie creada');
+  }
+
+  pregutar() {
+    // this.preguntastemp.push(this.pregunta);
+
+    const question = {
+      descripcion: this.pregunta
+    }  as Pregunta;
+    this.questionService.addPregunta( question , this.idSer, this.user.id).subscribe(res => {
+      console.log('Pregunta enviado');
+      console.log(res);
+      this.preguntastemp.push(res);
+    });
+
 
   }
 

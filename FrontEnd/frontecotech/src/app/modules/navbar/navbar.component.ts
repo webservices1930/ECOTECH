@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent implements OnInit {
 
-  carrito:string;
+  carrito: string;
 
   constructor(
     private cookieService: CookieService,
@@ -20,7 +20,7 @@ export class NavbarComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.carrito = this.cookieService.get("count");
+    this.carrito = this.cookieService.get('count');
   }
 
   logout() {

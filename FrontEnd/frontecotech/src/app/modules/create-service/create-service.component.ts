@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ServiceService } from '../../services/service.service';
-import { SoapService } from '../../services/soap.service';
 import { Router } from '@angular/router';
 import { TypeService, Service, Alimentacion, Alojamiento, Otro, Paseo, Transporte } from '../../models/service';
 import { toArray } from 'rxjs/operators';
@@ -17,7 +16,6 @@ export class CreateServiceComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private serviceService: ServiceService,
-    private soapService: SoapService,
     private router: Router
   ) { }
 
@@ -39,13 +37,16 @@ export class CreateServiceComponent implements OnInit {
   createServiceWithClient( client: Client ) {
     this.serviceForm.value.tipo = this.serviceForm.value.tipo.toUpperCase();
     const service = this.serviceForm.value as Service;
-    let s:string = this.serviceForm.get('fotos').value;
+    const s: string = this.serviceForm.get('fotos').value;
     console.log(s);
     service.fotos = [];
     service.fotos.push(s);
     console.log(service);
-    
     console.log(TypeService.Alimentacion.toString());
+
+    /*
+
+    -------------BEFORE
     if (service.tipo == null) {
       this.serviceService.createService(client, service).subscribe( res => {
         this.goodAction();
@@ -75,15 +76,13 @@ export class CreateServiceComponent implements OnInit {
       this.serviceService.createServiceTransporte(client, transporte).subscribe(res => {
         this.goodAction();
       });
-    }
-  }
+    }*/
 
-  createService() {
-    console.log(this.serviceForm);
-    this.soapService.client.then(client => {
-      this.createServiceWithClient(client as Client);
+    this.serviceService.createService(this.serviceForm.value).subscribe( res => {
+      this.goodAction();
     });
   }
+
 
   private buildServiceForm() {
     this.serviceForm = this.formBuilder.group({
