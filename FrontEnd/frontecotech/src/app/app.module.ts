@@ -19,6 +19,7 @@ import { CheckPayComponent } from './modules/check-pay/check-pay.component';
 
 import { NavbarComponent } from './modules/navbar/navbar.component';
 import { NotfoundComponent } from './modules/notfound/notfound.component';
+import { NewsComponent } from './modules/news/news.component';
 
 
 
@@ -35,6 +36,7 @@ import { NotfoundComponent } from './modules/notfound/notfound.component';
     CreateServiceComponent,
     NavbarComponent,
     NotfoundComponent,
+    NewsComponent,
   ],
   imports: [
     BrowserModule,
