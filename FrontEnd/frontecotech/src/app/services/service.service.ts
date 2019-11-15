@@ -139,7 +139,7 @@ export class ServiceService {
 
   getAllServices(): Observable<any> {
     return this.http.get<Service[]>(this.SERVICE_END_POINT, {
-      withCredentials: true
+      //withCredentials: true
     });
   }
 
