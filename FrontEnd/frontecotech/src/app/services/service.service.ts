@@ -4,6 +4,7 @@ import { Client } from 'ngx-soap';
 import { Service, Alimentacion, Alojamiento, Paseo, Otro, Transporte } from '../models/service';
 import { BASE_URL } from '../shared/constants';
 import { HttpClient } from '@angular/common/http';
+import { Noticia } from '../models/noticia';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,8 @@ import { HttpClient } from '@angular/common/http';
 export class ServiceService {
 
   readonly SERVICE_END_POINT = BASE_URL + 'services/';
+  readonly SERVICE_NEWS = BASE_URL + 'news/';
+  readonly SERVICE_REVIEW = BASE_URL + 'comments/';
 
   constructor(
     private http: HttpClient,
@@ -141,12 +144,20 @@ export class ServiceService {
   }
 
   getServicebyId(id: string) {
-    return this.http.get<Service>(`${this.SERVICE_END_POINT}${id}`, {
+    return this.http.get<Service>(`${this.SERVICE_END_POINT}/${id}`, {
       withCredentials: true
     });
   }
 
   createService(service: Service) {
     return this.http.post<Service>(`${this.SERVICE_END_POINT}`, service);
+  }
+
+  getNews(country:string,category:string){
+    return this.http.get<any>(`${this.SERVICE_NEWS}/${country}/${category}`);
+  }
+
+  getReview(idService:string){
+    return this.http.get<any>(`${this.SERVICE_REVIEW}/${idService}`);
   }
 }

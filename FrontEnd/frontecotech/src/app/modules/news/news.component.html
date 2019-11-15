@@ -1,0 +1,29 @@
+<app-navbar></app-navbar>
+
+  <div class="row justify-content-md-center limiter">
+  
+      <div class="col-6">
+          <div>
+              <h1 class="text-center" style="color: white;">Noticias mas Recientes</h1>
+          </div>
+          
+          
+          <br>
+        
+          <div class="card" style="margin-bottom: 15px;" *ngFor="let new of this.noticias">
+              <h5 class="card-header">{{new.title}}</h5>
+              <div class="card-body">
+                  <div class="row">
+                      <div class="col-3" >
+                          <img [src]="new.urlToImage" class="img-fluid rounded shadow-lg" alt="imagen">
+                      </div>
+                      <div class="col-9">
+                          <p class="card-text">{{new.description}}<a [href]="new.url"> Leer mas</a></p>
+                          <h6 class="card-body" style="text-align: right">Autor: {{new.author}}</h6>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          </div>
+  
+  </div>
