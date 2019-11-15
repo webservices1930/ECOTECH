@@ -162,18 +162,9 @@ export class UserService {
   }
 
   decode(): Observable<any> {
-    if (this.userToReturn == null && this.tryGetUser) {
-      return this.getLoggedUser().pipe(
-        catchError(error => {
-          console.log(error);
-          if (error.status === 401) {
-            console.log('Voy a eliminar');
-            this.cookieService.delete('JSESSIONID');
-            this.tryGetUser = false;
-          }
-          return error;
-        })
-      );
+    if (this.userToReturn == null ) {
+      this.userToReturn = JSON.parse(localStorage.getItem('user'));
+      return of(this.userToReturn);
     } else {
       return of(this.userToReturn);
     }
