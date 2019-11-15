@@ -20,7 +20,7 @@ public class QuestionsController {
     @Autowired
     private GsonController gsonController;
 
-    @GetMapping( value="questions/{id_service}", produces = "application/json")
+    @GetMapping( value="/questions/{id_service}", produces = "application/json")
     public List<Pregunta> getQuestions(String idServicio) {
 
         List<Pregunta> questions = new ArrayList<Pregunta>();
@@ -39,7 +39,7 @@ public class QuestionsController {
         return questions;
     }
 
-    @PostMapping(value="services/{id_service}/questions/users/{id_user}", produces = "application/json")
+    @PostMapping(value="/services/{id_service}/questions/users/{id_user}", produces = "application/json")
     public Pregunta addQuestion(@PathVariable String id_service, @PathVariable String id_user, @RequestBody Pregunta question) {
         Pregunta p = new Pregunta();
         LocalDate time = LocalDate.now();

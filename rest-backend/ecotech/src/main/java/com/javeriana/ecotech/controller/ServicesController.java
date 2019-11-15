@@ -60,7 +60,7 @@ public class ServicesController {
 		return doc;
 	}
 
-	@PostMapping(value = "{id_service}/users/{id_user}/buy", produces = "application/json")
+	@PostMapping(value = "/{id_service}/users/{id_user}/buy", produces = "application/json")
 	public Compra buy(@PathVariable String id_service, @PathVariable String id_user) {
 		Compra p = new Compra();
 
@@ -86,7 +86,7 @@ public class ServicesController {
 		return p;
 	}
 
-	@GetMapping(value = "user/{id_user}", produces = "application/json")
+	@GetMapping(value = "/user/{id_user}", produces = "application/json")
 	public List<Servicio> getServiceByUser(String idUser) {
 
 		List<Servicio> buy = new ArrayList<Servicio>();

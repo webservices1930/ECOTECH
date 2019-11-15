@@ -21,7 +21,7 @@ public class CommentsController {
     @Autowired
     private GsonController gsonController;
 
-    @GetMapping( value="comments/{id_service}", produces = "application/json")
+    @GetMapping( value="/comments/{id_service}", produces = "application/json")
     public List<Comentario> getComments(String idServicio) {
 
         List<Comentario> comments = new ArrayList<Comentario>();
@@ -40,7 +40,7 @@ public class CommentsController {
         return comments;
     }
 
-    @PostMapping(value="services/{id_service}/comments/users/{id_user}", produces = "application/json")
+    @PostMapping(value="/services/{id_service}/comments/users/{id_user}", produces = "application/json")
     public Comentario addComment(@PathVariable String id_service, @PathVariable String id_user, @RequestBody Comentario comment) {
         Comentario p = new Comentario();
         LocalDate time = LocalDate.now();

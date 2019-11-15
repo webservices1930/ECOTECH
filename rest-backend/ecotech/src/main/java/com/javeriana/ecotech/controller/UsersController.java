@@ -23,7 +23,7 @@ public class UsersController {
 
 
 
-    @PostMapping( value="login", produces = "application/json")
+    @PostMapping( value="/login", produces = "application/json")
     public Usuario login(@RequestBody Usuario usuario) {
         MongoCollection<Document> collection = MongoConnection.findCollection(Usuario.nameCollection);
         BasicDBObject query = new BasicDBObject();
@@ -34,7 +34,7 @@ public class UsersController {
     }
 
 
-    @GetMapping( value="{nickname}", produces = "application/json")
+    @GetMapping( value="/{nickname}", produces = "application/json")
     public Object getUserByNickname(@PathVariable String nickname) {
         MongoCollection<Document> collection = MongoConnection.findCollection(Usuario.nameCollection);
 
@@ -49,7 +49,7 @@ public class UsersController {
     }
 
 
-    @GetMapping( value="id/{id}", produces = "application/json")
+    @GetMapping( value="/id/{id}", produces = "application/json")
     public Object getUserById(@PathVariable String id) {
         Document document = MongoConnection.searchByID(Usuario.nameCollection, id);
         //Usuario u = gson.fromJson(document.toJson(), Usuario.class);
