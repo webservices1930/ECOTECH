@@ -3,20 +3,18 @@ package com.javeriana.ecotech.controller;
 import com.javeriana.ecotech.entities.Cliente;
 import com.javeriana.ecotech.entities.Pregunta;
 import com.javeriana.ecotech.entities.Servicio;
-import com.javeriana.ecotech.entities.Usuario;
 import com.javeriana.ecotech.integration.MongoConnection;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import org.bson.Document;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import sun.java2d.UnixSurfaceManagerFactory;
-
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = { "*" })
 public class QuestionsController {
 
     @Autowired

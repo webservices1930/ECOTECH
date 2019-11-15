@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.bson.Document;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -11,31 +12,21 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.google.gson.Gson;
 import com.javeriana.ecotech.entities.Servicio;
 
 import com.javeriana.ecotech.entities.*;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
-import org.bson.Document;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
 
-import com.google.gson.Gson;
 import com.javeriana.ecotech.integration.MongoConnection;
-import com.mongodb.client.MongoCollection;
-import com.mongodb.client.MongoCursor;
-
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
 @RestController
+@CrossOrigin(origins = { "*" })
 @RequestMapping("services")
 public class ServicesController {
 	@Autowired
 	private GsonController gsonController;
-
 
 	@PostMapping(value = "", produces = "application/json")
 	public Object postService(@RequestBody Object service) {
@@ -51,29 +42,27 @@ public class ServicesController {
 		try (MongoCursor<Document> cursor = documents.find().iterator()) {
 			while (cursor.hasNext()) {
 				String str = cursor.next().toJson();
-				Servicio s = gson.fromJson(str, Servicio.class);
+				Servicio s = gsonController.getGson().fromJson(str, Servicio.class);
 				((Servicio) s).update();
 				servicios.add(s);
 			}
 		}
 		return servicios;
 	}
+
 	@GetMapping(value = "/{id}", produces = "application/json")
 	public Object getServicesbyid(@PathVariable String id) {
 		System.out.println("ServicioPaseo.leerServicio() -->" + id);
 		Document doc = MongoConnection.searchByID(Servicio.collection, id);
 		System.out.println(doc.toString());
-		//Servicio s = gson.fromJson(doc.toJson(), Servicio.class);
-		//s.update();
+		// Servicio s = gson.fromJson(doc.toJson(), Servicio.class);
+		// s.update();
 		return doc;
 	}
 
-
-
-	@PostMapping(value="{id_service}/users/{id_user}/buy", produces = "application/json")
+	@PostMapping(value = "{id_service}/users/{id_user}/buy", produces = "application/json")
 	public Compra buy(@PathVariable String id_service, @PathVariable String id_user) {
 		Compra p = new Compra();
-
 
 		Document d = MongoConnection.searchByID(Cliente.nameCollection, id_user);
 		Cliente c = gsonController.getGson().fromJson(d.toJson(), Cliente.class);
@@ -83,7 +72,6 @@ public class ServicesController {
 
 		System.out.println(s.toString());
 		System.out.println(c.toString());
-
 
 		p.setIs_commented(false);
 		p.setClientes(c);
@@ -98,8 +86,7 @@ public class ServicesController {
 		return p;
 	}
 
-
-	@GetMapping( value="user/{id_user}", produces = "application/json")
+	@GetMapping(value = "user/{id_user}", produces = "application/json")
 	public List<Servicio> getServiceByUser(String idUser) {
 
 		List<Servicio> buy = new ArrayList<Servicio>();
@@ -107,8 +94,8 @@ public class ServicesController {
 		try (MongoCursor<Document> cursor = docs.find().iterator()) {
 			while (cursor.hasNext()) {
 				Comentario p = gsonController.getGson().fromJson(cursor.next().toJson(), Comentario.class);
-				//System.out.println(p.toString());
-				//System.out.println(p.getServicio().get_id().toString());
+				// System.out.println(p.toString());
+				// System.out.println(p.getServicio().get_id().toString());
 				if (p.getServicio().get_id().toString().equals(idUser)) {
 					buy.add(p.getServicio());
 				}

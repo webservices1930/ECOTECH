@@ -3,6 +3,7 @@ package com.javeriana.ecotech.controller;
 import java.io.IOException;
 
 import org.bson.Document;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +16,7 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 @RestController
+@CrossOrigin(origins = { "*" })
 @RequestMapping("news")
 public class NewsController {
 	private OkHttpClient httpClient = new OkHttpClient();
