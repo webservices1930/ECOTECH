@@ -17,12 +17,11 @@ export class QuestionService {
   ) { }
 
   addPregunta(question: Pregunta, idServ: string, idClient: string): Observable<any> {
-    return this.http.post<any>(`${BASE_URL}/services/${idServ}/questions/users/${idClient}`, question);
+    return this.http.post<any>(`${BASE_URL}services/${idServ}/questions/users/${idClient}`, question);
   }
 
   getQuestionsById(idServ: string): Observable<any> {
     return this.http.get<Pregunta>(`${this.QUESTION_END_POINT}${idServ}`, {
-      withCredentials: true
     });
   }
 }

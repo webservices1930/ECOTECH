@@ -142,7 +142,6 @@ export class ServiceService {
 
   getServicebyId(id: string) {
     return this.http.get<Service>(`${this.SERVICE_END_POINT}${id}`, {
-      withCredentials: true
     });
   }
 
