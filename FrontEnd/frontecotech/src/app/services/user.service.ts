@@ -87,15 +87,9 @@ export class UserService {
 
 
   loginUser(nickname: string, password: string) {
-    const formHeaders = new HttpHeaders();
-    formHeaders.append('Content-Type', 'application/x-www-form-urlencoded');
-    const formParams = new HttpParams()
-      .set('nickname', nickname)
-      .set('password', password);
-    return this.http.post(`${BASE_URL}login`, null, {
-      headers: formHeaders,
-      params: formParams,
-      withCredentials: true
+    return this.http.post(`${this.USER_END_POINT}login`, {
+      nickname,
+      password
     }).pipe(
       map(_ => {
         this.tryGetUser = true;
@@ -106,59 +100,35 @@ export class UserService {
   }
 
   createUser(user: User): Observable<User> {
-    return this.http.post<User>(`${BASE_URL}public/users/`, user);
+    return this.http.post<User>(`${this.USER_END_POINT}users/`, user);
   }
 
   logout(): void {
-    this.http.post(`${BASE_URL}logout`, '', {
-      withCredentials: true
-    }).subscribe(_ => {
       this.userToReturn = null;
-      this.cookieService.delete('JSESSIONID');
       this.tryGetUser = false;
-    });
+      localStorage.removeItem('user');
+      this.userToReturn = null;
   }
 
   updateUser(userId: number, user: User): Observable<User> {
-    return this.http.put<User>(`${this.USER_END_POINT}${userId}`, user, {
-      withCredentials: true
-    });
+    return this.http.put<User>(`${this.USER_END_POINT}${userId}`, user);
   }
 
   deleteUser(userId: number) {
-    return this.http.delete<User>(`${this.USER_END_POINT}${userId}`, {
-      withCredentials: true
-    });
-  }
-
-  getLoggedUser(): Observable<User> {
-    return this.http.get<User>(`${BASE_URL}current-user`, {
-      withCredentials: true
-    }).pipe(
-      map(userLogged => {
-        this.userToReturn = userLogged;
-        return userLogged;
-      })
-    );
+    return this.http.delete<User>(`${this.USER_END_POINT}${userId}`);
   }
 
 
   getUserById(userId: number): Observable<User> {
-    return this.http.get<User>(`${this.USER_END_POINT}${userId}`, {
-      withCredentials: true
-    });
+    return this.http.get<User>(`${this.USER_END_POINT}${userId}`);
   }
 
   getUserByNickName(nickname: string): Observable<User> {
-    return this.http.get<User>(`${this.USER_END_POINT}${nickname}`, {
-      withCredentials: true
-    });
+    return this.http.get<User>(`${this.USER_END_POINT}${nickname}`);
   }
 
   getAllUsers(): Observable<User[]> {
-    return this.http.get<User[]>(this.USER_END_POINT, {
-      withCredentials: true
-    });
+    return this.http.get<User[]>(this.USER_END_POINT);
   }
 
   decode(): Observable<any> {

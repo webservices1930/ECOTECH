@@ -12,21 +12,20 @@ import { User, Cliente, Proveedor } from 'src/app/models/user.model';
 export class ProfileComponent implements OnInit {
 
     nickname: string;
-    user: User;
+    user: any;
     u: User;
-    c: Cliente;
-    p: Proveedor;
 
     constructor(
         private service: UserService,
     ) {
     }
     ngOnInit() {
+      this.service.decode().subscribe(res => {
+        this.u = res;
+        this.nickname = this.u.nickname;
+        console.log(this.nickname);
 
-
-
-
-      this.service.getLoggedUser().subscribe(res => {
+        this.service.getUserByNickName(this.nickname).subscribe(res => {
           this.user = res;
           console.log(this.user);
           /*
@@ -47,6 +46,7 @@ export class ProfileComponent implements OnInit {
                   });
               });
           }*/
+        });
       });
 
     }

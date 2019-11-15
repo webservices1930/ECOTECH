@@ -50,7 +50,7 @@ export class DetailsComponent implements OnInit {
         res => {
           console.log('Preguntas');
           console.log(res);
-          this.preguntastemp = res.result.return;
+          this.preguntastemp = res;
           console.log(this.preguntastemp);
         }
       );
@@ -144,6 +144,8 @@ export class DetailsComponent implements OnInit {
     const question = {
       descripcion: this.pregunta
     }  as Pregunta;
+    console.log(this.user);
+
     this.questionService.addPregunta( question , this.idSer, this.user.id).subscribe(res => {
       console.log('Pregunta enviado');
       console.log(res);
