@@ -8,6 +8,7 @@ import { UserService } from 'src/app/services/user.service';
 import { Pregunta } from 'src/app/models/pregunta';
 import { CookieService } from 'ngx-cookie-service';
 import { QuestionService } from '../../services/question.service';
+import { Resena } from 'src/app/models/resena';
 
 @Component({
   selector: 'app-details',
@@ -25,6 +26,7 @@ export class DetailsComponent implements OnInit {
   pregunta = '';
   preguntastemp: Pregunta[] = [];
   user: User;
+  resenas: Array<Resena>;
 
   constructor(
     private router: Router,
@@ -54,6 +56,9 @@ export class DetailsComponent implements OnInit {
           console.log(this.preguntastemp);
         }
       );
+      this.serviceService.getReview(this.idSer).subscribe(res=>{
+        this.resenas = res;
+      });
 
 
       console.log(this.idSer);
