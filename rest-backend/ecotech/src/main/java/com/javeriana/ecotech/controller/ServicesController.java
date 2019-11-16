@@ -74,7 +74,7 @@ public class ServicesController {
 		System.out.println(c.toString());
 
 		p.setIs_commented(false);
-		p.setClientes(c);
+		p.setCliente(c);
 		p.setServicio(s);
 
 		String aux = gsonController.getGson().toJson(p);
@@ -87,16 +87,16 @@ public class ServicesController {
 	}
 
 	@GetMapping(value = "/user/{id_user}", produces = "application/json")
-	public List<Servicio> getServiceByUser(String idUser) {
+	public List<Servicio> getServiceByUser(@PathVariable String id_user) {
 
 		List<Servicio> buy = new ArrayList<Servicio>();
-		MongoCollection<Document> docs = MongoConnection.findCollection(Comentario.collectionName);
+		MongoCollection<Document> docs = MongoConnection.findCollection(Compra.collection);
 		try (MongoCursor<Document> cursor = docs.find().iterator()) {
 			while (cursor.hasNext()) {
-				Comentario p = gsonController.getGson().fromJson(cursor.next().toJson(), Comentario.class);
+				Compra p = gsonController.getGson().fromJson(cursor.next().toJson(), Compra.class);
 				// System.out.println(p.toString());
 				// System.out.println(p.getServicio().get_id().toString());
-				if (p.getServicio().get_id().toString().equals(idUser)) {
+				if (p.getServicio().get_id().toString().equals(id_user)) {
 					buy.add(p.getServicio());
 				}
 			}

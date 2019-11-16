@@ -50,6 +50,17 @@ public class MongoConnection {
 		return doc;
 	}
 
+	public static Document searchByID(String nameColection, ObjectId _id) {
+		MongoDatabase mongoBD = mongoClient.getDatabase(db);
+		MongoCollection<Document> coleccion = mongoBD.getCollection(nameColection);
+
+		BasicDBObject query = new BasicDBObject();
+		query.put("_id", _id);
+
+		Document doc = coleccion.find(query).first();
+		return doc;
+	}
+
 
 	public static void deleteByID(String nameColection, String _id) {
 		MongoDatabase mongoBD = mongoClient.getDatabase(db);

@@ -7,6 +7,7 @@ import com.javeriana.ecotech.integration.MongoConnection;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import org.bson.Document;
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.time.LocalDate;
@@ -21,16 +22,17 @@ public class QuestionsController {
     private GsonController gsonController;
 
     @GetMapping( value="/questions/{id_service}", produces = "application/json")
-    public List<Pregunta> getQuestions(String idServicio) {
+    public List<Pregunta> getQuestions(@PathVariable String id_service) {
 
         List<Pregunta> questions = new ArrayList<Pregunta>();
         MongoCollection<Document> docs = MongoConnection.findCollection(Pregunta.collectionName);
         try (MongoCursor<Document> cursor = docs.find().iterator()) {
             while (cursor.hasNext()) {
                 Pregunta p = gsonController.getGson().fromJson(cursor.next().toJson(), Pregunta.class);
-                //System.out.println(p.toString());
-                //System.out.println(p.getServicio().get_id().toString());
-                if (p.getServicio().get_id().toString().equals(idServicio)) {
+                System.out.println(p.toString());
+                System.out.println(p.getServicio().get_id().toString());
+                System.out.println(id_service);
+                if (p.getServicio().get_id().toString().equals(id_service)) {
                     questions.add(p);
                 }
             }
@@ -40,11 +42,11 @@ public class QuestionsController {
     }
 
     @PostMapping(value="/services/{id_service}/questions/users/{id_user}", produces = "application/json")
-    public Pregunta addQuestion(@PathVariable String id_service, @PathVariable String id_user, @RequestBody Pregunta question) {
+    public Pregunta addQuestion(@PathVariable String id_service,@PathVariable String id_user, @RequestBody Pregunta question) {
+        //Pregunta question = gsonController.getGson().fromJson(questionJson.toString(), Pregunta.class);
         Pregunta p = new Pregunta();
         LocalDate time = LocalDate.now();
         String fecha = time.toString();
-
         Document d = MongoConnection.searchByID(Cliente.nameCollection, id_user);
         Cliente c = gsonController.getGson().fromJson(d.toJson(), Cliente.class);
 
@@ -56,7 +58,7 @@ public class QuestionsController {
 
         p.setDescripcion(question.getDescripcion());
         p.setFecha(fecha);
-        p.setClientes(c);
+        p.setCliente(c);
         p.setServicio(s);
 
         String aux = gsonController.getGson().toJson(p);

@@ -6,11 +6,11 @@ public class Compra {
     private Boolean  is_commented;
     public static final String collection = "Compras";
 
-    public Cliente getClientes() {
+    public Cliente getCliente() {
         return cliente;
     }
 
-    public void setClientes(Cliente cliente) {
+    public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
 

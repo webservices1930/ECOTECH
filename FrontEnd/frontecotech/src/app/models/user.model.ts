@@ -1,11 +1,11 @@
 export class User {
-  id?: string;
+  _id?: any;
   nombre?: string;
   descripcion?: string;
   correo?: string;
   foto?: string;
   fechaNacimiento?: Date;
-  nickname: string;
+  nickname?: string;
   password?: string;
   rolUsuario?: string;
 }

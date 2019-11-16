@@ -16,7 +16,7 @@ import { QuestionService } from '../../services/question.service';
 })
 export class DetailsComponent implements OnInit {
   idSer = 'teamp';
-  service: Service;
+  service: any;
   // paseo: Paseo;
   // alimentacion: Alimentacion;
   // alojamiento: Alojamiento;
@@ -45,7 +45,7 @@ export class DetailsComponent implements OnInit {
 
     this.route.paramMap.subscribe(params => {
       this.idSer = params.get('id');
-
+      console.log(this.idSer);
       this.questionService.getQuestionsById(this.idSer).subscribe(
         res => {
           console.log('Preguntas');
@@ -56,7 +56,7 @@ export class DetailsComponent implements OnInit {
       );
 
 
-      console.log(this.idSer);
+
       /*
       this.soapService.client.then(client => {
         this.serviceService.getServicebyId(client as Client, this.idSer).subscribe(res => {
@@ -146,7 +146,7 @@ export class DetailsComponent implements OnInit {
     }  as Pregunta;
     console.log(this.user);
 
-    this.questionService.addPregunta( question , this.idSer, this.user.id).subscribe(res => {
+    this.questionService.addPregunta( question , this.idSer, this.user._id).subscribe(res => {
       console.log('Pregunta enviado');
       console.log(res);
       this.preguntastemp.push(res);

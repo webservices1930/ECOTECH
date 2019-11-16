@@ -22,7 +22,7 @@ public class CommentsController {
     private GsonController gsonController;
 
     @GetMapping( value="/comments/{id_service}", produces = "application/json")
-    public List<Comentario> getComments(String idServicio) {
+    public List<Comentario> getComments(@PathVariable String id_service) {
 
         List<Comentario> comments = new ArrayList<Comentario>();
         MongoCollection<Document> docs = MongoConnection.findCollection(Comentario.collectionName);
@@ -31,7 +31,7 @@ public class CommentsController {
                 Comentario p = gsonController.getGson().fromJson(cursor.next().toJson(), Comentario.class);
                 //System.out.println(p.toString());
                 //System.out.println(p.getServicio().get_id().toString());
-                if (p.getServicio().get_id().toString().equals(idServicio)) {
+                if (p.getServicio().get_id().toString().equals(id_service)) {
                     comments.add(p);
                 }
             }
@@ -41,7 +41,8 @@ public class CommentsController {
     }
 
     @PostMapping(value="/services/{id_service}/comments/users/{id_user}", produces = "application/json")
-    public Comentario addComment(@PathVariable String id_service, @PathVariable String id_user, @RequestBody Comentario comment) {
+    public Comentario addComment(@PathVariable String id_service,@PathVariable String id_user, @RequestBody Comentario comment) {
+        //Comentario comment = gsonController.getGson().fromJson(commentJson.toString(), Comentario.class);
         Comentario p = new Comentario();
         LocalDate time = LocalDate.now();
         String fecha = time.toString();

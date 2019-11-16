@@ -7,6 +7,7 @@ import com.mongodb.BasicDBObject;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import org.bson.Document;
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,13 +25,13 @@ public class UsersController {
 
 
     @PostMapping( value="/login", produces = "application/json")
-    public Usuario login(@RequestBody Usuario usuario) {
+    public Object login(@RequestBody Usuario usuario) {
         MongoCollection<Document> collection = MongoConnection.findCollection(Usuario.nameCollection);
         BasicDBObject query = new BasicDBObject();
         query.put("nickname", usuario.getNickname());
         query.put("password", usuario.getPassword());
         Document document = collection.find(query).first();
-        return gsonController.getGson().fromJson(document.toJson(), Usuario.class);
+        return document.toJson();
     }
 
 
@@ -50,7 +51,7 @@ public class UsersController {
 
 
     @GetMapping( value="/id/{id}", produces = "application/json")
-    public Object getUserById(@PathVariable String id) {
+    public Object getUserById(@PathVariable ObjectId id) {
         Document document = MongoConnection.searchByID(Usuario.nameCollection, id);
         //Usuario u = gson.fromJson(document.toJson(), Usuario.class);
         //u.update();

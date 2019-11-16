@@ -132,7 +132,7 @@
           <tbody>
             <tr>
               <th scope="row">Tipo</th>
-              <td>{{otro.tipoServicio}}</td>
+              <td>{{service.tipoServicio}}</td>
             </tr>
           </tbody>
         </table>
@@ -178,7 +178,7 @@
         <div class="row" style="margin-bottom: 15px;" *ngFor="let preg of preguntastemp">
           <div class="card w-100 p-3">
             <div class="card-header">
-              <strong>@{{preg.clientes.nickname}}</strong>
+              <strong>@{{preg.cliente.nickname}}</strong>
             </div>
             <div class="card-body">
               <h5 class="card-title">{{preg.descripcion}}</h5>
