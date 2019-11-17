@@ -1,4 +1,16 @@
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY"></script>
+</head>
 <app-navbar></app-navbar>
+<head>
+  <meta charset="utf-8" />
+  <title>Details</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAXHrqWEsUhpws-qtMgSMYMW7Po14SZ5lc"></script>
+</head>
 <div class="row justify-content-md-center  limiter">
   <h1 class="text-center">Detalles Servicio</h1>
   <div class="container-fluid">
@@ -46,6 +58,7 @@
               <th scope="row">Ubicación</th>
               <td>Lat: {{service.latitud}} Long: {{service.longitud}}</td>
             </tr>
+
             <tr>
                 <th scope="row">Calificacion</th>
                 <td><img src="https://cdn2.iconfinder.com/data/icons/modifiers-add-on-1-flat/48/Mod_Add-On_1-35-512.png" class="img-fluid rounded shadow-lg" alt="imagen" style="width: 0.7cm; height:0.7cm;"> {{calificacionProm}} Estrellas</td>
@@ -53,8 +66,51 @@
           </tbody>
         </table>
 
+        <h1 class="text-center">Escoge la fecha</h1>
+        <div >
+          <h2>Llegada</h2>
+          <form (submit)="submitweather(FechaL,FechaS)"> 
+            <input class="form-control" type="date" name="fechaLlegada" placeholder="Fecha Llegada" #FechaL>
+              <span class="focus-input100"></span>
+         
+          <h2>Salida</h2>
+          
+               <input class="form-control" type="date" name="fechaSalida" placeholder="Fecha Salida" #FechaS>
+                <span class="focus-input100"></span>
 
-
+          <button class="btn btn-outline-dark mt-3"> 
+            ver info
+          </button>
+          </form>
+          <h1 class="text-center">Clima</h1>
+          <table class="table table-striped border border-dark rounded-10">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col">Dato</th>
+                  <th scope="col">Valor</th>
+                  <th scope="col">Descripción</th>
+                </tr>
+              </thead>
+              <tbody>
+                  <tr>
+                      <th scope="row">Clima llegada</th>
+                      <td>{{climal}}</td>
+                      <td>{{descriptionl}}</td>
+                  </tr> 
+                  <tr>
+                      <th scope="row">Clima Salida</th>
+                      <td>{{climaS}}</td>
+                      <td>{{descriptionS}}</td>
+                  </tr>  
+                </tbody>
+              </table>
+        </div>
+        <div *ngIf="latitude">
+            <h1 class="text-center">Ubicación</h1>
+          <agm-map [zoom]="15" [latitude]="latitude" [longitude]="longitude">
+            <agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
+          </agm-map>
+        </div>
 
         <h1 class="text-center">Detalles de {{service.tipo}}</h1>
         <table class="table table-striped border border-dark rounded-10" *ngIf="service.tipo == 'PASEO'">
