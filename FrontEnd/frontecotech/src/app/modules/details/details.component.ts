@@ -175,7 +175,7 @@ export class DetailsComponent implements OnInit {
       calificacion: this.calificacio
     }  as Resena;
     console.log(review.calificacion)
-    this.serviceService.postReview(this.idSer,this.user.id,review).subscribe(res =>{
+    this.serviceService.postReview(this.idSer,this.user._id,review).subscribe(res =>{
       console.log('comentario enviado');
       console.log(res);
       this.resenas.push(res);
