@@ -8,6 +8,8 @@ import { UserService } from 'src/app/services/user.service';
 import { Pregunta } from 'src/app/models/pregunta';
 import { CookieService } from 'ngx-cookie-service';
 import { QuestionService } from '../../services/question.service';
+import { WeatherService } from '../../services/weather.service';
+import { isInteger } from '@ng-bootstrap/ng-bootstrap/util/util';
 
 @Component({
   selector: 'app-details',
@@ -18,6 +20,14 @@ import { QuestionService } from '../../services/question.service';
 export class DetailsComponent implements OnInit {
   idSer = 'teamp';
   service: any;
+  servicelat: String="";
+  servicelon: String="";
+  json: any;
+  climal:String;
+  climaS:String;
+  descriptionl:String;
+  descriptionS:String;
+
   geocoder: any;
 
   latitude: Number;//4.628828;
@@ -37,7 +47,8 @@ export class DetailsComponent implements OnInit {
     private userService: UserService,
     private serviceService: ServiceService,
     private questionService: QuestionService,
-    private cookieService: CookieService
+    private cookieService: CookieService,
+    private weatherService: WeatherService
   ) { }
 
   ngOnInit() {
@@ -129,12 +140,19 @@ export class DetailsComponent implements OnInit {
         console.log('Services enviado');
         console.log(res);
         this.service = res;
+        this.weatherService.getWeather(res.latitud.toString(),res.longitud.toString())
+        .subscribe(
+          res2=>this.json=res2,
+          err2=>console.log(err2)
+        );
         this.latitude = Number(res.latitud);
         this.longitude = Number(res.longitud);
         console.log('servicio');
         console.log(this.service);
       });
     });
+
+
   }
   addService() {
     const countServices = this.cookieService.get('count');
@@ -160,6 +178,28 @@ export class DetailsComponent implements OnInit {
     });
 
 
+  }
+  submitweather(fechal,fechaS){
+    
+    let date1 = new Date(`${fechal.value} 12:00:00`);
+    let date2 = new Date(`${fechaS.value} 12:00:00`);
+    let dateaux;
+    let climaS:number;
+    let climaL:number;
+    for(let vara=0;vara<40;vara++){
+     dateaux=new Date(this.json.list[vara].dt_txt);
+     console.log(dateaux);
+     if(dateaux.getTime()===date1.getTime()){
+        climaL=(this.json.list[vara].main.temp-273);
+        this.descriptionl=this.json.list[vara].weather[0].description;
+     }else if(dateaux.getTime()===date2.getTime()){
+        climaS=(this.json.list[vara].main.temp-273);
+        this.descriptionS=this.json.list[vara].weather[0].description;
+     }  
+    }
+
+    this.climal=`${climaL} ºC`;
+    this.climaS=`${climaS} ºC`;
   }
 
 }
