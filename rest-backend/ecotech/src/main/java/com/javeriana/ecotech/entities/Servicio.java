@@ -13,8 +13,8 @@ public class Servicio {
 	private long costo;
 	private String contacto;
 	private String descripcion;
-	private long latitud;
-	private long longitud;
+	private String latitud;
+	private String longitud;
 	private transient List<Long> calificaciones;
 	private List<String> fotos;
 //	private transient List<Comentario> comentarios;
@@ -80,19 +80,19 @@ public class Servicio {
 		this.descripcion = descripcion;
 	}
 
-	public long getLatitud() {
+	public String getLatitud() {
 		return latitud;
 	}
 
-	public void setLatitud(long latitud) {
+	public void setLatitud(String latitud) {
 		this.latitud = latitud;
 	}
 
-	public long getLongitud() {
+	public String getLongitud() {
 		return longitud;
 	}
 
-	public void setLongitud(long longitud) {
+	public void setLongitud(String longitud) {
 		this.longitud = longitud;
 	}
 
@@ -135,8 +135,8 @@ public class Servicio {
 				+ ", calificaciones=" + calificaciones + ", fotos=" + fotos + "]"+ id;
 	}
 
-	public Servicio(ObjectId _id, String nombre, long costo, String contacto, String descripcion, long latitud,
-			long longitud, List<Long> calificaciones, List<String> fotos, List<Comentario> comentarios,
+	public Servicio(ObjectId _id, String nombre, long costo, String contacto, String descripcion, String latitud,
+			String longitud, List<Long> calificaciones, List<String> fotos, List<Comentario> comentarios,
 			List<Pregunta> preguntas) {
 		super();
 		this._id = _id;
@@ -152,7 +152,7 @@ public class Servicio {
 //		this.preguntas = preguntas;
 	}
 
-	public Servicio(String nombre, long costo, String contacto, String descripcion, long latitud, long longitud,
+	public Servicio(String nombre, long costo, String contacto, String descripcion, String latitud, String longitud,
 			List<Long> calificaciones, List<String> fotos, List<Comentario> comentarios, List<Pregunta> preguntas) {
 		super();
 		this.nombre = nombre;
@@ -173,8 +173,8 @@ public class Servicio {
 		this.costo = -1;
 		this.contacto = "No data";
 		this.descripcion = "No data";
-		this.latitud = -1;
-		this.longitud = -1;
+		this.latitud = "-1";
+		this.longitud = "-1";
 		this.tipo = TipoServicio.OTRO;
 	}
 

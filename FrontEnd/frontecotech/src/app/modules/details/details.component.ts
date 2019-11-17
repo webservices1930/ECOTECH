@@ -14,9 +14,14 @@ import { QuestionService } from '../../services/question.service';
   templateUrl: './details.component.html',
   styleUrls: ['./details.component.scss']
 })
+
 export class DetailsComponent implements OnInit {
   idSer = 'teamp';
   service: any;
+  geocoder: any;
+
+  latitude: Number;//4.628828;
+  longitude: Number;//-74.064927;
   // paseo: Paseo;
   // alimentacion: Alimentacion;
   // alojamiento: Alojamiento;
@@ -124,6 +129,8 @@ export class DetailsComponent implements OnInit {
         console.log('Services enviado');
         console.log(res);
         this.service = res;
+        this.latitude = Number(res.latitud);
+        this.longitude = Number(res.longitud);
         console.log('servicio');
         console.log(this.service);
       });
