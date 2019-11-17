@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule} from '@angular/common/http';
+import { AgmCoreModule } from '@agm/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './modules/login/login.component';
@@ -11,6 +12,7 @@ import {CookieService} from 'ngx-cookie-service'
 import { ServicesListComponent } from './modules/services-list/services-list.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { GoogleMapsModule } from '@angular/google-maps'
 import { SignupComponent } from './modules/signup/signup.component';
 import { DetailsComponent } from './modules/details/details.component';
 import { ShopCarComponent } from './modules/shop-car/shop-car.component';
@@ -46,6 +48,9 @@ import { HttpClient } from 'selenium-webdriver/http';
     ReactiveFormsModule,
     GoogleMapsModule,
     HttpClientModule
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyAXHrqWEsUhpws-qtMgSMYMW7Po14SZ5lc'
+    })
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]

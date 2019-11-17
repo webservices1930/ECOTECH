@@ -16,6 +16,7 @@ import { isInteger } from '@ng-bootstrap/ng-bootstrap/util/util';
   templateUrl: './details.component.html',
   styleUrls: ['./details.component.scss']
 })
+
 export class DetailsComponent implements OnInit {
   idSer = 'teamp';
   service: any;
@@ -26,6 +27,11 @@ export class DetailsComponent implements OnInit {
   climaS:String;
   descriptionl:String;
   descriptionS:String;
+
+  geocoder: any;
+
+  latitude: Number;//4.628828;
+  longitude: Number;//-74.064927;
   // paseo: Paseo;
   // alimentacion: Alimentacion;
   // alojamiento: Alojamiento;
@@ -139,6 +145,8 @@ export class DetailsComponent implements OnInit {
           res2=>this.json=res2,
           err2=>console.log(err2)
         );
+        this.latitude = Number(res.latitud);
+        this.longitude = Number(res.longitud);
         console.log('servicio');
         console.log(this.service);
       });
