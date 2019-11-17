@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { HttpClientModule} from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './modules/login/login.component';
@@ -19,6 +19,8 @@ import { CheckPayComponent } from './modules/check-pay/check-pay.component';
 
 import { NavbarComponent } from './modules/navbar/navbar.component';
 import { NotfoundComponent } from './modules/notfound/notfound.component';
+import { GoogleMapsModule } from '@angular/google-maps';
+import { HttpClient } from 'selenium-webdriver/http';
 
 
 
@@ -42,6 +44,8 @@ import { NotfoundComponent } from './modules/notfound/notfound.component';
     NgxSoapModule,
     FormsModule,
     ReactiveFormsModule,
+    GoogleMapsModule,
+    HttpClientModule
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]
