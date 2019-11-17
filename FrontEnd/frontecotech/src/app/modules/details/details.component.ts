@@ -9,6 +9,7 @@ import { Pregunta } from 'src/app/models/pregunta';
 import { CookieService } from 'ngx-cookie-service';
 import { QuestionService } from '../../services/question.service';
 import { Resena } from 'src/app/models/resena';
+import { element } from 'protractor';
 
 @Component({
   selector: 'app-details',
@@ -24,9 +25,12 @@ export class DetailsComponent implements OnInit {
   // otro: Otro;
   // transporte: Transporte;
   pregunta = '';
+  comentario = '';
+  calificacio = 1;
   preguntastemp: Pregunta[] = [];
   user: User;
   resenas: Array<Resena>;
+  calificacionProm:number = 0;
 
   constructor(
     private router: Router,
@@ -57,9 +61,15 @@ export class DetailsComponent implements OnInit {
         }
       );
       this.serviceService.getReview(this.idSer).subscribe(res=>{
+        console.log(res);
         this.resenas = res;
       });
 
+      if(this.resenas != null){
+        this.calcularCalificacion();
+      }
+
+     
 
       console.log(this.idSer);
       /*
@@ -158,6 +168,33 @@ export class DetailsComponent implements OnInit {
     });
 
 
+  }
+  comentar(){
+    const review = {
+      descripcion: this.comentario,
+      calificacion: this.calificacio
+    }  as Resena;
+    console.log(review.calificacion)
+    this.serviceService.postReview(this.idSer,this.user.id,review).subscribe(res =>{
+      console.log('comentario enviado');
+      console.log(res);
+      this.resenas.push(res);
+      this.calcularCalificacion();
+    });
+  }
+
+  private searchType(event: any) {
+    console.log(event.target.value);
+    this.calificacio = Number(event.target.value);
+    console.log(this.calificacio)
+  }
+
+  calcularCalificacion(){
+     var aux = 0
+    this.resenas.forEach(element => {
+      aux += element.calificacion;
+    })
+    this.calificacionProm = aux/this.resenas.length;
   }
 
 }

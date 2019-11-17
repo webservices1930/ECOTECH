@@ -5,6 +5,7 @@ import { Service, Alimentacion, Alojamiento, Paseo, Otro, Transporte } from '../
 import { BASE_URL } from '../shared/constants';
 import { HttpClient } from '@angular/common/http';
 import { Noticia } from '../models/noticia';
+import { Resena } from '../models/resena';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +15,7 @@ export class ServiceService {
   readonly SERVICE_END_POINT = BASE_URL + 'services/';
   readonly SERVICE_NEWS = BASE_URL + 'news/';
   readonly SERVICE_REVIEW = BASE_URL + 'comments/';
+  readonly SERVICE_COUNTRY = 'https://restcountries.eu/rest/v2/all?fields=name;alpha2Code';
 
   constructor(
     private http: HttpClient,
@@ -158,5 +160,13 @@ export class ServiceService {
 
   getReview(idService:string){
     return this.http.get<any>(`${this.SERVICE_REVIEW}/${idService}`);
+  }
+
+  postReview(idService:string,idUser:string, resena:Resena){
+    return this.http.post<Resena>(`${this.SERVICE_END_POINT}/${idService}/comments/users/${idUser}`,resena);
+  }
+
+  getCountries(){
+    return this.http.get<any>(`${this.SERVICE_COUNTRY}`);
   }
 }

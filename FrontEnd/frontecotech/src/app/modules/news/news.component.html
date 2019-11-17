@@ -6,12 +6,22 @@
               <h1 class="text-center" style="color: white;">Noticias mas Recientes</h1>
           </div>
   </div>
-
+  <h4 style="text-align: center">Selecciona tu proximo destino y Obten mas informacion: 
+    <select (change)="searchCountry($event)">
+      <option [value]="new.alpha2Code" *ngFor="let new of this.paises">{{new.name}}</option>
+    </select>
+  </h4>
   <table class="table table-hover">
       <thead>
         <tr>
-          <th scope="col" style="text-align: center">PREGUNTAS</th>
-          <th scope="col" style="text-align: center">RESEÑAS</th>
+          <th scope="col" style="text-align: center">NEGOCIOS</th>
+          <th scope="col" style="text-align: center">CIENCIA</th>
+          <th scope="col" style="text-align: center"><select (change)="searchCategory($event)">
+              <option value="science">CIENCIA</option>
+              <option value="technology">TECNOLOGIA</option>
+              <option value="sports">DEPORTES</option>
+              <option value="entertainment">ENTRETENIMIENTO</option>
+      </select></th>
         </tr>
       </thead>
       <tbody>
@@ -20,7 +30,7 @@
   
                 <div >
                     <br>
-                    <div class="card" style="margin-bottom: 15px;" *ngFor="let new of this.noticias">
+                    <div class="card" style="margin-bottom: 15px;" *ngFor="let new of this.negocios">
                         <h5 class="card-header">{{new.title}}</h5>
                         <div class="card-body">
                             <div class="row">
@@ -37,6 +47,27 @@
                     </div>
             </div>
           </th>
+          <th><div scope="row" class="row justify-content-md-center limiter">
+  
+              <div >
+                  <br>
+                  <div class="card" style="margin-bottom: 15px;" *ngFor="let new of this.divercion">
+                      <h5 class="card-header">{{new.title}}</h5>
+                      <div class="card-body">
+                          <div class="row">
+                              <div class="col-3" >
+                                  <img [src]="new.urlToImage" class="img-fluid rounded shadow-lg" alt="imagen">
+                              </div>
+                              <div class="col-9">
+                                  <p class="card-text">{{new.description}}<a [href]="new.url"> Leer mas</a></p>
+                                  <h6 class="card-body" style="text-align: right">Autor: {{new.author}}</h6>
+                              </div>
+                          </div>
+                      </div>
+                    </div>
+                  </div>
+          </div>
+        </th>
           <th><div scope="row" class="row justify-content-md-center limiter">
   
               <div>
