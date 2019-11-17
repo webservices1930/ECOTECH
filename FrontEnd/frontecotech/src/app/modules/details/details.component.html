@@ -46,6 +46,10 @@
               <th scope="row">Ubicación</th>
               <td>Lat: {{service.latitud}} Long: {{service.longitud}}</td>
             </tr>
+            <tr>
+                <th scope="row">Calificacion</th>
+                <td><img src="https://cdn2.iconfinder.com/data/icons/modifiers-add-on-1-flat/48/Mod_Add-On_1-35-512.png" class="img-fluid rounded shadow-lg" alt="imagen" style="width: 0.7cm; height:0.7cm;"> {{calificacionProm}} Estrellas</td>
+              </tr>
           </tbody>
         </table>
 
@@ -164,7 +168,6 @@
           Servicios</button>
 
         <h3 class="text-center">¿Preguntas?</h3>
-
         <div class="row">
           <div class="input-group mb-3">
             <input type="text" class="form-control" placeholder="Preguntas?" [(ngModel)]="pregunta"
@@ -175,6 +178,7 @@
             </div>
           </div>
         </div>
+
         <div class="row" style="margin-bottom: 15px;" *ngFor="let preg of preguntastemp">
           <div class="card w-100 p-3">
             <div class="card-header">
@@ -183,10 +187,68 @@
             <div class="card-body">
               <h5 class="card-title">{{preg.descripcion}}</h5>
               <p class="card-text">{{preg.fecha}}</p>
+
+
+        <h3 class="text-center">¿Comentarios?</h3>
+        <div class="row">
+          <div class="input-group mb-3">
+              <span class="custom-dropdown">
+                  <select (change)="searchType($event)">
+                          <option value="1">1 Estrella</option>
+                          <option value="2">2 Estrellas</option>
+                          <option value="3">3 Estrellas</option>
+                          <option value="4">4 Estrellas</option>
+                          <option value="5">5 Estrellas</option>
+                  </select>
+              </span>
+            <input type="text" class="form-control" placeholder="Comentario" [(ngModel)]="comentario"
+              aria-label="Recipient's username" aria-describedby="button-addon2">
+            <div class="input-group-append">
+              <button class="btn btn-outline-dark" type="button" id="button-addon2"
+                (click)="comentar()">comentar</button>
+
             </div>
           </div>
         </div>
+
       </div>
       <div class="col"></div>
     </div>
   </div>
+
+  <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col" style="text-align: center">¿PREGUNTAS?</th>
+          <th scope="col" style="text-align: center">RESEÑAS</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+            <th>
+                    <div class="card" *ngFor="let preg of preguntastemp" style="width: 15cm">
+                      <div class="card-header">
+                        <strong>@{{preg.clientes.nickname}}</strong>
+                      </div>
+                      <div class="card-body">
+                        <h5 class="card-title">{{preg.descripcion}}</h5>
+                        <p class="card-text" style="text-align: right">{{preg.fecha}}</p>
+                      </div>
+                    </div>
+            </th>
+          <th>
+                  <div class="card" *ngFor="let new of this.resenas" style="width: 15cm">
+                      <h5 class="card-header"><img src="https://cdn2.iconfinder.com/data/icons/modifiers-add-on-1-flat/48/Mod_Add-On_1-35-512.png" class="img-fluid rounded shadow-lg" alt="imagen" style="width: 1cm; height:1cm;">  {{new.calificacion}} Estrellas</h5>
+                      <div class="card-body">
+                          <div class="row">
+                              <div class="col-10">
+                                  <p class="card-title">{{new.descripcion}}</p>
+                                  <h6 class="card-text" style="text-align: right">{{new.fecha}}</h6>
+                              </div>
+                          </div>
+                      </div>
+                    </div>
+        </th>
+        </tr>
+      </tbody>
+    </table>
