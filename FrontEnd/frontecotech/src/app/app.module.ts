@@ -21,7 +21,6 @@ import { CheckPayComponent } from './modules/check-pay/check-pay.component';
 
 import { NavbarComponent } from './modules/navbar/navbar.component';
 import { NotfoundComponent } from './modules/notfound/notfound.component';
-import { GoogleMapsModule } from '@angular/google-maps';
 import { HttpClient } from 'selenium-webdriver/http';
 
 
@@ -47,7 +46,7 @@ import { HttpClient } from 'selenium-webdriver/http';
     FormsModule,
     ReactiveFormsModule,
     GoogleMapsModule,
-    HttpClientModule
+    HttpClientModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAXHrqWEsUhpws-qtMgSMYMW7Po14SZ5lc'
     })

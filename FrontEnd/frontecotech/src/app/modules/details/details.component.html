@@ -102,6 +102,7 @@
               </table>
         </div>
         <div *ngIf="latitude">
+            <h1 class="text-center">Ubicación</h1>
           <agm-map [zoom]="15" [latitude]="latitude" [longitude]="longitude">
             <agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
           </agm-map>
