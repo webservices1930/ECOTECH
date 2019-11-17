@@ -100,7 +100,7 @@ export class UserService {
   }
 
   createUser(user: User): Observable<User> {
-    return this.http.post<User>(`${this.USER_END_POINT}users/`, user);
+    return this.http.post<User>(`${this.USER_END_POINT}`, user);
   }
 
   logout(): void {

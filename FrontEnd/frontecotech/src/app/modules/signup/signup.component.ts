@@ -86,14 +86,22 @@ export class SignupComponent implements OnInit {
       });
     }
     */
-    const userToCreate = this.userForm.value as User;
-    this.userService.createUser(userToCreate).subscribe( res => {
-      alert('Usuario creado');
-      this.router.navigate(['/login']);
+   const userToCreate = this.userForm.value as User;
+   if (this.userForm.value.selectedValue === '1') {
+     this.userForm.value.rolUsuario = 'PROVEEDOR';
+   }
 
-    }, error => {
-      alert('Nickname ya existe.');
-    });
+   if (this.userForm.value.selectedValue === '2') {
+     this.userForm.value.rolUsuario = 'CLIENTE';
+   }
+
+   this.userService.createUser(userToCreate).subscribe( res => {
+     alert('Usuario creado');
+     this.router.navigate(['/login']);
+
+   }, error => {
+     alert('Nickname ya existe.');
+   });
 
   }
 
