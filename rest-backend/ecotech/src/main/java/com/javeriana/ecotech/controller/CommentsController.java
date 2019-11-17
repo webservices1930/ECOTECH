@@ -31,7 +31,7 @@ public class CommentsController {
                 Comentario p = gsonController.getGson().fromJson(cursor.next().toJson(), Comentario.class);
                 //System.out.println(p.toString());
                 //System.out.println(p.getServicio().get_id().toString());
-                if (p.getServicio().get_id().toString().equals(idServicio)) {
+                if (p.getServicio().get_id().toString().equals(id_service)) {
                     comments.add(p);
                 }
             }
