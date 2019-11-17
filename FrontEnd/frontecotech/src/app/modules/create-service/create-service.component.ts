@@ -34,7 +34,7 @@ export class CreateServiceComponent implements OnInit {
     this.router.navigate(['/services']);
   }
 
-  createServiceWithClient( client: Client ) {
+  createService() {
     this.serviceForm.value.tipo = this.serviceForm.value.tipo.toUpperCase();
     const service = this.serviceForm.value as Service;
     const s: string = this.serviceForm.get('fotos').value;
@@ -78,7 +78,7 @@ export class CreateServiceComponent implements OnInit {
       });
     }*/
 
-    this.serviceService.createService(this.serviceForm.value).subscribe( res => {
+    this.serviceService.createService(this.serviceForm.value).subscribe(res => {
       this.goodAction();
     });
   }
