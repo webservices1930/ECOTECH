@@ -13,6 +13,7 @@ import { CreateServiceComponent } from './modules/create-service/create-service.
 import { RoleGuardService } from './auth/role-guard.service';
 import { NotfoundComponent } from './modules/notfound/notfound.component';
 import { CheckPayComponent } from './modules/check-pay/check-pay.component';
+import {NewsComponent} from './modules/news/news.component';
 
 
 
@@ -33,6 +34,10 @@ const routes: Routes = [
   {
     path: 'signup',
     component: SignupComponent
+  },
+  {
+    path: 'news',
+    component: NewsComponent
   },
   {
     path: 'services',

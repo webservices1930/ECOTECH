@@ -22,7 +22,7 @@ public class CommentsController {
     private GsonController gsonController;
 
     @GetMapping( value="/comments/{id_service}", produces = "application/json")
-    public List<Comentario> getComments(@PathVariable String idServicio) {
+    public List<Comentario> getComments(@PathVariable String id_service) {
 
         List<Comentario> comments = new ArrayList<Comentario>();
         MongoCollection<Document> docs = MongoConnection.findCollection(Comentario.collectionName);
@@ -58,6 +58,7 @@ public class CommentsController {
 
         p.setDescripcion(comment.getDescripcion());
         p.setFecha(fecha);
+        p.setCalificacion(comment.getCalificacion());
         p.setCliente(c);
         p.setServicio(s);
 

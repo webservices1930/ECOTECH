@@ -10,6 +10,8 @@ import { CookieService } from 'ngx-cookie-service';
 import { QuestionService } from '../../services/question.service';
 import { WeatherService } from '../../services/weather.service';
 import { isInteger } from '@ng-bootstrap/ng-bootstrap/util/util';
+import { Resena } from 'src/app/models/resena';
+import { element } from 'protractor';
 
 @Component({
   selector: 'app-details',
@@ -38,8 +40,12 @@ export class DetailsComponent implements OnInit {
   // otro: Otro;
   // transporte: Transporte;
   pregunta = '';
+  comentario = '';
+  calificacio = 1;
   preguntastemp: Pregunta[] = [];
   user: User;
+  resenas: Array<Resena>;
+  calificacionProm:number = 0;
 
   constructor(
     private router: Router,
@@ -70,7 +76,16 @@ export class DetailsComponent implements OnInit {
           console.log(this.preguntastemp);
         }
       );
+      this.serviceService.getReview(this.idSer).subscribe(res=>{
+        console.log(res);
+        this.resenas = res;
+      });
 
+      if(this.resenas != null){
+        this.calcularCalificacion();
+      }
+
+     
 
 
       /*
@@ -179,6 +194,7 @@ export class DetailsComponent implements OnInit {
 
 
   }
+
   submitweather(fechal,fechaS){
     
     let date1 = new Date(`${fechal.value} 12:00:00`);
@@ -200,6 +216,33 @@ export class DetailsComponent implements OnInit {
 
     this.climal=`${climaL} ºC`;
     this.climaS=`${climaS} ºC`;
+
+  comentar(){
+    const review = {
+      descripcion: this.comentario,
+      calificacion: this.calificacio
+    }  as Resena;
+    console.log(review.calificacion)
+    this.serviceService.postReview(this.idSer,this.user.id,review).subscribe(res =>{
+      console.log('comentario enviado');
+      console.log(res);
+      this.resenas.push(res);
+      this.calcularCalificacion();
+    });
+  }
+
+  private searchType(event: any) {
+    console.log(event.target.value);
+    this.calificacio = Number(event.target.value);
+    console.log(this.calificacio)
+  }
+
+  calcularCalificacion(){
+     var aux = 0
+    this.resenas.forEach(element => {
+      aux += element.calificacion;
+    })
+    this.calificacionProm = aux/this.resenas.length;
   }
 
 }
