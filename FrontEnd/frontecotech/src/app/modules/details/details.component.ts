@@ -22,18 +22,18 @@ import { element } from 'protractor';
 export class DetailsComponent implements OnInit {
   idSer = 'teamp';
   service: any;
-  servicelat: String="";
-  servicelon: String="";
+  servicelat: String = "";
+  servicelon: String = "";
   json: any;
-  climal:String;
-  climaS:String;
-  descriptionl:String;
-  descriptionS:String;
+  climal: String;
+  climaS: String;
+  descriptionl: String;
+  descriptionS: String;
 
   geocoder: any;
 
-  latitude: Number;//4.628828;
-  longitude: Number;//-74.064927;
+  latitude: Number; //4.628828;
+  longitude: Number; //-74.064927;
   // paseo: Paseo;
   // alimentacion: Alimentacion;
   // alojamiento: Alojamiento;
@@ -45,7 +45,7 @@ export class DetailsComponent implements OnInit {
   preguntastemp: Pregunta[] = [];
   user: User;
   resenas: Array<Resena>;
-  calificacionProm:number = 0;
+  calificacionProm: number = 0;
 
   constructor(
     private router: Router,
@@ -76,16 +76,16 @@ export class DetailsComponent implements OnInit {
           console.log(this.preguntastemp);
         }
       );
-      this.serviceService.getReview(this.idSer).subscribe(res=>{
+      this.serviceService.getReview(this.idSer).subscribe(res => {
         console.log(res);
         this.resenas = res;
       });
 
-      if(this.resenas != null){
+      if (this.resenas != null){
         this.calcularCalificacion();
       }
 
-     
+
 
 
       /*
@@ -155,10 +155,10 @@ export class DetailsComponent implements OnInit {
         console.log('Services enviado');
         console.log(res);
         this.service = res;
-        this.weatherService.getWeather(res.latitud.toString(),res.longitud.toString())
+        this.weatherService.getWeather(res.latitud.toString(), res.longitud.toString())
         .subscribe(
-          res2=>this.json=res2,
-          err2=>console.log(err2)
+          res2 => this.json = res2,
+          err2 => console.log(err2)
         );
         this.latitude = Number(res.latitud);
         this.longitude = Number(res.longitud);
@@ -195,27 +195,27 @@ export class DetailsComponent implements OnInit {
 
   }
 
-  submitweather(fechal,fechaS){
-    
+  submitweather(fechal, fechaS){
+
     let date1 = new Date(`${fechal.value} 12:00:00`);
     let date2 = new Date(`${fechaS.value} 12:00:00`);
     let dateaux;
-    let climaS:number;
-    let climaL:number;
-    for(let vara=0;vara<40;vara++){
-     dateaux=new Date(this.json.list[vara].dt_txt);
+    let climaS: number;
+    let climaL: number;
+    for (let vara = 0; vara < 40; vara++){
+     dateaux = new Date(this.json.list[vara].dt_txt);
      console.log(dateaux);
-     if(dateaux.getTime()===date1.getTime()){
-        climaL=(this.json.list[vara].main.temp-273);
-        this.descriptionl=this.json.list[vara].weather[0].description;
-     }else if(dateaux.getTime()===date2.getTime()){
-        climaS=(this.json.list[vara].main.temp-273);
-        this.descriptionS=this.json.list[vara].weather[0].description;
-     }  
+     if (dateaux.getTime() === date1.getTime()){
+        climaL = (this.json.list[vara].main.temp - 273);
+        this.descriptionl = this.json.list[vara].weather[0].description;
+     }else if (dateaux.getTime() === date2.getTime()){
+        climaS = (this.json.list[vara].main.temp - 273);
+        this.descriptionS = this.json.list[vara].weather[0].description;
+     }
     }
 
-    this.climal=`${climaL} ºC`;
-    this.climaS=`${climaS} ºC`;
+    this.climal = `${climaL} ºC`;
+    this.climaS = `${climaS} ºC`;
   }
 
   comentar(){
@@ -223,8 +223,8 @@ export class DetailsComponent implements OnInit {
       descripcion: this.comentario,
       calificacion: this.calificacio
     }  as Resena;
-    console.log(review.calificacion)
-    this.serviceService.postReview(this.idSer,this.user._id,review).subscribe(res =>{
+    console.log(review.calificacion);
+    this.serviceService.postReview(this.idSer, this.user._id, review).subscribe(res => {
       console.log('comentario enviado');
       console.log(res);
       this.resenas.push(res);
@@ -235,15 +235,15 @@ export class DetailsComponent implements OnInit {
   private searchType(event: any) {
     console.log(event.target.value);
     this.calificacio = Number(event.target.value);
-    console.log(this.calificacio)
+    console.log(this.calificacio);
   }
 
-  calcularCalificacion(){
-     var aux = 0
+  calcularCalificacion() {
+    let aux = 0;
     this.resenas.forEach(element => {
       aux += element.calificacion;
-    })
-    this.calificacionProm = aux/this.resenas.length;
+    });
+    this.calificacionProm = aux / this.resenas.length;
   }
 
 }
