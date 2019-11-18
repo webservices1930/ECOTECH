@@ -22,13 +22,13 @@ import { element } from 'protractor';
 export class DetailsComponent implements OnInit {
   idSer = 'teamp';
   service: any;
-  servicelat: String = "";
-  servicelon: String = "";
+  servicelat: string = '';
+  servicelon: string = '';
   json: any;
-  climal: String;
-  climaS: String;
-  descriptionl: String;
-  descriptionS: String;
+  climal: string;
+  climaS: string;
+  descriptionl: string;
+  descriptionS: string;
 
   geocoder: any;
 
@@ -45,7 +45,7 @@ export class DetailsComponent implements OnInit {
   preguntastemp: Pregunta[] = [];
   user: User;
   resenas: Array<Resena>;
-  calificacionProm: number = 0;
+  calificacionProm  = '0';
 
   constructor(
     private router: Router,
@@ -79,11 +79,8 @@ export class DetailsComponent implements OnInit {
       this.serviceService.getReview(this.idSer).subscribe(res => {
         console.log(res);
         this.resenas = res;
-      });
-
-      if (this.resenas != null){
         this.calcularCalificacion();
-      }
+      });
 
 
 
@@ -243,7 +240,8 @@ export class DetailsComponent implements OnInit {
     this.resenas.forEach(element => {
       aux += element.calificacion;
     });
-    this.calificacionProm = aux / this.resenas.length;
+    aux = aux / this.resenas.length;
+    this.calificacionProm = aux.toFixed(1);
   }
 
 }
