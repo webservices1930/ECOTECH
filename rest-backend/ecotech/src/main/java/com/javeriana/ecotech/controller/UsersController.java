@@ -60,8 +60,9 @@ public class UsersController {
 
     @PostMapping( value="", produces = "application/json")
     public Object createUser(@RequestBody Object user) {
+        System.out.println(user);
 
-        Usuario userGson = gsonController.getGson().fromJson(user.toString(), Usuario.class);
+        Usuario userGson = gsonController.getGson().fromJson(gsonController.getGson().toJson(user), Usuario.class);
         Object userInDB = getUserByNickname(userGson.getNickname());
         if (userInDB != null) {
             throw new EntityValidationException("Usuario ya existe.");
