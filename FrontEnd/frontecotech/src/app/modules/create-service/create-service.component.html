@@ -35,7 +35,7 @@
               <td>
                 <div class="input-group mb-3">
                   <input
-                  
+
                     class="form-control"
                     type="text"
                     name="pass"
@@ -136,15 +136,20 @@
           </tbody>
         </table>
 
-        <div *ngIf="pais" class="fondo row">
-          <div class="col-3"><img class="deatilscountry" [src]="pais.flag" alt="flag"></div>
-          <div class="col-9">
-            <b>NOMBRE:</b> {{pais.name}}, <br>
-            <b>CODIGO PAIS:</b> {{pais.alpha2Code}}, <br>
-            <b>CODIGO DE LLAMADA:</b> +{{pais.callingCodes[0]}}, <br>
-            <b>CAPITAL:</b> {{pais.capital}}, <br>
-            <b>MONEDA:</b> {{pais.currencies[0].name}}, <br>
-            <b>IDIOMA:</b> {{pais.languages[0].name}},<br>
+
+        <div *ngIf="pais" class="fondo-padding">
+          <div class="fondo fondo-padding row">
+
+
+            <div class="col-3"><img class="deatilscountry" [src]="pais.flag" alt="flag"></div>
+            <div class="col-9">
+              <b>NOMBRE:</b> {{pais.name}}, <br>
+              <b>CODIGO PAIS:</b> {{pais.alpha2Code}}, <br>
+              <b>CODIGO DE LLAMADA:</b> +{{pais.callingCodes[0]}}, <br>
+              <b>CAPITAL:</b> {{pais.capital}}, <br>
+              <b>MONEDA:</b> {{pais.currencies[0].name}}, <br>
+              <b>IDIOMA:</b> {{pais.languages[0].name}},<br>
+            </div>
           </div>
         </div>
 
@@ -338,7 +343,7 @@
       <div class="col"></div>
     </div>
   </div>
-  
+
 </form>
 <div class="space"></div>
 </div>

@@ -240,6 +240,10 @@ export class DetailsComponent implements OnInit {
   }
 
   calcularCalificacion() {
+    if ( this.resenas.length === 0 ) {
+      this.calificacionProm = '0';
+      return;
+    }
     let aux = 0;
     this.resenas.forEach(element => {
       aux += element.calificacion;

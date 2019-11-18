@@ -47,7 +47,7 @@ export class CreateServiceComponent implements OnInit {
 
   createService() {
     this.serviceForm.value.tipo = this.serviceForm.value.tipo.toUpperCase();
-    const service = this.serviceForm.value as Service;
+    const service = this.serviceForm.value;
     const s: string = this.serviceForm.get('fotos').value;
     console.log(s);
     service.fotos = [];

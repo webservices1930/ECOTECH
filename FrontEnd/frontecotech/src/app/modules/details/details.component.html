@@ -68,15 +68,19 @@
           </tbody>
         </table>
 
-        <div *ngIf="pais" class="fondo row">
-          <div class="col-3"><img class="deatilscountry" [src]="pais.flag" alt="flag"></div>
-          <div class="col-9">
-            <b>NOMBRE:</b> {{pais.name}}, <br>
-            <b>CODIGO PAIS:</b> {{pais.alpha2Code}}, <br>
-            <b>CODIGO DE LLAMADA:</b> +{{pais.callingCodes[0]}}, <br>
-            <b>CAPITAL:</b> {{pais.capital}}, <br>
-            <b>MONEDA:</b> {{pais.currencies[0].name}}, <br>
-            <b>IDIOMA:</b> {{pais.languages[0].name}},<br>
+        <div *ngIf="pais" class="fondo-padding">
+          <div class="fondo fondo-padding row">
+
+
+            <div class="col-3"><img class="deatilscountry" [src]="pais.flag" alt="flag"></div>
+            <div class="col-9">
+              <b>NOMBRE:</b> {{pais.name}}, <br>
+              <b>CODIGO PAIS:</b> {{pais.alpha2Code}}, <br>
+              <b>CODIGO DE LLAMADA:</b> +{{pais.callingCodes[0]}}, <br>
+              <b>CAPITAL:</b> {{pais.capital}}, <br>
+              <b>MONEDA:</b> {{pais.currencies[0].name}}, <br>
+              <b>IDIOMA:</b> {{pais.languages[0].name}},<br>
+            </div>
           </div>
         </div>
 
@@ -120,33 +124,15 @@
               </tr>
             </tbody>
           </table>
-          <table class="table table-striped border border-dark rounded-10">
-              <thead class="thead-dark">
-                <tr>
-                  <th scope="col">Dato</th>
-                  <th scope="col">Valor</th>
-                  <th scope="col">Descripción</th>
-                </tr>
-              </thead>
-              <tbody>
-                  <tr>
-                      <th scope="row">Clima llegada</th>
-                      <td>{{climal}}</td>
-                      <td>{{descriptionl}}</td>
-                  </tr>
-                  <tr>
-                      <th scope="row">Clima Salida</th>
-                      <td>{{climaS}}</td>
-                      <td>{{descriptionS}}</td>
-                  </tr>
-                </tbody>
-              </table>
+
         </div>
         <div *ngIf="latitude">
           <h1 class="text-center">Ubicación</h1>
-          <agm-map [zoom]="15" [latitude]="latitude" [longitude]="longitude">
-            <agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
-          </agm-map>
+          <div align="center">
+            <agm-map [zoom]="15" [latitude]="latitude" [longitude]="longitude" >
+              <agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
+            </agm-map>
+          </div>
         </div>
 
         <h1 class="text-center">Detalles de {{service.tipo}}</h1>
