@@ -9,7 +9,7 @@ public class Pregunta {
 	private String descripcion;
 	private String fecha;
 	private String respuesta;
-	private Cliente clientes;
+	private Cliente cliente;
 	private Servicio servicio;
 
 	public void update() {
@@ -18,6 +18,14 @@ public class Pregunta {
 
 	public void setId(String id) {
 		this.id = id;
+	}
+
+	public ObjectId get_id() {
+		return _id;
+	}
+
+	public void set_id(ObjectId _id) {
+		this._id = _id;
 	}
 
 	public ObjectId getId() {
@@ -52,12 +60,12 @@ public class Pregunta {
 		this.respuesta = respuesta;
 	}
 
-	public Cliente getClientes() {
-		return clientes;
+	public Cliente getCliente() {
+		return cliente;
 	}
 
-	public void setClientes(Cliente clientes) {
-		this.clientes = clientes;
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
 	}
 
 	public Servicio getServicio() {
@@ -71,17 +79,17 @@ public class Pregunta {
 	@Override
 	public String toString() {
 		return "Pregunta [id=" + _id + ", descripcion=" + descripcion + ", fecha=" + fecha + ", respuesta=" + respuesta
-				+ ", clientes=" + clientes + ", servicio=" + servicio + "]";
+				+ ", cliente=" + cliente + ", servicio=" + servicio + "]";
 	}
 
-	public Pregunta(ObjectId id, String descripcion, String fecha, String respuesta, Cliente clientes,
+	public Pregunta(ObjectId id, String descripcion, String fecha, String respuesta, Cliente cliente,
 			Servicio servicio) {
 		super();
 		this._id = id;
 		this.descripcion = descripcion;
 		this.fecha = fecha;
 		this.respuesta = respuesta;
-		this.clientes = clientes;
+		this.cliente = cliente;
 		this.servicio = servicio;
 	}
 

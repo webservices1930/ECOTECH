@@ -14,10 +14,10 @@ public class MongoConnection {
 	private static String db = "Ecotech";
 
 	public MongoConnection() {
-		//MongoClientURI uri = new MongoClientURI(
-		//"mongodb+srv://admin:admin123@cluster0-qhoob.mongodb.net/admin?retryWrites=true&w=majority");
-		//mongoClient = new MongoClient(uri);
-		mongoClient = new MongoClient("localhost", 27017);
+		MongoClientURI uri = new MongoClientURI(
+		"mongodb+srv://admin:admin123@cluster0-qhoob.mongodb.net/admin?retryWrites=true&w=majority");
+		mongoClient = new MongoClient(uri);
+		//mongoClient = new MongoClient("localhost", 27017);
 	}
 
 	public static MongoCollection<Document> findCollection(String nameColection) {
@@ -46,6 +46,17 @@ public class MongoConnection {
 
 		BasicDBObject query = new BasicDBObject();
 		query.put("_id", new ObjectId(_id));
+
+		Document doc = coleccion.find(query).first();
+		return doc;
+	}
+
+	public static Document searchByID(String nameColection, ObjectId _id) {
+		MongoDatabase mongoBD = mongoClient.getDatabase(db);
+		MongoCollection<Document> coleccion = mongoBD.getCollection(nameColection);
+
+		BasicDBObject query = new BasicDBObject();
+		query.put("_id", _id);
 
 		Document doc = coleccion.find(query).first();
 		return doc;

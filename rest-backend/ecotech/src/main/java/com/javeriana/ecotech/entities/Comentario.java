@@ -7,6 +7,7 @@ public class Comentario {
 	private ObjectId _id;
 	private String id;
 	private String descripcion;
+	private Float calificacion;
 	private String fecha;
 	private Cliente cliente;
 	private Servicio servicio;
@@ -63,19 +64,28 @@ public class Comentario {
 		this.servicio = servicio;
 	}
 
+	public Float getCalificacion() {
+		return calificacion;
+	}
+
+	public void setCalificacion(Float calificacion) {
+		this.calificacion = calificacion;
+	}
+
 	@Override
 	public String toString() {
 		return "Comentario [id=" + _id + ", descripcion=" + descripcion + ", fecha=" + fecha + ", cliente=" + cliente
 				+ ", servicio=" + servicio + "]";
 	}
 
-	public Comentario(ObjectId id, String descripcion, String fecha, Cliente cliente, Servicio servicio) {
+	public Comentario(ObjectId id, String descripcion, String fecha, Cliente cliente, Servicio servicio, Float calificacion) {
 		super();
 		this._id = id;
 		this.descripcion = descripcion;
 		this.fecha = fecha;
 		this.cliente = cliente;
 		this.servicio = servicio;
+		this.calificacion = calificacion;
 	}
 
 	public Comentario() {

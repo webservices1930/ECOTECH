@@ -45,17 +45,15 @@ export class LoginComponent implements OnInit {
       console.log('Login enviado');
       const credentialsCorrect = res;
       console.log(credentialsCorrect);
-      if (res) {
-        this.userService.getUserByNickName(user.nickname).subscribe(
-          result => {
-            const userToSave = result;
-            localStorage.setItem('user', JSON.stringify(userToSave));
-            this.router.navigate(['/profile']);
-          }
-        );
-      } else {
+      this.userService.getUserByNickName(user.nickname).subscribe(
+        result => {
+          const userToSave = result;
+          localStorage.setItem('user', JSON.stringify(userToSave));
+          this.router.navigate(['/profile']);
+        }
+      );
+    }, error => {
         alert('Usuario o contraseña incorrecto.');
-      }
     });
 
 
