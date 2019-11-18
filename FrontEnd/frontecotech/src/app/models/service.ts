@@ -1,3 +1,5 @@
+import { Pais } from './pais';
+
 export class Service {
     contacto: string;
     costo: number;
@@ -8,6 +10,7 @@ export class Service {
     tipo: string;
     fotos: string[];
     id: string;
+    pais: Pais;
 }
 
 export class Paseo extends Service {

@@ -35,6 +35,9 @@ export class NewsComponent implements OnInit {
     });
     this.service.getCountries().subscribe(res => {
       this.paises = res;
+      console.log('_----------------------');
+      console.log(this.paises);
+
     });
   }
 

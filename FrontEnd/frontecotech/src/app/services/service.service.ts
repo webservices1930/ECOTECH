@@ -167,4 +167,8 @@ export class ServiceService {
   getCountries() {
     return this.http.get<any>(`${this.SERVICE_COUNTRY}`);
   }
+
+  getDeltailsCountri() {
+    return this.http.get<any>('https://restcountries.eu/rest/v2/all?fields=name;alpha2Code;callingCodes;capital;currencies;languages;flag')
+  }
 }
