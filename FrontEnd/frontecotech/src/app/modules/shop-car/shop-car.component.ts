@@ -24,7 +24,7 @@ export class ShopCarComponent implements OnInit {
 
     this.serviceService.getAllServices().subscribe(res => {
       console.log('Services enviado');
-      this.arrayServicios = res.result.return;
+      this.arrayServicios = res;
       console.log(res);
       console.log(this.arrayServicios);
       this.cargarServicios();
