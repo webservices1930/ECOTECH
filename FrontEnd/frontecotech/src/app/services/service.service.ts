@@ -160,8 +160,8 @@ export class ServiceService {
     return this.http.get<any>(`${this.SERVICE_REVIEW}/${idService}`);
   }
 
-  postReview(idService: string, idUser: string, resena: Resena) {
-    return this.http.post<Resena>(`${this.SERVICE_END_POINT}/${idService}/comments/users/${idUser}`, resena);
+  postReview(idService: string, idUser: any, resena: Resena) {
+    return this.http.post<Resena>(`${this.SERVICE_END_POINT}/${idService}/comments/users/${idUser.$oid}`, resena);
   }
 
   getCountries() {

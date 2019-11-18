@@ -15,23 +15,23 @@ export class NewsComponent implements OnInit {
   negocios: Array<Noticia>;
   divercion: Array<Noticia>;
   paises: Array<Pais>;
-  categoria = "science";
-  pais = "co";
+  categoria = 'science';
+  pais = 'co';
   constructor(private service: ServiceService) { }
 
   ngOnInit() {
 
-    this.service.getNews("co", "business").subscribe(res => {
+    this.service.getNews('co', 'business').subscribe(res => {
       this.negocios = res.articles;
-      console.log(this.noticias)
+      console.log(this.noticias);
     });
-    this.service.getNews("co", "health").subscribe(res => {
+    this.service.getNews('co', 'health').subscribe(res => {
       this.divercion = res.articles;
-      console.log(this.noticias)
+      console.log(this.noticias);
     });
     this.service.getNews(this.pais, this.categoria).subscribe(res => {
       this.noticias = res.articles;
-      console.log(this.noticias)
+      console.log(this.noticias);
     });
     this.service.getCountries().subscribe(res => {
       this.paises = res;
@@ -44,21 +44,21 @@ export class NewsComponent implements OnInit {
   cambiaSeccion() {
     this.service.getNews(this.pais, this.categoria).subscribe(res => {
       this.noticias = res.articles;
-      console.log(this.noticias)
+      console.log(this.noticias);
     });
   }
   cambiaSecciones() {
-    this.service.getNews(this.pais, "business").subscribe(res => {
+    this.service.getNews(this.pais, 'business').subscribe(res => {
       this.negocios = res.articles;
-      console.log(this.noticias)
+      console.log(this.noticias);
     });
-    this.service.getNews(this.pais, "health").subscribe(res => {
+    this.service.getNews(this.pais, 'health').subscribe(res => {
       this.divercion = res.articles;
-      console.log(this.noticias)
+      console.log(this.noticias);
     });
     this.service.getNews(this.pais, this.categoria).subscribe(res => {
       this.noticias = res.articles;
-      console.log(this.noticias)
+      console.log(this.noticias);
     });
   }
 
