@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { TypeService, Service, Alimentacion, Alojamiento, Otro, Paseo, Transporte } from '../../models/service';
 import { toArray } from 'rxjs/operators';
 import { Client } from 'ngx-soap';
+import { Pais } from 'src/app/models/pais';
 
 @Component({
   selector: 'app-create-service',
@@ -13,10 +14,14 @@ import { Client } from 'ngx-soap';
 })
 export class CreateServiceComponent implements OnInit {
 
+  paises: Array<Pais>;
+  pais: Pais;
+
   constructor(
     private formBuilder: FormBuilder,
     private serviceService: ServiceService,
-    private router: Router
+    private router: Router,
+    private service: ServiceService
   ) { }
 
   serviceForm: FormGroup;
@@ -27,6 +32,12 @@ export class CreateServiceComponent implements OnInit {
     this.typeService = Object.keys(TypeService).map(k => TypeService[k]);
     this.typeService.splice(5);
     console.log(this.typeService);
+    this.service.getDeltailsCountri().subscribe(res => {
+      this.paises = res;
+      console.log('_----------------------');
+      console.log(this.paises);
+
+    });
   }
 
   goodAction() {
@@ -81,6 +92,12 @@ export class CreateServiceComponent implements OnInit {
     this.serviceService.createService(this.serviceForm.value).subscribe(res => {
       this.goodAction();
     });
+  }
+
+  searchCountry(event: any) {
+    console.log(event.target.value);
+    this.pais = this.paises[event.target.value];
+    console.log(this.pais);
   }
 
 

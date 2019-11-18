@@ -17,43 +17,46 @@ export class NewsComponent implements OnInit {
   paises: Array<Pais>;
   categoria = "science";
   pais = "co";
-  constructor(private service:ServiceService) { }
+  constructor(private service: ServiceService) { }
 
   ngOnInit() {
 
-    this.service.getNews("co","business").subscribe(res=>{
+    this.service.getNews("co", "business").subscribe(res => {
       this.negocios = res.articles;
       console.log(this.noticias)
     });
-    this.service.getNews("co","health").subscribe(res=>{
+    this.service.getNews("co", "health").subscribe(res => {
       this.divercion = res.articles;
       console.log(this.noticias)
     });
-    this.service.getNews(this.pais,this.categoria).subscribe(res=>{
+    this.service.getNews(this.pais, this.categoria).subscribe(res => {
       this.noticias = res.articles;
       console.log(this.noticias)
     });
-    this.service.getCountries().subscribe(res=>{
+    this.service.getCountries().subscribe(res => {
       this.paises = res;
+      console.log('_----------------------');
+      console.log(this.paises);
+
     });
   }
 
-  cambiaSeccion(){
-    this.service.getNews(this.pais,this.categoria).subscribe(res=>{
+  cambiaSeccion() {
+    this.service.getNews(this.pais, this.categoria).subscribe(res => {
       this.noticias = res.articles;
       console.log(this.noticias)
     });
   }
-  cambiaSecciones(){
-    this.service.getNews(this.pais,"business").subscribe(res=>{
+  cambiaSecciones() {
+    this.service.getNews(this.pais, "business").subscribe(res => {
       this.negocios = res.articles;
       console.log(this.noticias)
     });
-    this.service.getNews(this.pais,"health").subscribe(res=>{
+    this.service.getNews(this.pais, "health").subscribe(res => {
       this.divercion = res.articles;
       console.log(this.noticias)
     });
-    this.service.getNews(this.pais,this.categoria).subscribe(res=>{
+    this.service.getNews(this.pais, this.categoria).subscribe(res => {
       this.noticias = res.articles;
       console.log(this.noticias)
     });
