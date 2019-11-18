@@ -17,11 +17,20 @@ public class Servicio {
 	private String longitud;
 	private transient List<Long> calificaciones;
 	private List<String> fotos;
+	private Object pais;
 //	private transient List<Comentario> comentarios;
 //	private transient List<Pregunta> preguntas;
 
-	public void update(){
+	public void update() {
 		this.id = this._id.toString();
+	}
+
+	public Object getPais() {
+		return pais;
+	}
+
+	public void setPais(Object pais) {
+		this.pais = pais;
 	}
 
 	public String getId() {
@@ -132,7 +141,7 @@ public class Servicio {
 	public String toString() {
 		return "Servicio [id=" + _id + ", nombre=" + nombre + ", costo=" + costo + ", contacto=" + contacto
 				+ ", descripcion=" + descripcion + ", latitud=" + latitud + ", longitud=" + longitud
-				+ ", calificaciones=" + calificaciones + ", fotos=" + fotos + "]"+ id;
+				+ ", calificaciones=" + calificaciones + ", fotos=" + fotos + "]" + id;
 	}
 
 	public Servicio(ObjectId _id, String nombre, long costo, String contacto, String descripcion, String latitud,

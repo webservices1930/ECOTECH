@@ -52,6 +52,7 @@ export class CreateServiceComponent implements OnInit {
     console.log(s);
     service.fotos = [];
     service.fotos.push(s);
+    service.pais = this.pais;
     console.log(service);
     console.log(TypeService.Alimentacion.toString());
 
@@ -89,7 +90,7 @@ export class CreateServiceComponent implements OnInit {
       });
     }*/
 
-    this.serviceService.createService(this.serviceForm.value).subscribe(res => {
+    this.serviceService.createService(service).subscribe(res => {
       this.goodAction();
     });
   }
