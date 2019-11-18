@@ -59,6 +59,7 @@ public class CommentsController {
         p.setDescripcion(comment.getDescripcion());
         p.setFecha(fecha);
         p.setCalificacion(comment.getCalificacion());
+        System.out.println(comment.getCalificacion());
         p.setCliente(c);
         p.setServicio(s);
 
