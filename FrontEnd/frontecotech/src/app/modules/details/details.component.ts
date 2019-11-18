@@ -12,6 +12,7 @@ import { WeatherService } from '../../services/weather.service';
 import { isInteger } from '@ng-bootstrap/ng-bootstrap/util/util';
 import { Resena } from 'src/app/models/resena';
 import { element } from 'protractor';
+import { Pais } from 'src/app/models/pais';
 
 @Component({
   selector: 'app-details',
@@ -29,6 +30,7 @@ export class DetailsComponent implements OnInit {
   climaS:String;
   descriptionl:String;
   descriptionS:String;
+  pais: Pais;
 
   geocoder: any;
 
@@ -155,6 +157,7 @@ export class DetailsComponent implements OnInit {
         console.log('Services enviado');
         console.log(res);
         this.service = res;
+        this.pais = this.service.pais;
         this.weatherService.getWeather(res.latitud.toString(),res.longitud.toString())
         .subscribe(
           res2=>this.json=res2,
