@@ -31,7 +31,7 @@
     "events": "^3.0.0",
     "font-awesome": "^4.7.0",
     "jw-bootstrap-switch-ng2": "^2.0.5",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "ng-bootstrap": "^1.6.3",
     "ng2-nouislider": "^1.8.2",
     "ngx-cookie-service": "^2.2.0",
